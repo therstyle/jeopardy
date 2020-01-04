@@ -1,0 +1,242 @@
+[
+ {
+   "id": 1,
+   "question": "",
+   "answer": "",
+   "category": "Category 1",
+   "value": 200,
+   "daily_double": null
+ },
+ {
+   "id": 2,
+   "question": "",
+   "answer": "",
+   "category": "Category 2",
+   "value": 200,
+   "daily_double": null
+ },
+ {
+   "id": 3,
+   "question": "",
+   "answer": "",
+   "category": "Category 3",
+   "value": 200,
+   "daily_double": null
+ },
+ {
+   "id": 4,
+   "question": "",
+   "answer": "",
+   "category": "Category 4",
+   "value": 200,
+   "daily_double": null
+ },
+ {
+   "id": 5,
+   "question": "",
+   "answer": "",
+   "category": "Category 5",
+   "value": 200,
+   "daily_double": null
+ },
+ {
+   "id": 6,
+   "question": "",
+   "answer": "",
+   "category": "Category 6",
+   "value": 200,
+   "daily_double": null
+ },
+ {
+   "id": 7,
+   "question": "",
+   "answer": "",
+   "category": "Category 1",
+   "value": 400,
+   "daily_double": null
+ },
+ {
+   "id": 8,
+   "question": "",
+   "answer": "",
+   "category": "Category 2",
+   "value": 400,
+   "daily_double": null
+ },
+ {
+   "id": 9,
+   "question": "",
+   "answer": "",
+   "category": "Category 3",
+   "value": 400,
+   "daily_double": null
+ },
+ {
+   "id": 10,
+   "question": "",
+   "answer": "",
+   "category": "Category 4",
+   "value": 400,
+   "daily_double": null
+ },
+ {
+   "id": 11,
+   "question": "",
+   "answer": "",
+   "category": "Category 5",
+   "value": 400,
+   "daily_double": null
+ },
+ {
+   "id": 12,
+   "question": "",
+   "answer": "",
+   "category": "Category 6",
+   "value": 400,
+   "daily_double": null
+ },
+ {
+   "id": 13,
+   "question": "",
+   "answer": "",
+   "category": "Category 1",
+   "value": 600,
+   "daily_double": null
+ },
+ {
+   "id": 14,
+   "question": "",
+   "answer": "",
+   "category": "Category 2",
+   "value": 600,
+   "daily_double": null
+ },
+ {
+   "id": 15,
+   "question": "",
+   "answer": "",
+   "category": "Category 3",
+   "value": 600,
+   "daily_double": null
+ },
+ {
+   "id": 16,
+   "question": "",
+   "answer": "",
+   "category": "Category 4",
+   "value": 600,
+   "daily_double": null
+ },
+ {
+   "id": 17,
+   "question": "",
+   "answer": "",
+   "category": "Category 5",
+   "value": 600,
+   "daily_double": null
+ },
+ {
+   "id": 18,
+   "question": "",
+   "answer": "",
+   "category": "Category 6",
+   "value": 600,
+   "daily_double": null
+ },
+ {
+   "id": 19,
+   "question": "",
+   "answer": "",
+   "category": "Category 1",
+   "value": 800,
+   "daily_double": null
+ },
+ {
+   "id": 20,
+   "question": "",
+   "answer": "",
+   "category": "Category 2",
+   "value": 800,
+   "daily_double": null
+ },
+ {
+   "id": 21,
+   "question": "",
+   "answer": "",
+   "category": "Category 3",
+   "value": 800,
+   "daily_double": null
+ },
+ {
+   "id": 22,
+   "question": "",
+   "answer": "",
+   "category": "Category 4",
+   "value": 800,
+   "daily_double": null
+ },
+ {
+   "id": 23,
+   "question": "",
+   "answer": "",
+   "category": "Category 5",
+   "value": 800,
+   "daily_double": null
+ },
+ {
+   "id": 24,
+   "question": "",
+   "answer": "",
+   "category": "Category 6",
+   "value": 800,
+   "daily_double": null
+ },
+ {
+   "id": 25,
+   "question": "",
+   "answer": "",
+   "category": "Category 1",
+   "value": 1000,
+   "daily_double": null
+ },
+ {
+   "id": 26,
+   "question": "",
+   "answer": "",
+   "category": "Category 2",
+   "value": 1000,
+   "daily_double": null
+ },
+ {
+   "id": 27,
+   "question": "",
+   "answer": "",
+   "category": "Category 3",
+   "value": 1000,
+   "daily_double": null
+ },
+ {
+   "id": 28,
+   "question": "",
+   "answer": "",
+   "category": "Category 4",
+   "value": 1000,
+   "daily_double": null
+ },
+ {
+   "id": 29,
+   "question": "",
+   "answer": "",
+   "category": "Category 5",
+   "value": 1000,
+   "daily_double": null
+ },
+ {
+   "id": 30,
+   "question": "",
+   "answer": "",
+   "category": "Category 6",
+   "value": 1000,
+   "daily_double": "true"
+ }
+]

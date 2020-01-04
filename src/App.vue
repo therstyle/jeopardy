@@ -1,12 +1,25 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    async loadData(url) {
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log(data);
+
+      this.$store.dispatch('updateQuestions', data);
+    }
+  },
+  created() {
+    this.loadData('sample.json');
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
