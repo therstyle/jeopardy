@@ -1,10 +1,11 @@
 <template>
   <div id="app">
-    <router-view/>
+    
   </div>
 </template>
 
 <script>
+
 export default {
   methods: {
     async loadData(url) {
@@ -15,6 +16,8 @@ export default {
       this.$store.dispatch('setQuestions', data);
       this.$store.dispatch('setCategories', data);
     }
+  },
+  components: {
   },
   created() {
     this.loadData('sample.json');
