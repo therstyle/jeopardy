@@ -13,6 +13,7 @@ export default {
       console.log(data);
 
       this.$store.dispatch('updateQuestions', data);
+      this.$store.dispatch('updateCategories', data);
     }
   },
   created() {
