@@ -11,24 +11,24 @@ export default new Vuex.Store({
     players: []
   },
   mutations: {
-    updateQuestions: (state, payload) => {
+    setQuestions: (state, payload) => {
       state.questions = payload;
     },
-    updateCategories: (state, payload) => {
+    setCategories: (state, payload) => {
       state.categories = payload;
     }
   },
   actions: {
-    updateQuestions: (context, payload) => {
-      context.commit('updateQuestions', payload);
+    setQuestions: (context, payload) => {
+      context.commit('setQuestions', payload);
     },
-    updateCategories: (context, payload) => {
+    setCategories: (context, payload) => {
       const categories = payload.map( data => {
         return data.category;
       });
 
       const uniqueCategories = Array.from(new Set(categories));
-      context.commit('updateCategories', uniqueCategories);
+      context.commit('setCategories', uniqueCategories);
     }
   },
   modules: {

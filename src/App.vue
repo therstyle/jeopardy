@@ -12,8 +12,8 @@ export default {
       const data = await response.json();
       console.log(data);
 
-      this.$store.dispatch('updateQuestions', data);
-      this.$store.dispatch('updateCategories', data);
+      this.$store.dispatch('setQuestions', data);
+      this.$store.dispatch('setCategories', data);
     }
   },
   created() {
