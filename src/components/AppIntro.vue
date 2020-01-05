@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import AppButton from './layout/appButton.vue';
+import AppButton from './layout/AppButton.vue';
 
 export default {
   name: 'intro',
