@@ -1,8 +1,7 @@
 <template>
   <section class="intro">
     <div class="intro-content">
-      <h1>Intro</h1>
-      <app-button text="Start Game" className="primary"></app-button>
+      <app-button text="Start Game" className="primary" goTo="players"></app-button>
     </div>
   </section>
 </template>
