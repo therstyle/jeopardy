@@ -6,6 +6,7 @@
 
 <script>
 import Intro from './components/AppIntro.vue';
+import Players from './components/AppPlayers.vue'
 
 export default {
   methods: {
@@ -24,7 +25,8 @@ export default {
     }
   },
   components: {
-    Intro
+    Intro,
+    Players
   },
   created() {
     this.loadData('sample.json');

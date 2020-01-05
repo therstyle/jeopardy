@@ -1,5 +1,5 @@
 <template>
-  <button :class="className">
+  <button :class="className" v-on:click="setCurrentComponent(goTo)">
     {{ text }}
   </button>
 </template>
@@ -9,7 +9,13 @@ export default {
   name: 'app-button',
   props: {
     className: String,
-    text: String
+    text: String,
+    goTo: String
+  },
+  methods: {
+    setCurrentComponent(component) {
+      this.$store.dispatch('setCurrentComponent', component);
+    }
   }
 }
 </script>
