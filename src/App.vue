@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <intro></intro>
+    <component :is="currentComponent"></component>
   </div>
 </template>
 
@@ -16,6 +16,11 @@ export default {
 
       this.$store.dispatch('setQuestions', data);
       this.$store.dispatch('setCategories', data);
+    }
+  },
+  computed: {
+    currentComponent() {
+      return this.$store.getters.getCurrentComponent;
     }
   },
   components: {
