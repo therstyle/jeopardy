@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <main id="app">
     <component :is="currentComponent"></component>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -33,4 +33,19 @@ export default {
 </script>
 
 <style lang="scss">
+@import './assets/css/vars';
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: var(--font-size);
+  margin: 0;
+}
+
+#app {
+  display: grid;
+  min-height: 100vh;
+}
 </style>
