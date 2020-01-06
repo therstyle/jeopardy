@@ -1,6 +1,8 @@
 <template>
   <main id="app">
-    <component :is="currentComponent"></component>
+    <keep-alive>
+      <component :is="currentComponent"></component>
+    </keep-alive>
   </main>
 </template>
 
