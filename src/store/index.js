@@ -25,6 +25,9 @@ export default new Vuex.Store({
     },
     setCurrentComponent: (state, payload) => {
       state.currentComponent = payload;
+    },
+    addPlayer: (state, payload) => {
+      state.players = payload;
     }
   },
   actions: {
@@ -41,8 +44,11 @@ export default new Vuex.Store({
     },
     setCurrentComponent: (context, payload) => {
       context.commit('setCurrentComponent', payload);
+    },
+    addPlayer: function (context, payload) {
+      const players = this.state.players;
+      players.push(payload);
+      context.commit('addPlayer', players);
     }
-  },
-  modules: {
   }
 })
