@@ -46,8 +46,7 @@ export default new Vuex.Store({
       context.commit('setCurrentComponent', payload);
     },
     addPlayer: function (context, payload) {
-      const players = this.state.players;
-      players.push(payload);
+      const players = [...this.state.players, payload];
       context.commit('addPlayer', players);
     }
   }
