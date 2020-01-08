@@ -29,7 +29,7 @@ export default new Vuex.Store({
     setCurrentComponent: (state, payload) => {
       state.currentComponent = payload;
     },
-    addPlayer: (state, payload) => {
+    setPlayers: (state, payload) => {
       state.players = payload;
     }
   },
@@ -58,7 +58,15 @@ export default new Vuex.Store({
           return 1;
         }
       });
-      context.commit('addPlayer', sortedPlayers);
+      context.commit('setPlayers', sortedPlayers);
+    },
+    removePlayer: function (context, payload) {
+      console.log('removing player');
+      const players = this.state.players;
+      const removedPlayers = players.filter(player => {
+        return player.name !== payload;
+      });
+      context.commit('setPlayers', removedPlayers);
     }
   }
 })
