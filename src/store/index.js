@@ -14,6 +14,9 @@ export default new Vuex.Store({
   getters: {
     getCurrentComponent: (state) => {
       return state.currentComponent;
+    },
+    getPlayers: (state) => {
+      return state.players;
     }
   },
   mutations: {
@@ -47,7 +50,15 @@ export default new Vuex.Store({
     },
     addPlayer: function (context, payload) {
       const players = [...this.state.players, payload];
-      context.commit('addPlayer', players);
+      const sortedPlayers = players.sort(function(a, b) {
+        if (a.score > b.score) {
+          return -1;
+        }
+        else {
+          return 1;
+        }
+      });
+      context.commit('addPlayer', sortedPlayers);
     }
   }
 })

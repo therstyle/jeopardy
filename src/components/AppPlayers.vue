@@ -6,10 +6,16 @@
       <input type="text" v-model="playerName" placeholder="Player Name" />
       <button>Add Player</button>
     </form>
+
+    <player></player>
+    <app-button text="Continue" goTo="game-board"></app-button>
   </section>
 </template>
 
 <script>
+import Player from './AppPlayersPlayer';
+import AppButton from './layout/AppButton.vue';
+
 export default {
   name: 'players',
   data() {
@@ -18,6 +24,10 @@ export default {
       error: false,
       playerId: 0
     }
+  },
+  components: {
+    Player,
+    AppButton
   },
   methods: {
     addPlayer() {
@@ -36,7 +46,6 @@ export default {
         console.log(playerInfo);
 
         this.$store.dispatch('addPlayer', playerInfo);
-        //this.$store.dispatch('setCurrentComponent', component);
         this.error = false;
         this.playerName = '';
       }
