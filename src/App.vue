@@ -8,7 +8,8 @@
 
 <script>
 import Intro from './components/AppIntro.vue';
-import Players from './components/AppPlayers.vue'
+import Players from './components/AppPlayers.vue';
+import GameBoard from './components/GameBoard.vue';
 
 export default {
   methods: {
@@ -28,7 +29,8 @@ export default {
   },
   components: {
     Intro,
-    Players
+    Players,
+    GameBoard
   },
   created() {
     this.loadData('sample.json');
