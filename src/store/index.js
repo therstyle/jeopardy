@@ -20,6 +20,9 @@ export default new Vuex.Store({
     },
     getQuestions: (state) => {
       return state.questions;
+    },
+    getCategories: (state) => {
+      return state.categories;
     } 
   },
   mutations: {
