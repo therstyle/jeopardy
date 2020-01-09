@@ -17,7 +17,10 @@ export default new Vuex.Store({
     },
     getPlayers: (state) => {
       return state.players;
-    }
+    },
+    getQuestions: (state) => {
+      return state.questions;
+    } 
   },
   mutations: {
     setQuestions: (state, payload) => {
