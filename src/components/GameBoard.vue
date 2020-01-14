@@ -9,7 +9,7 @@
     
     <ul>
       <li v-for="(question, index) in getQuestions" :key="index">
-        {{ question.question }}
+        <a href="#" v-on:click.prevent="getQuestion(question.id)">{{ question.question }}</a>
       </li>
     </ul>
   </div>
@@ -24,6 +24,15 @@ export default {
     },
     getQuestions() {
       return this.$store.getters.getQuestions;
+    }
+  },
+  methods: {
+    getQuestion(id) {
+      const currentQuestion = this.getQuestions.filter( question => {
+        return question.id === id;
+      });
+
+      console.log(currentQuestion);
     }
   }
 }
