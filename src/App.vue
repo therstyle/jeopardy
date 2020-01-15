@@ -10,6 +10,7 @@
 import Intro from './components/AppIntro.vue';
 import Players from './components/AppPlayers.vue';
 import GameBoard from './components/GameBoard.vue';
+import ViewQuestion from './components/ViewQuestion.vue';
 
 export default {
   methods: {
@@ -30,7 +31,8 @@ export default {
   components: {
     Intro,
     Players,
-    GameBoard
+    GameBoard,
+    ViewQuestion
   },
   created() {
     this.loadData('sample.json');

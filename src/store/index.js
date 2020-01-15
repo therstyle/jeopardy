@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     round: 1,
     currentComponent: 'intro',
+    currentQuestion: 0,
     categories: [],
     questions: [],
     players: []
@@ -23,6 +24,9 @@ export default new Vuex.Store({
     },
     getCategories: (state) => {
       return state.categories;
+    },
+    getCurrentQuestion: (state) => {
+      return state.currentQuestion;
     } 
   },
   mutations: {
@@ -37,6 +41,9 @@ export default new Vuex.Store({
     },
     setPlayers: (state, payload) => {
       state.players = payload;
+    },
+    setCurrentQuestion: (state, payload) => {
+      state.currentQuestion = payload;
     }
   },
   actions: {
@@ -73,6 +80,9 @@ export default new Vuex.Store({
         return player.name !== payload;
       });
       context.commit('setPlayers', removedPlayers);
+    },
+    setCurrentQuestion: (context, payload) => {
+      context.commit('setCurrentQuestion', payload);
     }
   }
 })
