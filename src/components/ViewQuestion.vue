@@ -1,14 +1,14 @@
 <template>
   <section class="view-question">
-    <article>
-      <p v-for="(question, index) in question" :key="index">{{ question.question }}</p>
-    </article>
+    <article v-for="(question, index) in question" :key="index">
+      <span>{{ question.question }}</span>
 
-    <div class="control-panel">
-      <select>
-        <option></option>
-      </select>
-    </div>
+      <div class="control-panel">
+        <select>
+          <option></option>
+        </select>
+      </div>
+    </article>
   </section>
 </template>
 
