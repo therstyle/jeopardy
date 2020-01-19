@@ -4,8 +4,9 @@
       <span>{{ question.question }}</span>
 
       <div class="control-panel">
-        <select>
-          <option></option>
+        <select v-on:change="setCurrentPlayer">
+          <option>Select Player</option>
+          <option v-for="(player, index) in players" :key="index" :value="player.id">{{ player.name }}</option>
         </select>
       </div>
     </article>
@@ -22,10 +23,16 @@ export default {
     question() {
       const questions = this.$store.getters.getQuestions;
       return questions.filter(data => data.id === this.currentQuestion);
+    },
+    players() {
+      return this.$store.getters.getPlayers;
     }
   },
   methods: {
-
+    setCurrentPlayer(e) {
+      console.log('selected player');
+      this.$store.dispatch('setCurrentPlayer', e.target.value);
+    }
   }
 }
 </script>

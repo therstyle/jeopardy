@@ -10,7 +10,8 @@ export default new Vuex.Store({
     currentQuestion: 0,
     categories: [],
     questions: [],
-    players: []
+    players: [],
+    currentPlayer: ''
   },
   getters: {
     getCurrentComponent: (state) => {
@@ -27,6 +28,9 @@ export default new Vuex.Store({
     },
     getCurrentQuestion: (state) => {
       return state.currentQuestion;
+    },
+    getCurrentPlayer: (state) => {
+      return state.currentPlayer;
     } 
   },
   mutations: {
@@ -44,6 +48,9 @@ export default new Vuex.Store({
     },
     setCurrentQuestion: (state, payload) => {
       state.currentQuestion = payload;
+    },
+    setCurrentPlayer: (state, payload) => {
+      state.currentPlayer = payload;
     }
   },
   actions: {
@@ -83,6 +90,9 @@ export default new Vuex.Store({
     },
     setCurrentQuestion: (context, payload) => {
       context.commit('setCurrentQuestion', payload);
+    },
+    setCurrentPlayer: (context, payload) => {
+      context.commit('setCurrentPlayer', payload);
     }
   }
 })
