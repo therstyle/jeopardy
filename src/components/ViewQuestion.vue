@@ -5,7 +5,7 @@
 
       <div class="control-panel">
         <select v-on:change="setCurrentPlayer">
-          <option>Select Player</option>
+          <option value="0">Select Player</option>
           <option v-for="(player, index) in players" :key="index" :value="player.id">{{ player.name }}</option>
         </select>
 
@@ -29,15 +29,27 @@ export default {
     },
     players() {
       return this.$store.getters.getPlayers;
+    },
+    currentPlayer() {
+      return this.$store.getters.getCurrentPlayer;
     }
   },
   methods: {
     setCurrentPlayer(e) {
       const id = parseInt(e.target.value);
       this.$store.dispatch('setCurrentPlayer', id);
+      
+      if (this.currentPlayer !== 0) {
+        this.countDown();
+      }
     },
     setScore(amount) {
       this.$store.dispatch('setScore', amount);
+    },
+    countDown() {
+      setTimeout(function() {
+        console.log('times up');
+      }, 1000);
     }
   }
 }
