@@ -9,7 +9,7 @@
     
     <ul>
       <li v-for="(question, index) in getQuestions" :key="index">
-        <a href="#" v-on:click.prevent="viewQuestion(question.id)">{{ question.question }}</a>
+        <a href="#" v-on:click.prevent="viewQuestion(question.id)">{{ question.value }}</a>
       </li>
     </ul>
   </div>
