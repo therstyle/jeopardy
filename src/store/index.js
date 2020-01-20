@@ -51,6 +51,9 @@ export default new Vuex.Store({
     },
     setCurrentPlayer: (state, payload) => {
       state.currentPlayer = payload;
+    },
+    setRound: (state, payload) => {
+      state.round = payload;
     }
   },
   actions: {
@@ -119,7 +122,28 @@ export default new Vuex.Store({
         }
       });
 
+      let i = 0;
+      questions.forEach(question => {
+        if (question.answered) {
+          i++;
+        }
+      });
+
+      console.log(`questions answered = ${i}`);
+
+      if (i === questions.length) {
+        context.commit('setRound')
+        context.commit('setCurrentComponent', 'players');
+        console.log('start the next round');
+      }
+
       context.commit('setQuestions', questions);
+    },
+    setRound: function(context) {
+      let round = this.state.round;
+      round++;
+
+      context.commit('setRound', round);
     }
   }
 })
