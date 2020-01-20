@@ -8,6 +8,9 @@
           <option>Select Player</option>
           <option v-for="(player, index) in players" :key="index" :value="player.id">{{ player.name }}</option>
         </select>
+
+        <button v-on:click="setScore(-question.value)">Remove ${{ question.value }}</button>
+        <button v-on:click="setScore(question.value)">Award ${{ question.value }}</button>
       </div>
     </article>
   </section>
@@ -30,8 +33,11 @@ export default {
   },
   methods: {
     setCurrentPlayer(e) {
-      console.log('selected player');
-      this.$store.dispatch('setCurrentPlayer', e.target.value);
+      const id = parseInt(e.target.value);
+      this.$store.dispatch('setCurrentPlayer', id);
+    },
+    setScore(amount) {
+      this.$store.dispatch('setScore', amount);
     }
   }
 }

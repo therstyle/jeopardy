@@ -11,7 +11,7 @@ export default new Vuex.Store({
     categories: [],
     questions: [],
     players: [],
-    currentPlayer: ''
+    currentPlayer: 0
   },
   getters: {
     getCurrentComponent: (state) => {
@@ -86,7 +86,22 @@ export default new Vuex.Store({
       const removedPlayers = players.filter(player => {
         return player.name !== payload;
       });
+
       context.commit('setPlayers', removedPlayers);
+    },
+    setScore: function (context, payload) {
+      const players = this.state.players;
+      const currentPlayer = this.state.currentPlayer;
+
+      players.forEach(function(player) {
+        console.log(player.id);
+
+        if (player.id === currentPlayer) {
+          player.score = player.score + payload;
+        }
+      });
+
+      context.commit('setPlayers', players);
     },
     setCurrentQuestion: (context, payload) => {
       context.commit('setCurrentQuestion', payload);
