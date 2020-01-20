@@ -108,6 +108,18 @@ export default new Vuex.Store({
     },
     setCurrentPlayer: (context, payload) => {
       context.commit('setCurrentPlayer', payload);
+    },
+    turnComplete: function(context) {
+      const questions = [...this.state.questions];
+      const currentId = this.state.currentQuestion;
+
+      questions.forEach(question => {
+        if (question.id === currentId) {
+          question.answered = true;
+        }
+      });
+
+      context.commit('setQuestions', questions);
     }
   }
 })

@@ -8,7 +8,7 @@
     </ul>
     
     <ul>
-      <li v-for="(question, index) in getQuestions" :key="index">
+      <li v-for="(question, index) in getQuestions" :key="index" :class="{ 'answered' : question.answered }">
         <a href="#" v-on:click.prevent="viewQuestion(question.id)">{{ question.value }}</a>
       </li>
     </ul>
@@ -40,6 +40,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="scss">
+.answered {
+  opacity: .10;
+  pointer-events: none;
+}
 </style>

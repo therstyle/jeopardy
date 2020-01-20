@@ -14,7 +14,9 @@ export default {
   },
   methods: {
     setCurrentComponent(component) {
-      this.$store.dispatch('setCurrentComponent', component);
+      if (this.goTo) {
+        this.$store.dispatch('setCurrentComponent', component);
+      }
     }
   }
 }

@@ -5,7 +5,7 @@
       <div v-if="reveal">
         {{question.answer }}
 
-        <app-button text="Continue" goTo="game-board"></app-button>
+        <button v-on:click="turnComplete">Continue</button>
       </div>
 
       <div class="control-panel">
@@ -26,12 +26,11 @@
 </template>
 
 <script>
-import AppButton from './layout/AppButton.vue';
+//import AppButton from './layout/AppButton.vue';
 
 export default {
   name: 'view-question',
   components: {
-    AppButton
   },
   computed: {
     currentQuestion() {
@@ -72,6 +71,12 @@ export default {
       setTimeout(function() {
         console.log('times up');
       }, 1000);
+    },
+    turnComplete() {
+      console.log('end turn');
+      this.reveal = false;
+      this.$store.dispatch('setCurrentComponent', 'game-board');
+      this.$store.dispatch('turnComplete');
     },
     revealAnswer() {
       console.log('reveal answer');
