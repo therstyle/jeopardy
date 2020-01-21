@@ -7,6 +7,10 @@
       <button>Add Player</button>
     </form>
 
+    <artlce v-if="round > 1 && round < 3">
+      <h2>After The Round X Is In The Lead!</h2>
+    </artlce>
+
     <player></player>
     <app-button text="Continue" goTo="game-board"></app-button>
   </section>
@@ -18,6 +22,15 @@ import AppButton from './layout/AppButton.vue';
 
 export default {
   name: 'players',
+  computed: {
+    round() {
+      return this.$store.getters.getRound;
+    },
+    leader() {
+      //const players = '';
+      return '';
+    }
+  },
   data() {
     return {
       playerName: '',

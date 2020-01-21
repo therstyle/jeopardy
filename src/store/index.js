@@ -31,6 +31,9 @@ export default new Vuex.Store({
     },
     getCurrentPlayer: (state) => {
       return state.currentPlayer;
+    },
+    getRound: (state) => {
+      return state.round;
     } 
   },
   mutations: {
