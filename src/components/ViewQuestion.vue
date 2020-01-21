@@ -49,7 +49,8 @@ export default {
   },
   data() {
     return {
-      reveal: false
+      reveal: false,
+      buzzer: null
     }
   },
   methods: {
@@ -62,13 +63,14 @@ export default {
       }
     },
     setScore(amount) {
+      clearTimeout(this.buzzer);
       this.$store.dispatch('setScore', amount);
       if (amount > 0) {
         this.revealAnswer();
       }
     },
     countDown() {
-      setTimeout(function() {
+      this.buzzer = setTimeout(function() {
         console.log('times up');
       }, 1000);
     },
