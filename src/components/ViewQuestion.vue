@@ -11,7 +11,7 @@
       <div class="control-panel">
         <select v-on:change="setCurrentPlayer">
           <option value="0">Select Player</option>
-          <option v-for="(player, index) in players" :key="index" :value="player.id">{{ player.name }}</option>
+          <option :id="`player-${player.id}`" v-for="(player, index) in players" :key="index" :value="player.id">{{ player.name }}</option>
         </select>
 
         <button v-on:click="setScore(-question.value)">Remove ${{ question.value }}</button>
