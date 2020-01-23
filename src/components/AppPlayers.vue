@@ -2,14 +2,14 @@
   <section class="players">
     <h1>Add Players</h1>
 
+    <article v-if="round > 1 && round < 3">
+      <h2>After The Round {{ leader }} Is In The Lead!</h2>
+    </article>
+
     <form v-on:submit.prevent="addPlayer">
       <input type="text" v-model="playerName" placeholder="Player Name" />
       <button>Add Player</button>
     </form>
-
-    <article v-if="round > 1 && round < 3">
-      <h2>After The Round {{ leader }} Is In The Lead!</h2>
-    </article>
 
     <player></player>
     <app-button text="Continue" goTo="game-board"></app-button>
@@ -54,7 +54,9 @@ export default {
           id: this.playerId,
           name: this.playerName,
           score: 0,
-          wager: 0
+          wager: 0,
+          correct: 0,
+          wrong: 0
         };
 
         console.log(playerInfo);

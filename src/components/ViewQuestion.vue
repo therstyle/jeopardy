@@ -64,10 +64,25 @@ export default {
     },
     setScore(amount) {
       clearTimeout(this.buzzer);
-      this.$store.dispatch('setScore', amount);
+
+      let correct = 0;
+      let wrong = 0;
+
       if (amount > 0) {
+        correct++;
         this.revealAnswer();
       }
+      else {
+        wrong++;
+      }
+
+      const stats = {
+        score: amount,
+        correct: correct,
+        wrong: wrong
+      }
+
+      this.$store.dispatch('setScore', stats);
     },
     countDown() {
       this.buzzer = setTimeout(function() {
