@@ -22,21 +22,5 @@
    "category": "Category 3",
    "value": 200,
    "daily_double": null
- },
- {
-   "id": 4,
-   "question": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
-   "answer": "Vivamus nulla metus, elementum vitae risus vitae",
-   "category": "Category 4",
-   "value": 200,
-   "daily_double": null
- },
- {
-   "id": 5,
-   "question": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
-   "answer": "Vivamus nulla metus, elementum vitae risus vitae",
-   "category": "Category 5",
-   "value": 200,
-   "daily_double": null
  }
 ]

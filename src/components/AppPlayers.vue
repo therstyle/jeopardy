@@ -7,9 +7,9 @@
       <button>Add Player</button>
     </form>
 
-    <artlce v-if="round > 1 && round < 3">
-      <h2>After The Round X Is In The Lead!</h2>
-    </artlce>
+    <article v-if="round > 1 && round < 3">
+      <h2>After The Round {{ leader }} Is In The Lead!</h2>
+    </article>
 
     <player></player>
     <app-button text="Continue" goTo="game-board"></app-button>
@@ -27,8 +27,9 @@ export default {
       return this.$store.getters.getRound;
     },
     leader() {
-      //const players = '';
-      return '';
+      const players = this.$store.getters.getPlayers;
+      const leader = players[0].name;
+      return leader;
     }
   },
   data() {

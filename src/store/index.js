@@ -74,7 +74,7 @@ export default new Vuex.Store({
     setCurrentComponent: (context, payload) => {
       context.commit('setCurrentComponent', payload);
     },
-    addPlayer: function (context, payload) {
+    addPlayer: function(context, payload) {
       const players = [...this.state.players, payload];
       const sortedPlayers = players.sort(function(a, b) {
         if (a.score > b.score) {
@@ -86,7 +86,7 @@ export default new Vuex.Store({
       });
       context.commit('setPlayers', sortedPlayers);
     },
-    removePlayer: function (context, payload) {
+    removePlayer: function(context, payload) {
       console.log('removing player');
       const players = this.state.players;
       const removedPlayers = players.filter(player => {
@@ -95,7 +95,7 @@ export default new Vuex.Store({
 
       context.commit('setPlayers', removedPlayers);
     },
-    setScore: function (context, payload) {
+    setScore: function(context, payload) {
       const players = this.state.players;
       const currentPlayer = this.state.currentPlayer;
 
@@ -135,14 +135,15 @@ export default new Vuex.Store({
       console.log(`questions answered = ${i}`);
 
       if (i === questions.length) {
-        context.commit('setRound')
-        context.commit('setCurrentComponent', 'players');
+        context.dispatch('setCurrentComponent', 'players');
+        context.dispatch('setRound');
         console.log('start the next round');
       }
 
       context.commit('setQuestions', questions);
     },
     setRound: function(context) {
+      console.log(`the round is... ${this.state.round}`);
       let round = this.state.round;
       round++;
 
