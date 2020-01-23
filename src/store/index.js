@@ -109,7 +109,7 @@ export default new Vuex.Store({
 
           const total = player.wrong + player.correct;
           let accuracy = (player.correct / total) * 100;
-          accuracy = Math.ceil(accuracy);
+          accuracy = Math.floor(accuracy);
           player.accuracy = accuracy;
         }
       });
