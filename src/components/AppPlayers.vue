@@ -56,7 +56,8 @@ export default {
           score: 0,
           wager: 0,
           correct: 0,
-          wrong: 0
+          wrong: 0,
+          accuracy: 0
         };
 
         console.log(playerInfo);

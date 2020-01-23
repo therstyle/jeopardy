@@ -2,7 +2,13 @@
   <ul>
     <li class="player" v-for="(player, index) in getPlayers" :key="index">
       <h3>{{ player.name }}</h3>
-      <p> {{ player.score }}</p>
+      <ul>
+        <li>Score: {{ player.score }}</li>
+        <li>Correct: {{ player.correct }}</li>
+        <li>Wrong: {{ player.wrong }}</li>
+        <li>Accuracy {{ player.accuracy }}%</li>
+      </ul>
+      
       <button v-on:click="removePlayer(player.name)">Delete Player</button>
     </li>
   </ul>
