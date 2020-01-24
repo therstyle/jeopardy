@@ -1,12 +1,21 @@
 <template>
   <section class="view-question">
     <article v-for="(question, index) in question" :key="index">
-      <div v-if="!reveal">{{ question.question }}</div>
-      <div v-if="reveal">
-        {{question.answer }}
+      <!-- final jeopardy -->
+      <final-jeopardy 
+        v-if="round === 3"
+      ></final-jeopardy>
 
-        <button v-on:click="turnComplete">Continue</button>
-      </div>
+      <!-- daily double -->
+      <daily-double 
+        v-else-if="question.daily_double"
+      ></daily-double>
+      
+      <!-- regular question -->
+      <question-single
+        :question="question"
+        :reveal="reveal" 
+      ></question-single>
 
       <div class="control-panel">
         <select v-on:change="setCurrentPlayer">
@@ -14,11 +23,13 @@
           <option :id="`player-${player.id}`" v-for="(player, index) in players" :key="index" :value="player.id">{{ player.name }}</option>
         </select>
 
-        <button v-on:click="setScore(-question.value)">Remove ${{ question.value }}</button>
-        <button v-on:click="setScore(question.value)">Award ${{ question.value }}</button>
+        <div v-if="question.daily_double" class="wager">
+          <input type="number" v-model="player.wager">
+        </div>
 
-        <div>
-          <button v-on:click="revealAnswer">Reveal Answer</button>
+        <div v-else class="set-score">
+          <button v-on:click="setScore(-question.value)">Remove ${{ question.value }}</button>
+          <button v-on:click="setScore(question.value)">Award ${{ question.value }}</button>
         </div>
       </div>
     </article>
@@ -26,11 +37,16 @@
 </template>
 
 <script>
-//import AppButton from './layout/AppButton.vue';
+import ViewQuestionSingle from './ViewQuestionSingle.vue';
+import ViewQuestionDouble from './ViewQuestionDouble.vue';
+import ViewQuestionFinal from './ViewQuestionFinal.vue';
 
 export default {
   name: 'view-question',
   components: {
+    'question-single': ViewQuestionSingle,
+    'daily-double': ViewQuestionDouble,
+    'final-jeopardy': ViewQuestionFinal
   },
   computed: {
     currentQuestion() {
@@ -45,6 +61,9 @@ export default {
     },
     currentPlayer() {
       return this.$store.getters.getCurrentPlayer;
+    },
+    round() {
+      return this.$store.getters.getRound;
     }
   },
   data() {
@@ -70,7 +89,6 @@ export default {
 
       if (amount > 0) {
         correct++;
-        this.revealAnswer();
       }
       else {
         wrong++;
@@ -88,16 +106,6 @@ export default {
       this.buzzer = setTimeout(function() {
         console.log('times up');
       }, 1000);
-    },
-    turnComplete() {
-      console.log('end turn');
-      this.reveal = false;
-      this.$store.dispatch('setCurrentComponent', 'game-board');
-      this.$store.dispatch('turnComplete');
-    },
-    revealAnswer() {
-      console.log('reveal answer');
-      this.reveal = true;
     }
   }
 }
