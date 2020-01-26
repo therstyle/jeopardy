@@ -9,12 +9,14 @@
       <!-- daily double -->
       <daily-double 
         v-else-if="question.daily_double"
+        :question="question"
+        :wager="wager"
       ></daily-double>
       
       <!-- regular question -->
       <question-single
+        v-else
         :question="question"
-        :reveal="reveal" 
       ></question-single>
 
       <div class="control-panel">
@@ -23,14 +25,23 @@
           <option :id="`player-${player.id}`" v-for="(player, index) in players" :key="index" :value="player.id">{{ player.name }}</option>
         </select>
 
-        <div v-if="question.daily_double" class="wager">
-          <input type="number" v-model="player.wager">
-        </div>
+        <template v-if="question.daily_double">
+          <div class="wager">
+            <input type="number" v-model="wager" step="100" :max="maxWager">
+          </div>
 
-        <div v-else class="set-score">
-          <button v-on:click="setScore(-question.value)">Remove ${{ question.value }}</button>
-          <button v-on:click="setScore(question.value)">Award ${{ question.value }}</button>
-        </div>
+          <div class="set-score">
+            <button v-on:click="setScore(-wager)">Remove ${{ wager }}</button>
+            <button v-on:click="setScore(wager)">Award ${{ wager }}</button>
+          </div>
+        </template>
+
+        <template v-else>
+          <div class="set-score">
+            <button v-on:click="setScore(-question.value)">Remove ${{ question.value }}</button>
+            <button v-on:click="setScore(question.value)">Award ${{ question.value }}</button>
+          </div>
+        </template>
       </div>
     </article>
   </section>
@@ -62,13 +73,26 @@ export default {
     currentPlayer() {
       return this.$store.getters.getCurrentPlayer;
     },
+    maxWager() {
+      const players = [...this.players];
+      const player = players.filter(player => player.id === this.currentPlayer);
+
+      if (player[0]) {
+        const max = player[0].score < 2000 ? 2000 : player[0].score;
+        console.log(max);
+        return max;
+      }
+      else {
+        return 0;
+      }
+    },
     round() {
       return this.$store.getters.getRound;
     }
   },
   data() {
     return {
-      reveal: false,
+      wager: 0,
       buzzer: null
     }
   },

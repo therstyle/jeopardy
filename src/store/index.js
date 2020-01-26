@@ -103,7 +103,7 @@ export default new Vuex.Store({
         console.log(player.id);
 
         if (player.id === currentPlayer) {
-          player.score = player.score + payload.score;
+          player.score = player.score + parseInt(payload.score);
           player.correct = player.correct + payload.correct;
           player.wrong = player.wrong + payload.wrong;
 
