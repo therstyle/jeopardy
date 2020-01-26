@@ -23,7 +23,9 @@ export default {
       return this.$store.getters.getCategories;
     },
     getQuestions() {
-      return this.$store.getters.getQuestions;
+      const currentRound = this.$store.getters.getRound;
+      const questions = this.$store.getters.getQuestions;
+      return questions['round' + currentRound];
     }
   },
   methods: {

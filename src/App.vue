@@ -21,7 +21,7 @@ export default {
       console.log(data);
 
       this.$store.dispatch('setQuestions', data);
-      this.$store.dispatch('setCategories', data);
+      this.$store.dispatch('setCategories');
     }
   },
   computed: {

@@ -9,7 +9,7 @@ export default new Vuex.Store({
     currentComponent: 'intro',
     currentQuestion: 0,
     categories: [],
-    questions: [],
+    questions: {},
     players: [],
     currentPlayer: 0
   },
@@ -61,10 +61,21 @@ export default new Vuex.Store({
   },
   actions: {
     setQuestions: (context, payload) => {
-      context.commit('setQuestions', payload);
+      const data = [...payload];
+      const round1 = data.filter( question => question.round === 'Jeopardy!');
+      const round2 = data.filter( question => question.round === 'Double Jeopardy!');
+      const round3 = data.filter( question => question.round === 'Final Jeopardy!');
+      const questions = {
+        round1: round1,
+        round2: round2,
+        round3: round3
+      }
+
+      context.commit('setQuestions', questions);
     },
-    setCategories: (context, payload) => {
-      const categories = payload.map( data => {
+    setCategories: function(context) {
+      const currentRound = this.state.round;
+      const categories = this.state.questions['round' + currentRound].map( data => {
         return data.category;
       });
 
@@ -123,25 +134,27 @@ export default new Vuex.Store({
       context.commit('setCurrentPlayer', payload);
     },
     turnComplete: function(context) {
-      const questions = [...this.state.questions];
+      const currentRound = this.state.round;
+      const questions = {...this.state.questions};
       const currentId = this.state.currentQuestion;
+      let i = 0;
 
-      questions.forEach(question => {
+      questions['round' + currentRound].forEach(question => {
         if (question.id === currentId) {
           question.answered = true;
         }
       });
 
-      let i = 0;
-      questions.forEach(question => {
+      questions['round' + currentRound].forEach(question => {
         if (question.answered) {
           i++;
         }
       });
 
       console.log(`questions answered = ${i}`);
+      console.log(questions['round' + currentRound].length);
 
-      if (i === questions.length) {
+      if (i === questions['round' + currentRound].length) {
         context.dispatch('setCurrentComponent', 'players');
         context.dispatch('setRound');
         console.log('start the next round');

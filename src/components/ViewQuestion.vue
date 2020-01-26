@@ -65,8 +65,12 @@ export default {
       return this.$store.getters.getCurrentQuestion;
     },
     question() {
-      const questions = this.$store.getters.getQuestions;
-      return questions.filter(data => data.id === this.currentQuestion);
+      const currentRound = this.round;
+      const questions = {...this.$store.getters.getQuestions};
+      const currentRoundQuestions = questions['round' + currentRound];
+
+      console.log(currentRoundQuestions);
+      return currentRoundQuestions.filter(data => data.id === this.currentQuestion);
     },
     players() {
       return this.$store.getters.getPlayers;
