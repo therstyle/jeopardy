@@ -4,6 +4,7 @@
       <!-- final jeopardy -->
       <final-jeopardy 
         v-if="round === 3"
+        :question="question"
       ></final-jeopardy>
 
       <!-- daily double -->
@@ -27,7 +28,7 @@
 
         <template v-if="question.daily_double">
           <div class="wager">
-            <input type="number" v-model="wager" step="100" :max="maxWager">
+            <input type="number" v-model.number="wager" step="100" :max="maxWager">
           </div>
 
           <div class="set-score">
