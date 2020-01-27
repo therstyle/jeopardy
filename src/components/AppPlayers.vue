@@ -2,7 +2,7 @@
   <section class="players">
     <h1>Add Players</h1>
 
-    <article v-if="round > 1 && round < 3">
+    <article v-if="round > 1 && round <= 3">
       <h2>After The Round {{ leader }} Is In The Lead!</h2>
     </article>
 
@@ -12,7 +12,7 @@
     </form>
 
     <player></player>
-    <app-button text="Continue" goTo="game-board"></app-button>
+    <app-button goTo="game-board">Continue</app-button>
   </section>
 </template>
 

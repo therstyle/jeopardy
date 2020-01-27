@@ -1,7 +1,7 @@
 <template>
   <section class="intro">
     <div class="intro-content">
-      <app-button text="Start Game" className="primary" goTo="players"></app-button>
+      <app-button className="primary" goTo="players">Start Game</app-button>
     </div>
   </section>
 </template>

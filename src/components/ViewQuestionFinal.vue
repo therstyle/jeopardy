@@ -9,7 +9,7 @@
     </div>
 
     <div v-if="wagersSubmitted && reveal">
-      {{ question.answer }} <app-button text="Show Results" goTo="game-over"></app-button>
+      {{ question.answer }} <app-button goTo="game-over">Show Results</app-button>
     </div>
   </div>
 </template>

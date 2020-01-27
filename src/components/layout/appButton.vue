@@ -1,6 +1,6 @@
 <template>
   <button :class="className" v-on:click="setCurrentComponent(goTo)">
-    {{ text }}
+    <slot></slot>
   </button>
 </template>
 
