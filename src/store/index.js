@@ -23,8 +23,8 @@ export default new Vuex.Store({
     getQuestions: (state, getters) => {
       const currentRound = getters.getRound;
       const questions = state.questions;
+      
       return questions['round' + currentRound];
-      //return state.questions;
     },
     getCategories: (state) => {
       return state.categories;
