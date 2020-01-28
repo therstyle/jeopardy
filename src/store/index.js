@@ -20,8 +20,11 @@ export default new Vuex.Store({
     getPlayers: (state) => {
       return state.players;
     },
-    getQuestions: (state) => {
-      return state.questions;
+    getQuestions: (state, getters) => {
+      const currentRound = getters.getRound;
+      const questions = state.questions;
+      return questions['round' + currentRound];
+      //return state.questions;
     },
     getCategories: (state) => {
       return state.categories;
@@ -30,11 +33,16 @@ export default new Vuex.Store({
       return state.currentQuestionId;
     },
     getCurrentQuestion: (state, getters) => {
-      const currentRound = getters.getRound;
-      const questions = {...getters.getQuestions};
-      const currentRoundQuestions = questions['round' + currentRound];
-
-      return currentRoundQuestions.filter(data => data.id === getters.getCurrentQuestionId);
+      const currentId = getters.getCurrentQuestionId;
+      const questions = [...getters.getQuestions];
+      
+      if (currentId !== 0) {
+        const currentQuestion = questions.filter(data => data.id === getters.getCurrentQuestionId);
+        return currentQuestion;
+      }
+      else {
+        return null;
+      }
     },
     getCurrentPlayer: (state) => {
       return state.currentPlayer;
