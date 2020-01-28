@@ -11,7 +11,7 @@ export default new Vuex.Store({
     categories: [],
     questions: {},
     players: [],
-    currentPlayer: 0
+    currentPlayerId: 0
   },
   getters: {
     getCurrentComponent: (state) => {
@@ -44,8 +44,8 @@ export default new Vuex.Store({
         return null;
       }
     },
-    getCurrentPlayer: (state) => {
-      return state.currentPlayer;
+    getCurrentPlayerId: (state) => {
+      return state.currentPlayerId;
     },
     getRound: (state) => {
       return state.round;
@@ -67,8 +67,8 @@ export default new Vuex.Store({
     setcurrentQuestionId: (state, payload) => {
       state.currentQuestionId = payload;
     },
-    setCurrentPlayer: (state, payload) => {
-      state.currentPlayer = payload;
+    setCurrentPlayerId: (state, payload) => {
+      state.currentPlayerId = payload;
     },
     setRound: (state, payload) => {
       state.round = payload;
@@ -123,12 +123,12 @@ export default new Vuex.Store({
     },
     setScore: function(context, payload) {
       const players = this.state.players;
-      const currentPlayer = this.state.currentPlayer;
+      const currentPlayerId = this.state.currentPlayerId;
 
       players.forEach(function(player) {
         console.log(player.id);
 
-        if (player.id === currentPlayer) {
+        if (player.id === currentPlayerId) {
           player.score = player.score + parseInt(payload.score);
           player.correct = player.correct + payload.correct;
           player.wrong = player.wrong + payload.wrong;
@@ -145,8 +145,8 @@ export default new Vuex.Store({
     setcurrentQuestionId: (context, payload) => {
       context.commit('setcurrentQuestionId', payload);
     },
-    setCurrentPlayer: (context, payload) => {
-      context.commit('setCurrentPlayer', payload);
+    setCurrentPlayerId: (context, payload) => {
+      context.commit('setCurrentPlayerId', payload);
     },
     turnComplete: function(context) {
       const currentRound = this.state.round;
