@@ -32,6 +32,7 @@ export default {
       this.reveal = false;
       this.$store.dispatch('setCurrentComponent', 'game-board');
       this.$store.dispatch('turnComplete');
+      this.$emit('turnComplete');
     },
     revealAnswer() {
       console.log('reveal answer');

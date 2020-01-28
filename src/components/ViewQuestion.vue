@@ -12,6 +12,7 @@
         v-else-if="question.daily_double"
         :question="question"
         :wager="wager"
+        v-on:turnComplete="resetWager"
       ></daily-double>
       
       <!-- regular question -->
@@ -26,9 +27,11 @@
           <option :id="`player-${player.id}`" v-for="(player, index) in players" :key="index" :value="player.id">{{ player.name }}</option>
         </select>
 
-        <template v-if="question.daily_double">
+        <template v-if="question.daily_double && currentPlayer !== 0">
           <div class="wager">
             <input type="number" v-model.number="wager" step="100" :max="maxWager">
+            <!-- TODO: set current component to final jeopardy after round 2 -->
+            <!-- TODO: final jeopardy wagers -->
           </div>
 
           <div class="set-score">
@@ -130,6 +133,9 @@ export default {
       }
 
       this.$store.dispatch('setScore', stats);
+    },
+    resetWager() {
+      this.wager = 0;
     },
     countDown() {
       this.buzzer = setTimeout(function() {
