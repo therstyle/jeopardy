@@ -1,15 +1,9 @@
 <template>
   <section class="view-question">
     <article v-for="(question, index) in question" :key="index">
-      <!-- final jeopardy -->
-      <final-jeopardy 
-        v-if="round === 3"
-        :question="question"
-      ></final-jeopardy>
-
       <!-- daily double -->
       <daily-double 
-        v-else-if="question.daily_double"
+        v-if="question.daily_double"
         :question="question"
         :wager="wager"
         v-on:turnComplete="resetWager"
