@@ -48,14 +48,12 @@
 <script>
 import ViewQuestionSingle from './ViewQuestionSingle.vue';
 import ViewQuestionDouble from './ViewQuestionDouble.vue';
-import ViewQuestionFinal from './ViewQuestionFinal.vue';
 
 export default {
   name: 'view-question',
   components: {
     'question-single': ViewQuestionSingle,
-    'daily-double': ViewQuestionDouble,
-    'final-jeopardy': ViewQuestionFinal
+    'daily-double': ViewQuestionDouble
   },
   computed: {
     currentQuestionId() {
