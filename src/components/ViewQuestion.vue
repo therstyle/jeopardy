@@ -65,15 +65,10 @@ export default {
   },
   computed: {
     currentQuestionId() {
-      return this.$store.getters.getcurrentQuestionId;
+      return this.$store.getters.getCurrentQuestionId;
     },
     question() {
-      const currentRound = this.round;
-      const questions = {...this.$store.getters.getQuestions};
-      const currentRoundQuestions = questions['round' + currentRound];
-
-      console.log(currentRoundQuestions);
-      return currentRoundQuestions.filter(data => data.id === this.currentQuestionId);
+      return this.$store.getters.getCurrentQuestion;
     },
     players() {
       return this.$store.getters.getPlayers;

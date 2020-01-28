@@ -26,8 +26,15 @@ export default new Vuex.Store({
     getCategories: (state) => {
       return state.categories;
     },
-    getcurrentQuestionId: (state) => {
+    getCurrentQuestionId: (state) => {
       return state.currentQuestionId;
+    },
+    getCurrentQuestion: (state, getters) => {
+      const currentRound = getters.getRound;
+      const questions = {...getters.getQuestions};
+      const currentRoundQuestions = questions['round' + currentRound];
+
+      return currentRoundQuestions.filter(data => data.id === getters.getCurrentQuestionId);
     },
     getCurrentPlayer: (state) => {
       return state.currentPlayer;
