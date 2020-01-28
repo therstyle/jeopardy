@@ -30,13 +30,13 @@ export default {
   },
   methods: {
     viewQuestion(id) {
-      const currentQuestion = this.getQuestions.filter( question => {
+      const currentQuestionId = this.getQuestions.filter( question => {
         return question.id === id;
       });
 
-      this.$store.dispatch('setCurrentQuestion', id);
+      this.$store.dispatch('setcurrentQuestionId', id);
       this.$store.dispatch('setCurrentComponent', 'view-question');
-      console.log(currentQuestion);
+      console.log(currentQuestionId);
     }
   }
 }

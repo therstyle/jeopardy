@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     round: 1,
     currentComponent: 'intro',
-    currentQuestion: 0,
+    currentQuestionId: 0,
     categories: [],
     questions: {},
     players: [],
@@ -26,8 +26,8 @@ export default new Vuex.Store({
     getCategories: (state) => {
       return state.categories;
     },
-    getCurrentQuestion: (state) => {
-      return state.currentQuestion;
+    getcurrentQuestionId: (state) => {
+      return state.currentQuestionId;
     },
     getCurrentPlayer: (state) => {
       return state.currentPlayer;
@@ -49,8 +49,8 @@ export default new Vuex.Store({
     setPlayers: (state, payload) => {
       state.players = payload;
     },
-    setCurrentQuestion: (state, payload) => {
-      state.currentQuestion = payload;
+    setcurrentQuestionId: (state, payload) => {
+      state.currentQuestionId = payload;
     },
     setCurrentPlayer: (state, payload) => {
       state.currentPlayer = payload;
@@ -127,8 +127,8 @@ export default new Vuex.Store({
 
       context.commit('setPlayers', players);
     },
-    setCurrentQuestion: (context, payload) => {
-      context.commit('setCurrentQuestion', payload);
+    setcurrentQuestionId: (context, payload) => {
+      context.commit('setcurrentQuestionId', payload);
     },
     setCurrentPlayer: (context, payload) => {
       context.commit('setCurrentPlayer', payload);
@@ -136,7 +136,7 @@ export default new Vuex.Store({
     turnComplete: function(context) {
       const currentRound = this.state.round;
       const questions = {...this.state.questions};
-      const currentId = this.state.currentQuestion;
+      const currentId = this.state.currentQuestionId;
       let i = 0;
 
       questions['round' + currentRound].forEach(question => {

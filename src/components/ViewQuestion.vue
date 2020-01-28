@@ -64,8 +64,8 @@ export default {
     'final-jeopardy': ViewQuestionFinal
   },
   computed: {
-    currentQuestion() {
-      return this.$store.getters.getCurrentQuestion;
+    currentQuestionId() {
+      return this.$store.getters.getcurrentQuestionId;
     },
     question() {
       const currentRound = this.round;
@@ -73,7 +73,7 @@ export default {
       const currentRoundQuestions = questions['round' + currentRound];
 
       console.log(currentRoundQuestions);
-      return currentRoundQuestions.filter(data => data.id === this.currentQuestion);
+      return currentRoundQuestions.filter(data => data.id === this.currentQuestionId);
     },
     players() {
       return this.$store.getters.getPlayers;
