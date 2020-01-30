@@ -12,6 +12,7 @@ import Players from './components/AppPlayers.vue';
 import GameBoard from './components/GameBoard.vue';
 import ViewQuestion from './components/ViewQuestion.vue';
 import GameOver from './components/GameOver.vue';
+import FinalJeopardy from './components/ViewQuestionFinal.vue';
 
 export default {
   methods: {
@@ -34,7 +35,8 @@ export default {
     Players,
     GameBoard,
     ViewQuestion,
-    GameOver
+    GameOver,
+    'final-jeopardy': FinalJeopardy
   },
   created() {
     this.loadData('sample.json');
