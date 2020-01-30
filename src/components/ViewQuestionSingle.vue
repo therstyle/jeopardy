@@ -31,6 +31,7 @@ export default {
       this.reveal = false;
       this.$store.dispatch('setCurrentComponent', 'game-board');
       this.$store.dispatch('turnComplete');
+      this.$store.dispatch('setCurrentQuestionId', 0);
     },
     revealAnswer() {
       console.log('reveal answer');

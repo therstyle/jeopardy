@@ -22,9 +22,13 @@ export default {
       reveal: false
     }
   },
+  computed: {
+    wager() {
+      return this.$store.getters.getCurrentPlayerWager;
+    }
+  },
   props: {
-    question: Object,
-    wager: Number
+    question: Object
   },
   methods: {
     turnComplete() {
@@ -32,7 +36,8 @@ export default {
       this.reveal = false;
       this.$store.dispatch('setCurrentComponent', 'game-board');
       this.$store.dispatch('turnComplete');
-      this.$emit('turnComplete');
+      this.$store.dispatch('resetWager', 0);
+      this.$store.dispatch('setCurrentQuestionId', 0);
     },
     revealAnswer() {
       console.log('reveal answer');

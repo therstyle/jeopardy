@@ -1,12 +1,10 @@
 <template>
   <section class="view-question">
-    <article v-for="(question, index) in question" :key="index">
+    <article>
       <!-- daily double -->
       <daily-double 
         v-if="question.daily_double"
         :question="question"
-        :wager="wager"
-        v-on:turnComplete="resetWager"
       ></daily-double>
       
       <!-- regular question -->
@@ -45,7 +43,6 @@ export default {
   },
   data() {
     return {
-      wager: 0,
       buzzer: null
     }
   }
