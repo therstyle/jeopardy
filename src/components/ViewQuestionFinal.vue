@@ -28,8 +28,10 @@ export default {
       reveal: false
     }
   },
-  props: {
-    question: Object
+  computed: {
+    question() {
+      return this.$store.getters.getCurrentQuestion;
+    }
   },
   methods: {
     viewQuestion() {
