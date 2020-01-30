@@ -12,7 +12,9 @@
     </form>
 
     <player></player>
-    <app-button goTo="game-board">Continue</app-button>
+
+    <app-button v-if="round === 3" goTo="final-jeopardy">Start Final Jeopardy</app-button>
+    <app-button v-else goTo="game-board">Start The Round</app-button>
   </section>
 </template>
 
