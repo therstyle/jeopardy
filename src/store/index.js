@@ -38,14 +38,36 @@ export default new Vuex.Store({
       
       if (currentId !== 0) {
         const currentQuestion = questions.filter(data => data.id === getters.getCurrentQuestionId);
-        return currentQuestion;
+        return currentQuestion[0];
+      }
+      else {
+        return {};
+      }
+    },
+    getCurrentPlayerId: (state) => {
+      return state.currentPlayerId;
+    },
+    getCurrentPlayer: (state, getters) => {
+      const playerId = getters.getCurrentPlayerId;
+      
+      if (playerId !== 0) {
+        const players = [...getters.getPlayers];
+        const currentPlayer = players.filter(player => player.id === playerId);
+        return currentPlayer[0];
       }
       else {
         return null;
       }
     },
-    getCurrentPlayerId: (state) => {
-      return state.currentPlayerId;
+    getCurrentPlayerWager: (state, getters) => {
+      const player = getters.getCurrentPlayer;
+
+      if (player !== null) {
+        return player.wager;
+      }
+      else {
+        return 99;
+      }
     },
     getRound: (state) => {
       return state.round;
@@ -64,7 +86,7 @@ export default new Vuex.Store({
     setPlayers: (state, payload) => {
       state.players = payload;
     },
-    setcurrentQuestionId: (state, payload) => {
+    setCurrentQuestionId: (state, payload) => {
       state.currentQuestionId = payload;
     },
     setCurrentPlayerId: (state, payload) => {
@@ -72,6 +94,24 @@ export default new Vuex.Store({
     },
     setRound: (state, payload) => {
       state.round = payload;
+    },
+    updateWager: (state, payload) => {
+      const players = state.players;
+      const playerId = state.currentPlayerId;
+      players.forEach( player => {
+        if (player.id === playerId) {
+          player = payload;
+        }
+      });
+    },
+    resetWager: (state, payload) => {
+      const players = state.players;
+      const playerId = state.currentPlayerId;
+      players.forEach( player => {
+        if (player.id === playerId) {
+          player.wager = payload;
+        }
+      });
     }
   },
   actions: {
@@ -129,9 +169,10 @@ export default new Vuex.Store({
         console.log(player.id);
 
         if (player.id === currentPlayerId) {
-          player.score = player.score + parseInt(payload.score);
-          player.correct = player.correct + payload.correct;
-          player.wrong = player.wrong + payload.wrong;
+          player.score += parseInt(payload.score);
+          player.score += player.wager;
+          player.correct += payload.correct;
+          player.wrong += payload.wrong;
 
           const total = player.wrong + player.correct;
           let accuracy = (player.correct / total) * 100;
@@ -142,8 +183,17 @@ export default new Vuex.Store({
 
       context.commit('setPlayers', players);
     },
-    setcurrentQuestionId: (context, payload) => {
-      context.commit('setcurrentQuestionId', payload);
+    updateWager: (context, payload) => {
+      const player = context.getters.getCurrentPlayer;
+      player.wager = payload;
+
+      context.commit('updateWager', player);
+    },
+    resetWager: (context, payload) => {
+      context.commit('resetWager', payload);
+    },
+    setCurrentQuestionId: (context, payload) => {
+      context.commit('setCurrentQuestionId', payload);
     },
     setCurrentPlayerId: (context, payload) => {
       context.commit('setCurrentPlayerId', payload);

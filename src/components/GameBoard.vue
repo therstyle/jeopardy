@@ -32,7 +32,7 @@ export default {
         return question.id === id;
       });
 
-      this.$store.dispatch('setcurrentQuestionId', id);
+      this.$store.dispatch('setCurrentQuestionId', id);
       this.$store.dispatch('setCurrentComponent', 'view-question');
       console.log(currentQuestionId);
     }
