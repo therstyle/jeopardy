@@ -1,13 +1,11 @@
 <template>
-  <section class="view-question">
+  <section>
     <article>
-      <!-- daily double -->
       <daily-double 
         v-if="question.daily_double"
         :question="question"
       ></daily-double>
       
-      <!-- regular question -->
       <question-single
         v-else
         :question="question"

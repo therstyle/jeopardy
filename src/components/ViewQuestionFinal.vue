@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section class="view-question final-jeopardy">
     <div v-if="!wagersSubmitted && !reveal">
       {{ question.category }} <button v-on:click="viewQuestion">Continue</button>
     </div>
@@ -11,7 +11,7 @@
     <div v-if="wagersSubmitted && reveal">
       {{ question.answer }} <app-button goTo="game-over">Show Results</app-button>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section class="view-question">
     <div v-if="!reveal">
       {{ question.question }}
 
@@ -11,7 +11,7 @@
 
       <button v-on:click="turnComplete">Continue</button>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
