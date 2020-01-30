@@ -32,7 +32,6 @@ export default {
   name: 'control-panel',
   data() {
     return {
-      //wager: 0,
       buzzer: null
     }
   },
@@ -56,8 +55,17 @@ export default {
         return 0;
       }
     },
-    wager() {
-      return 0;
+    wager: {
+     get() {
+       return this.$store.getters.getCurrentPlayerWager;
+     },
+     set(value) {
+       console.log(value);
+       this.$store.dispatch('updateWager', value);
+     }
+    },
+    question() {
+      return this.$store.getters.getCurrentQuestion;
     }
   },
   methods: {
@@ -89,9 +97,6 @@ export default {
       }
 
       this.$store.dispatch('setScore', stats);
-    },
-    resetWager() {
-      this.wager = 0;
     },
     countDown() {
       this.buzzer = setTimeout(function() {
