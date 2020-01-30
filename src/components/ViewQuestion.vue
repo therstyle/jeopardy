@@ -38,11 +38,6 @@ export default {
     round() {
       return this.$store.getters.getRound;
     }
-  },
-  data() {
-    return {
-      buzzer: null
-    }
   }
 }
 </script>
