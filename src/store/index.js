@@ -170,7 +170,6 @@ export default new Vuex.Store({
 
         if (player.id === currentPlayerId) {
           player.score += parseInt(payload.score);
-          player.score += player.wager;
           player.correct += payload.correct;
           player.wrong += payload.wrong;
 
