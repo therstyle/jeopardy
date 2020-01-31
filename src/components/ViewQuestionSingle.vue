@@ -1,29 +1,59 @@
 <template>
-  <section class="view-question">
-    <div v-if="!reveal">
-      {{ question.question }}
+  <section class="view-question" :class="{ 'daily-double' : question.daily_double }">
+    <!-- daily double -->
+    <article v-if="question.daily_double">
+      <div v-if="!reveal && wager > 0">
+        {{ question.question }}
 
-      <button v-on:click="revealAnswer">Reveal Answer</button>
-    </div>
+        <button v-on:click="revealAnswer">Reveal Answer</button>
+      </div>
     
-    <div v-if="reveal">
-      {{question.answer }}
+      <div v-if="reveal">
+        {{question.answer }}
 
-      <button v-on:click="turnComplete">Continue</button>
-    </div>
+        <button v-on:click="turnComplete">Continue</button>
+      </div>
+    </article>
+
+    <!-- regular questions -->
+    <article v-else>
+      <div v-if="!reveal">
+        {{ question.question }}
+
+        <button v-on:click="revealAnswer">Reveal Answer</button>
+      </div>
+      
+      <div v-if="reveal">
+        {{question.answer }}
+
+        <button v-on:click="turnComplete">Continue</button>
+      </div>
+    </article>
+
+    <control-panel></control-panel>
   </section>
 </template>
 
 <script>
+import ControlPanel from './ControlPanel.vue';
+
 export default {
   name: 'question-single',
+  components: {
+    'control-panel': ControlPanel
+  },
   data() {
     return {
       reveal: false
     }
   },
-  props: {
-    question: Object
+  computed: {
+     wager() {
+      return this.$store.getters.getCurrentPlayerWager;
+    },
+    question() {
+      return this.$store.getters.getCurrentQuestion;
+    },
   },
   methods: {
     turnComplete() {
@@ -31,6 +61,7 @@ export default {
       this.reveal = false;
       this.$store.dispatch('setCurrentComponent', 'game-board');
       this.$store.dispatch('turnComplete');
+      this.$store.dispatch('resetWager', 0); // not working?
       this.$store.dispatch('setCurrentQuestionId', 0);
     },
     revealAnswer() {

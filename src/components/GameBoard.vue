@@ -28,13 +28,13 @@ export default {
   },
   methods: {
     viewQuestion(id) {
-      const currentQuestionId = this.getQuestions.filter( question => {
+      const currentQuestion = this.getQuestions.filter( question => {
         return question.id === id;
       });
 
       this.$store.dispatch('setCurrentQuestionId', id);
-      this.$store.dispatch('setCurrentComponent', 'view-question');
-      console.log(currentQuestionId);
+      this.$store.dispatch('setCurrentComponent', 'question-single');
+      console.log(currentQuestion);
     }
   }
 }
