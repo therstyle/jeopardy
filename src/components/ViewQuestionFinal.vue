@@ -36,7 +36,8 @@ export default {
   },
   computed: {
     question() {
-      return this.$store.getters.getCurrentQuestion;
+      const questions = this.$store.getters.getQuestions;
+      return questions[0];
     }
   },
   methods: {
