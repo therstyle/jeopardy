@@ -5,11 +5,9 @@
       <option :id="`player-${player.id}`" v-for="(player, index) in players" :key="index" :value="player.id">{{ player.name }}</option>
     </select>
 
-    <template v-if="question.daily_double && currentPlayerId !== 0">
+    <template v-if="question.daily_double || round === 3 && currentPlayerId !== 0">
       <div class="wager">
         <input type="number" v-model.number="wager" step="100" :max="maxWager">
-        <!-- TODO: set current component to final jeopardy after round 2 -->
-        <!-- TODO: final jeopardy wagers -->
       </div>
 
       <div class="set-score">
@@ -41,6 +39,9 @@ export default {
     },
     currentPlayerId() {
       return this.$store.getters.getCurrentPlayerId;
+    },
+    round() {
+      return this.$store.getters.getRound;
     },
     maxWager() {
       const players = [...this.players];
