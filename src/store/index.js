@@ -17,8 +17,18 @@ export default new Vuex.Store({
     getCurrentComponent: (state) => {
       return state.currentComponent;
     },
-    getPlayers: (state) => {
-      return state.players;
+    getPlayers: (state) => (sortBy = 'score') => {
+      const property = sortBy;
+      const players = state.players;
+      const sortedPlayers = players.sort(function(a,b) {
+        if (a[property] < b[property]) {
+          return -1;
+        }
+        else {
+          return 1;
+        }
+      });
+      return sortedPlayers;
     },
     getQuestions: (state, getters) => {
       const currentRound = getters.getRound;
@@ -51,7 +61,7 @@ export default new Vuex.Store({
       const playerId = getters.getCurrentPlayerId;
       
       if (playerId !== 0) {
-        const players = [...getters.getPlayers];
+        const players = [...getters.getPlayers()];
         const currentPlayer = players.filter(player => player.id === playerId);
         return currentPlayer[0];
       }
@@ -143,7 +153,7 @@ export default new Vuex.Store({
     addPlayer: function(context, payload) {
       const players = [...this.state.players, payload];
       const sortedPlayers = players.sort(function(a, b) {
-        if (a.score > b.score) {
+        if (a.score < b.score) {
           return -1;
         }
         else {

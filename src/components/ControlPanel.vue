@@ -35,7 +35,7 @@ export default {
   },
   computed: {
     players() {
-      return this.$store.getters.getPlayers;
+      return this.$store.getters.getPlayers('name');
     },
     currentPlayerId() {
       return this.$store.getters.getCurrentPlayerId;

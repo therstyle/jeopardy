@@ -21,7 +21,7 @@ export default {
   name: 'game-over',
   computed: {
     players() {
-      const players = this.$store.getters.getPlayers;
+      const players = this.$store.getters.getPlayers();
       return players;
     },
     leaders() {
