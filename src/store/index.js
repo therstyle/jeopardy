@@ -85,7 +85,7 @@ export default new Vuex.Store({
     },
     getRound: (state) => {
       return state.round;
-    } 
+    }
   },
   mutations: {
     setQuestions: (state, payload) => {
@@ -251,4 +251,4 @@ export default new Vuex.Store({
       context.commit('setRound', round);
     }
   }
-})
+});
