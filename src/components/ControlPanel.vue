@@ -1,7 +1,7 @@
 <template>
   <div class="control-panel">
     <select v-on:change="setCurrentPlayerId">
-      <option value="0">Select Player</option>
+      <option :selected="currentPlayerId === 0" value="0">Select Player</option>
       <option :id="`player-${player.id}`" v-for="(player, index) in players" :key="index" :value="player.id">{{ player.name }}</option>
     </select>
 
@@ -31,15 +31,21 @@ export default {
   data() {
     return {
       buzzer: null,
-      disableButtons: true
+      disableButtons: true,
+      selectDefault: true
     }
   },
   computed: {
     players() {
       return this.$store.getters.getPlayers('name');
     },
-    currentPlayerId() {
-      return this.$store.getters.getCurrentPlayerId;
+    currentPlayerId: {
+      get() {
+        return this.$store.getters.getCurrentPlayerId;
+      },
+      set(value) {
+        this.$$store.dispatch('setCurrentPlayerId', value);
+      }
     },
     round() {
       return this.$store.getters.getRound;

@@ -59,5 +59,6 @@ body {
 #app {
   display: grid;
   min-height: 100vh;
+  opacity: 0.2; //Debug
 }
 </style>

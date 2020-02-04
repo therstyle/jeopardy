@@ -61,8 +61,9 @@ export default {
       this.reveal = false;
       this.$store.dispatch('setCurrentComponent', 'game-board');
       this.$store.dispatch('turnComplete');
-      this.$store.dispatch('resetWager', 0); // not working?
+      this.$store.dispatch('resetWager', 0);
       this.$store.dispatch('setCurrentQuestionId', 0);
+      this.$store.dispatch('setCurrentPlayerId', 0);
     },
     revealAnswer() {
       console.log('reveal answer');
