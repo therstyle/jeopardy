@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       buzzer: null,
-      disableButtons: false
+      disableButtons: true
     }
   },
   computed: {
@@ -68,7 +68,7 @@ export default {
     },
     question() {
       return this.$store.getters.getCurrentQuestion;
-    }
+    },
   },
   methods: {
     isQuestionAnswered() {
@@ -90,7 +90,7 @@ export default {
         this.disableButtons = false;
       }
 
-      console.log(`checking status for ${currentPlayer.id}`);
+      console.log(`checking button status for ${currentPlayer.id}`);
     },
     setCurrentPlayerId(e) {
       const id = parseInt(e.target.value);
