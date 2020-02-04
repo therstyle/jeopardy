@@ -17,18 +17,22 @@ export default new Vuex.Store({
     getCurrentComponent: (state) => {
       return state.currentComponent;
     },
-    getPlayers: (state) => (sortBy = 'score') => {
-      const property = sortBy;
-      const players = state.players;
-      const sortedPlayers = players.sort(function(a,b) {
-        if (a[property] < b[property]) {
-          return -1;
-        }
-        else {
-          return 1;
-        }
-      });
-      return sortedPlayers;
+    getPlayers: (state) => {
+      const players = [...state.players];
+      
+      return (sortBy = 'score') => {
+        const property = sortBy;
+        const sortedPlayers = players.sort(function(a,b) {
+          if (a[property] < b[property]) {
+            return -1;
+          }
+          else {
+            return 1;
+          }
+        });
+
+        return sortedPlayers;
+      }
     },
     getQuestions: (state, getters) => {
       const currentRound = getters.getRound;
@@ -76,7 +80,7 @@ export default new Vuex.Store({
         return player.wager;
       }
       else {
-        return 99;
+        return 0;
       }
     },
     getRound: (state) => {
@@ -175,7 +179,7 @@ export default new Vuex.Store({
       const players = this.state.players;
       const currentPlayerId = this.state.currentPlayerId;
 
-      players.forEach(function(player) {
+      players.forEach((player) => {
         console.log(player.id);
 
         if (player.id === currentPlayerId) {
@@ -187,6 +191,9 @@ export default new Vuex.Store({
           let accuracy = (player.correct / total) * 100;
           accuracy = Math.floor(accuracy);
           player.accuracy = accuracy;
+
+          const answered = player.answered;
+          answered.push(this.state.currentQuestionId);
         }
       });
 

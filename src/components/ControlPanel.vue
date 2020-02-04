@@ -11,15 +11,15 @@
       </div>
 
       <div class="set-score">
-        <button v-on:click="setScore(-wager)">Remove ${{ wager }}</button>
-        <button v-on:click="setScore(wager)">Award ${{ wager }}</button>
+        <button :disabled="disableButtons" v-on:click="setScore(-wager)">Remove ${{ wager }}</button>
+        <button :disabled="disableButtons" v-on:click="setScore(wager)">Award ${{ wager }}</button>
       </div>
     </template>
 
     <template v-else>
       <div class="set-score">
-        <button v-on:click="setScore(-question.value)">Remove ${{ question.value }}</button>
-        <button v-on:click="setScore(question.value)">Award ${{ question.value }}</button>
+        <button :disabled="disableButtons" v-on:click="setScore(-question.value)">Remove ${{ question.value }}</button>
+        <button :disabled="disableButtons" v-on:click="setScore(question.value)">Award ${{ question.value }}</button>
       </div>
     </template>
   </div>
@@ -30,7 +30,8 @@ export default {
   name: 'control-panel',
   data() {
     return {
-      buzzer: null
+      buzzer: null,
+      disableButtons: false
     }
   },
   computed: {
@@ -70,11 +71,36 @@ export default {
     }
   },
   methods: {
+    isQuestionAnswered() {
+      const currentQuestionId = this.question.id;
+      const currentPlayer = this.$store.getters.getCurrentPlayer;
+      const playerQuestionsAnswered = currentPlayer.answered;
+
+      if (playerQuestionsAnswered && playerQuestionsAnswered.length !== 0) {
+        playerQuestionsAnswered.forEach(id => {
+          if (id === currentQuestionId) {
+            this.disableButtons = true;
+          }
+          else {
+            this.disableButtons = false;
+          }
+        });
+      }
+      else {
+        this.disableButtons = false;
+      }
+
+      console.log(`checking status for ${currentPlayer.id}`);
+    },
     setCurrentPlayerId(e) {
       const id = parseInt(e.target.value);
       this.$store.dispatch('setCurrentPlayerId', id);
 
-      if (this.currentPlayerId !== 0) {
+      const currentPlayerId = this.$store.getters.getCurrentPlayerId;
+
+      this.isQuestionAnswered();
+      
+      if (currentPlayerId !== 0) {
         this.countDown();
       }
     },
@@ -98,6 +124,7 @@ export default {
       }
 
       this.$store.dispatch('setScore', stats);
+      this.isQuestionAnswered();
     },
     countDown() {
       this.buzzer = setTimeout(function() {
