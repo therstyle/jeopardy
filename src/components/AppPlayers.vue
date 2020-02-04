@@ -9,12 +9,17 @@
     <form v-on:submit.prevent="addPlayer">
       <input type="text" v-model="playerName" placeholder="Player Name" />
       <button>Add Player</button>
+
+      <div v-if="errorPlayerName" class="error">Not a valid name</div>
+      <div v-if="errorPlayerAmount" class="error">Not enough players</div>
     </form>
 
     <player></player>
 
-    <app-button v-if="round === 3" goTo="final-jeopardy">Start Final Jeopardy</app-button>
-    <app-button v-else goTo="game-board">Start The Round</app-button>
+    <app-button v-on:clickEvent="checkPlayers">
+      <span v-if="round === 3">Start Final Jeopardy</span>
+      <span v-else>Start The Round</span>
+    </app-button>
   </section>
 </template>
 
@@ -37,8 +42,9 @@ export default {
   data() {
     return {
       playerName: '',
-      error: false,
-      playerId: 0
+      playerId: 0,
+      errorPlayerName: false,
+      errorPlayerAmount: false
     }
   },
   components: {
@@ -59,17 +65,34 @@ export default {
           wager: 0,
           correct: 0,
           wrong: 0,
-          accuracy: 0
+          accuracy: 0,
+          answered: []
         };
 
         console.log(playerInfo);
 
         this.$store.dispatch('addPlayer', playerInfo);
-        this.error = false;
+        this.errorPlayerName = false;
         this.playerName = '';
       }
       else {
-        this.error = true;
+        this.errorPlayerName = true;
+      }
+    },
+    checkPlayers() {
+      const players = this.$store.getters.getPlayers();
+      if (players.length > 0) {
+        this.errorPlayerAmount = false;
+
+        if (this.round === 3) {
+          this.$store.dispatch('setCurrentComponent', 'final-jeopardy');
+        }
+        else {
+          this.$store.dispatch('setCurrentComponent', 'game-board');
+        }
+      }
+      else {
+        this.errorPlayerAmount = true;
       }
     }
   }
