@@ -34,7 +34,7 @@ export default {
       return this.$store.getters.getRound;
     },
     leader() {
-      const players = this.$store.getters.getPlayers();
+      const players = this.$store.getters.getPlayers;
       const leader = players[0].name;
       return leader;
     }
@@ -80,7 +80,7 @@ export default {
       }
     },
     checkPlayers() {
-      const players = this.$store.getters.getPlayers();
+      const players = this.$store.getters.getPlayers;
       if (players.length > 0) {
         this.errorPlayerAmount = false;
 
