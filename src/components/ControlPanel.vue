@@ -1,8 +1,9 @@
 <template>
   <div class="control-panel">
     <select v-on:change="setCurrentPlayerId">
-      <option :selected="currentPlayerId === 0" value="0">Select Player</option>
-      <option :id="`player-${player.id}`" v-for="(player, index) in players" :key="index" :value="player.id">{{ player.name }}</option>
+      <!-- <option :selected="currentPlayerId === 0" value="0">Select Player</option> -->
+      <option value="0">Select Player</option>
+      <option :id="`player-${player.id}`" v-for="(player, index) in players" :key="index" :value="player.id">{{ player.name }} - ${{ player.score }}</option>
     </select>
 
     <template v-if="question.daily_double || round === 3 && currentPlayerId !== 0">
@@ -37,7 +38,7 @@ export default {
   },
   computed: {
     players() {
-      return this.$store.getters.getPlayers('name');
+      return this.$store.getters.getPlayersByName;
     },
     currentPlayerId: {
       get() {
@@ -113,6 +114,7 @@ export default {
     setScore(amount) {
       clearTimeout(this.buzzer);
 
+      const id = this.currentPlayerId;
       let correct = 0;
       let wrong = 0;
 
@@ -124,6 +126,7 @@ export default {
       }
 
       const stats = {
+        id: id,
         score: amount,
         correct: correct,
         wrong: wrong

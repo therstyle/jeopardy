@@ -19,20 +19,15 @@ export default new Vuex.Store({
     },
     getPlayers: (state) => {
       const players = [...state.players];
-      
-      return (sortBy = 'score') => {
-        const property = sortBy;
-        const sortedPlayers = players.sort(function(a,b) {
-          if (a[property] < b[property]) {
-            return -1;
-          }
-          else {
-            return 1;
-          }
-        });
-
-        return sortedPlayers;
-      }
+      const sortedPlayers = players.sort((a,b) => a.score > b.score ? -1 : 1);
+      console.log(sortedPlayers);
+      return sortedPlayers;
+    },
+    getPlayersByName: (state) => {
+      const players = [...state.players];
+      const sortedPlayers = players.sort((a,b) => a.name < b.name ? -1 : 1);
+      console.log(sortedPlayers);
+      return sortedPlayers;
     },
     getQuestions: (state, getters) => {
       const currentRound = getters.getRound;
@@ -65,7 +60,7 @@ export default new Vuex.Store({
       const playerId = getters.getCurrentPlayerId;
       
       if (playerId !== 0) {
-        const players = [...getters.getPlayers()];
+        const players = [...getters.getPlayers];
         const currentPlayer = players.filter(player => player.id === playerId);
         return currentPlayer[0];
       }
@@ -121,9 +116,18 @@ export default new Vuex.Store({
     resetWager: (state, payload) => {
       const players = state.players;
       const playerId = state.currentPlayerId;
-      players.forEach( player => {
+      players.forEach(player => {
         if (player.id === playerId) {
           player.wager = payload;
+        }
+      });
+    },
+    setScore: (state, payload) => {
+      const players = state.players;
+
+      players.forEach(player => {
+        if (player.id === payload.id) {
+          player = payload;
         }
       });
     }
@@ -156,15 +160,7 @@ export default new Vuex.Store({
     },
     addPlayer: function(context, payload) {
       const players = [...this.state.players, payload];
-      const sortedPlayers = players.sort(function(a, b) {
-        if (a.score < b.score) {
-          return -1;
-        }
-        else {
-          return 1;
-        }
-      });
-      context.commit('setPlayers', sortedPlayers);
+      context.commit('setPlayers', players);
     },
     removePlayer: function(context, payload) {
       console.log('removing player');
@@ -176,28 +172,29 @@ export default new Vuex.Store({
       context.commit('setPlayers', removedPlayers);
     },
     setScore: function(context, payload) {
-      const players = this.state.players;
-      const currentPlayerId = this.state.currentPlayerId;
+      const players = [...this.state.players];
+      const findPlayer = players.filter(player => player.id === payload.id);
+      const player = findPlayer[0];
 
-      players.forEach((player) => {
-        console.log(player.id);
+      console.log(player);
 
-        if (player.id === currentPlayerId) {
-          player.score += parseInt(payload.score);
-          player.correct += payload.correct;
-          player.wrong += payload.wrong;
+      if (player) {
+        console.log(`updating score for player ${player.id}`);
 
-          const total = player.wrong + player.correct;
-          let accuracy = (player.correct / total) * 100;
-          accuracy = Math.floor(accuracy);
-          player.accuracy = accuracy;
+        player.score += parseInt(payload.score);
+        player.correct += payload.correct;
+        player.wrong += payload.wrong;
 
-          const answered = player.answered;
-          answered.push(this.state.currentQuestionId);
-        }
-      });
+        const total = player.wrong + player.correct;
+        let accuracy = (player.correct / total) * 100;
+        accuracy = Math.floor(accuracy);
+        player.accuracy = accuracy;
 
-      context.commit('setPlayers', players);
+        const answered = player.answered;
+        answered.push(this.state.currentQuestionId);
+      }
+
+      context.commit('setScore', payload);
     },
     updateWager: (context, payload) => {
       const player = context.getters.getCurrentPlayer;

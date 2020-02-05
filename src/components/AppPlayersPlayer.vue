@@ -19,7 +19,7 @@ export default {
   name: 'player',
   computed: {
     getPlayers() {
-      return this.$store.getters.getPlayers();
+      return this.$store.getters.getPlayers;
     }
   },
   methods: {
