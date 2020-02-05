@@ -1,8 +1,7 @@
 <template>
   <div class="control-panel">
     <select v-on:change="setCurrentPlayerId">
-      <!-- <option :selected="currentPlayerId === 0" value="0">Select Player</option> -->
-      <option value="0">Select Player</option>
+      <option :selected="currentPlayerId === 0" value="0">Select Player</option>
       <option :id="`player-${player.id}`" v-for="(player, index) in players" :key="index" :value="player.id">{{ player.name }} - ${{ player.score }}</option>
     </select>
 
