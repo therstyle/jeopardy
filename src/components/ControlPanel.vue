@@ -44,7 +44,7 @@ export default {
         return this.$store.getters.getCurrentPlayerId;
       },
       set(value) {
-        this.$$store.dispatch('setCurrentPlayerId', value);
+        this.$store.dispatch('setCurrentPlayerId', value);
       }
     },
     round() {
