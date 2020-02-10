@@ -1,4 +1,4 @@
-<template><!-- change player component have values passed down so it state is individual -->
+<template>
   <ul>
     <player-card
     v-for="(player, index) in getPlayers" :key="index"
