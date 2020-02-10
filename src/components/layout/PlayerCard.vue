@@ -13,7 +13,7 @@
       <span v-if="editing">Finish Editing</span>
     </button>
 
-    <button v-on:click="removePlayer(player.name)">Delete Player</button>
+    <button v-if="round !== 3" v-on:click="removePlayer(player.name)">Delete Player</button>
   </li>
 </template>
 

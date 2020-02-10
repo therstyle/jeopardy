@@ -2,11 +2,11 @@
   <section class="players">
     <h1>Add Players</h1>
 
-    <article v-if="round === 2 || round === 3">
+    <article v-if="round !== 1">
       <h2>After The Round {{ leader }} Is In The Lead!</h2>
     </article>
 
-    <form v-on:submit.prevent="addPlayer">
+    <form v-if="round !== 3" v-on:submit.prevent="addPlayer">
       <input type="text" v-model="playerName" placeholder="Player Name" />
       <button>Add Player</button>
 
