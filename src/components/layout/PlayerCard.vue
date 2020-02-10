@@ -8,7 +8,7 @@
       <li>Accuracy {{ player.accuracy }}%</li>
     </ul>
     
-    <button v-on:click="toggleEditing">
+    <button v-if="round !== 3" v-on:click="toggleEditing">
       <span v-if="!editing">Edit Player</span>
       <span v-if="editing">Finish Editing</span>
     </button>
@@ -26,6 +26,11 @@ export default {
   data() {
     return {
       editing: false
+    }
+  },
+  computed: {
+    round() {
+      return this.$store.getters.getRound;
     }
   },
   methods: {
