@@ -241,10 +241,14 @@ export default new Vuex.Store({
       context.commit('setQuestions', questions);
     },
     setRound: function(context) {
-      console.log(`the round is... ${this.state.round}`);
       let round = this.state.round;
       round++;
 
+      if (round > 3) {
+        round = 1;
+      }
+      
+      console.log(`the round is... ${this.state.round}`);
       context.commit('setRound', round);
     },
     resetGame: function(context) {
@@ -258,7 +262,7 @@ export default new Vuex.Store({
       });
 
       context.commit('setPlayers', players);
-      context.dispatch('setRound', 0);
+      context.dispatch('setRound');
       context.dispatch('setCurrentComponent', 'intro');
     }
   }
