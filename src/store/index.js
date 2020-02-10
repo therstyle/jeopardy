@@ -246,6 +246,20 @@ export default new Vuex.Store({
       round++;
 
       context.commit('setRound', round);
+    },
+    resetGame: function(context) {
+      const players = [...this.state.players];
+
+      players.forEach(player => {
+        player.score = 0;
+        player.correct = 0;
+        player.wrong = 0;
+        player.accuracy = 0;
+      });
+
+      context.commit('setPlayers', players);
+      context.dispatch('setRound', 0);
+      context.dispatch('setCurrentComponent', 'intro');
     }
   }
 });
