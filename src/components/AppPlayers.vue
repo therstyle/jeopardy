@@ -85,7 +85,12 @@ export default {
         this.errorPlayerAmount = false;
 
         if (this.round === 3) {
+          const questions = [...this.$store.getters.getQuestions];
+          const questionId = questions[0].id;
+
           this.$store.dispatch('setCurrentComponent', 'final-jeopardy');
+          this.$store.dispatch('setCurrentQuestionId', questionId);
+          debugger;
         }
         else {
           this.$store.dispatch('setCurrentComponent', 'game-board');
