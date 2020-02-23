@@ -236,12 +236,17 @@ export default new Vuex.Store({
       context.commit('setQuestions', questions);
     },
     setRound: function(context) {
+      const players = [...this.state.players];
       let round = this.state.round;
       round++;
 
       if (round > 3) {
         round = 1;
       }
+
+      players.forEach(player => {
+        player.answered = [];
+      });
       
       console.log(`the round is... ${this.state.round}`);
       context.commit('setRound', round);
@@ -254,6 +259,7 @@ export default new Vuex.Store({
         player.correct = 0;
         player.wrong = 0;
         player.accuracy = 0;
+        player.answered = [];
       });
 
       context.commit('setPlayers', players);
