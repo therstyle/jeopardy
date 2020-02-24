@@ -7,7 +7,8 @@
 
     <template v-if="question.daily_double || round === 3 && currentPlayerId !== 0">
       <div class="wager">
-        <input type="number" v-model.number="wager" step="100" :max="maxWager">
+        <input type="number" v-model.number="wager" step="100" :max="maxWager" v-on:keyup="isWagerValid">
+        Maximum Wager: {{ maxWager }}
       </div>
 
       <div class="set-score">
@@ -138,6 +139,14 @@ export default {
       this.buzzer = setTimeout(function() {
         console.log('times up');
       }, 1000);
+    },
+    isWagerValid() {
+      if(this.wager > this.maxWager) {
+        this.disableButtons = true;
+      }
+      else {
+        this.disableButtons = false;
+      }
     }
   }
 }
