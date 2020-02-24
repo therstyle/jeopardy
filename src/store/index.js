@@ -46,7 +46,12 @@ export default new Vuex.Store({
       const questions = [...getters.getQuestions];
       const currentQuestion = questions.filter(data => data.id === currentId);
       
-      return currentQuestion[0];
+      if (currentId !== 0) {
+        return currentQuestion[0];
+      }
+      else {
+        return {};
+      }
     },
     getCurrentPlayerId: (state) => {
       return state.currentPlayerId;
