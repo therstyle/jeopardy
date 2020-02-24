@@ -11,7 +11,9 @@ export default new Vuex.Store({
     categories: [],
     questions: {},
     players: [],
-    currentPlayerId: 0
+    currentPlayerId: 0,
+    paused: false,
+    sound: true
   },
   getters: {
     getCurrentComponent: (state) => {
