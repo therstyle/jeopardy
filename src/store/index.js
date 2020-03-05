@@ -82,6 +82,12 @@ export default new Vuex.Store({
     },
     getRound: (state) => {
       return state.round;
+    },
+    getPaused: (state) => {
+      return state.paused;
+    },
+    getSound: (state) => {
+      return state.sound;
     }
   },
   mutations: {
@@ -132,6 +138,12 @@ export default new Vuex.Store({
           player = payload;
         }
       });
+    },
+    setSound: (state, payload) => {
+      state.sound = payload;
+    },
+    setPaused: (state, payload) => {
+      state.paused = payload;
     }
   },
   actions: {
@@ -272,6 +284,14 @@ export default new Vuex.Store({
       context.commit('setPlayers', players);
       context.dispatch('setRound');
       context.dispatch('setCurrentComponent', 'intro');
+    },
+    setSound: function (context) {
+      const toggle = !this.state.sound;
+      context.commit('setSound', toggle);
+    },
+    setPaused: function (context) {
+      const toggle = !this.state.paused;
+      context.commit('setPaused', toggle);
     }
   }
 });

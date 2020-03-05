@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Options-Overlay></Options-Overlay>
     <h1>Game Board</h1>
     <ul>
       <li v-for="(category, index) in getCategories" :key="index">
@@ -16,8 +17,13 @@
 </template>
 
 <script>
+import OptionsOverlay from './OptionsOverlay.vue';
+
 export default {
   name: 'game-board',
+  components: {
+    OptionsOverlay
+  },
   computed: {
     getCategories() {
       return this.$store.getters.getCategories;
