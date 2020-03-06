@@ -16,10 +16,7 @@
 
     <player></player>
 
-    <app-button v-on:clickEvent="checkPlayers">
-      <span v-if="round === 3">Start Final Jeopardy</span>
-      <span v-else>Start The Round</span>
-    </app-button>
+    <app-button v-on:clickEvent="checkPlayers">{{ buttonText }}</app-button>
   </section>
 </template>
 
@@ -37,6 +34,26 @@ export default {
       const players = this.$store.getters.getPlayers;
       const leader = players[0].name;
       return leader;
+    },
+    paused() {
+      return this.$store.getters.getPaused;
+    },
+    buttonText() {
+      let message;
+
+      if (this.round === 3 && !this.paused) {
+        message = 'Start Final Jeopardy';
+      }
+      
+      else if (this.paused) {
+        message = 'Continue Game';
+      }
+
+      else {
+        message = 'Start The Round';
+      }
+
+      return message;
     }
   },
   data() {
@@ -84,14 +101,15 @@ export default {
       if (players.length > 0) {
         this.errorPlayerAmount = false;
 
-        if (this.round === 3) {
+        if (this.round === 3 && !this.paused) {
           const questions = [...this.$store.getters.getQuestions];
           const questionId = questions[0].id;
 
           this.$store.dispatch('setCurrentComponent', 'final-jeopardy');
           this.$store.dispatch('setCurrentQuestionId', questionId);
-          debugger;
+          //debugger;
         }
+
         else {
           this.$store.dispatch('setCurrentComponent', 'game-board');
         }

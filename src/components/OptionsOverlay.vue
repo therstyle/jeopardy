@@ -11,9 +11,11 @@ export default {
   methods: {
     togglePause: function() {
       this.$store.dispatch('setPaused');
+      this.$store.dispatch('setCurrentComponent', 'players');
     },
     toggleMute: function() {
       this.$store.dispatch('setSound');
+      console.log('toggling sound');
     }
   }
 }
