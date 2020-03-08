@@ -21,7 +21,7 @@ export default {
       const data = await response.json();
       console.log(data);
 
-      this.$store.dispatch('setQuestions', data);
+      this.$store.dispatch('sortQuestions', data);
       this.$store.dispatch('setCategories');
     }
   },
@@ -59,6 +59,6 @@ body {
 #app {
   display: grid;
   min-height: 100vh;
-  opacity: 0.2; //Debug
+  //opacity: 0.2; //Debug
 }
 </style>

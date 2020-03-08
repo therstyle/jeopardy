@@ -49,6 +49,7 @@ export default new Vuex.Store({
       const currentQuestion = questions.filter(data => data.id === currentId);
       
       if (currentId !== 0) {
+        console.log(currentQuestion);
         return currentQuestion[0];
       }
       else {
@@ -148,10 +149,13 @@ export default new Vuex.Store({
   },
   actions: {
     setQuestions: (context, payload) => {
+      context.commit('setQuestions', payload);
+    },
+    sortQuestions: (context, payload) => {
       const data = [...payload];
-      const round1 = data.filter( question => question.round === 'Jeopardy!');
-      const round2 = data.filter( question => question.round === 'Double Jeopardy!');
-      const round3 = data.filter( question => question.round === 'Final Jeopardy!');
+      const round1 = data.filter(question => question.round === 'Jeopardy!');
+      const round2 = data.filter(question => question.round === 'Double Jeopardy!');
+      const round3 = data.filter(question => question.round === 'Final Jeopardy!');
       const questions = {
         round1: round1,
         round2: round2,
@@ -281,9 +285,17 @@ export default new Vuex.Store({
         player.answered = [];
       });
 
+      const questions = {...this.state.questions};
+
+      questions.round1.forEach(question => question.answered = false);
+      questions.round2.forEach(question => question.answered = false);
+      questions.round3.forEach(question => question.answered = false);
+
       context.commit('setPlayers', players);
       context.dispatch('setRound');
       context.dispatch('setCurrentComponent', 'intro');
+      context.dispatch('setCurrentQuestionId', 0);
+      context.dispatch('setQuestions', questions);
     },
     setSound: function (context) {
       const toggle = !this.state.sound;
