@@ -10,7 +10,9 @@
 import Intro from './components/AppIntro.vue';
 import Players from './components/AppPlayers.vue';
 import GameBoard from './components/GameBoard.vue';
-import ViewQuestion from './components/ViewQuestion.vue';
+import GameOver from './components/GameOver.vue';
+import QuestionSingle from './components/ViewQuestionSingle';
+import FinalJeopardy from './components/ViewQuestionFinal.vue';
 
 export default {
   methods: {
@@ -19,8 +21,8 @@ export default {
       const data = await response.json();
       console.log(data);
 
-      this.$store.dispatch('setQuestions', data);
-      this.$store.dispatch('setCategories', data);
+      this.$store.dispatch('sortQuestions', data);
+      this.$store.dispatch('setCategories');
     }
   },
   computed: {
@@ -32,7 +34,9 @@ export default {
     Intro,
     Players,
     GameBoard,
-    ViewQuestion
+    GameOver,
+    'question-single': QuestionSingle,
+    'final-jeopardy': FinalJeopardy
   },
   created() {
     this.loadData('sample.json');
@@ -55,5 +59,6 @@ body {
 #app {
   display: grid;
   min-height: 100vh;
+  //opacity: 0.2; //Debug
 }
 </style>

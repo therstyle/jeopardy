@@ -7,34 +7,89 @@ export default new Vuex.Store({
   state: {
     round: 1,
     currentComponent: 'intro',
-    currentQuestion: 0,
+    currentQuestionId: 0,
     categories: [],
-    questions: [],
+    questions: {},
     players: [],
-    currentPlayer: 0
+    currentPlayerId: 0,
+    paused: false,
+    sound: true
   },
   getters: {
     getCurrentComponent: (state) => {
       return state.currentComponent;
     },
     getPlayers: (state) => {
-      return state.players;
+      const players = [...state.players];
+      const sortedPlayers = players.sort((a,b) => a.score > b.score ? -1 : 1);
+      console.log(sortedPlayers);
+      return sortedPlayers;
     },
-    getQuestions: (state) => {
-      return state.questions;
+    getPlayersByName: (state) => {
+      const players = [...state.players];
+      const sortedPlayers = players.sort((a,b) => a.name < b.name ? -1 : 1);
+      console.log(sortedPlayers);
+      return sortedPlayers;
+    },
+    getQuestions: (state, getters) => {
+      const currentRound = getters.getRound;
+      const questions = state.questions;
+      
+      return questions['round' + currentRound];
     },
     getCategories: (state) => {
       return state.categories;
     },
-    getCurrentQuestion: (state) => {
-      return state.currentQuestion;
+    getCurrentQuestionId: (state) => {
+      return state.currentQuestionId;
     },
-    getCurrentPlayer: (state) => {
-      return state.currentPlayer;
+    getCurrentQuestion: (state, getters) => {
+      const currentId = getters.getCurrentQuestionId;
+      const questions = [...getters.getQuestions];
+      const currentQuestion = questions.filter(data => data.id === currentId);
+      
+      if (currentId !== 0) {
+        console.log(currentQuestion);
+        return currentQuestion[0];
+      }
+      else {
+        return {};
+      }
+    },
+    getCurrentPlayerId: (state) => {
+      return state.currentPlayerId;
+    },
+    getCurrentPlayer: (state, getters) => {
+      const playerId = getters.getCurrentPlayerId;
+      
+      if (playerId !== 0) {
+        const players = [...getters.getPlayers];
+        const currentPlayer = players.filter(player => player.id === playerId);
+        return currentPlayer[0];
+      }
+      else {
+        return null;
+      }
+    },
+    getCurrentPlayerWager: (state, getters) => {
+      const player = getters.getCurrentPlayer;
+
+      if (player !== null) {
+        return player.wager;
+      }
+      else {
+        return 0;
+      }
     },
     getRound: (state) => {
       return state.round;
-    } 
+    },
+    getPaused: (state) => {
+      return state.paused;
+    },
+    getSound: (state) => {
+      return state.sound;
+    }
   },
   mutations: {
     setQuestions: (state, payload) => {
@@ -49,22 +104,69 @@ export default new Vuex.Store({
     setPlayers: (state, payload) => {
       state.players = payload;
     },
-    setCurrentQuestion: (state, payload) => {
-      state.currentQuestion = payload;
+    setCurrentQuestionId: (state, payload) => {
+      state.currentQuestionId = payload;
     },
-    setCurrentPlayer: (state, payload) => {
-      state.currentPlayer = payload;
+    setCurrentPlayerId: (state, payload) => {
+      state.currentPlayerId = payload;
     },
     setRound: (state, payload) => {
       state.round = payload;
+    },
+    updateWager: (state, payload) => {
+      const players = state.players;
+      const playerId = state.currentPlayerId;
+      players.forEach( player => {
+        if (player.id === playerId) {
+          player = payload;
+        }
+      });
+    },
+    resetWager: (state, payload) => {
+      const players = state.players;
+      const playerId = state.currentPlayerId;
+      players.forEach(player => {
+        if (player.id === playerId) {
+          player.wager = payload;
+        }
+      });
+    },
+    setScore: (state, payload) => {
+      const players = state.players;
+
+      players.forEach(player => {
+        if (player.id === payload.id) {
+          player = payload;
+        }
+      });
+    },
+    setSound: (state, payload) => {
+      state.sound = payload;
+    },
+    setPaused: (state, payload) => {
+      state.paused = payload;
     }
   },
   actions: {
     setQuestions: (context, payload) => {
       context.commit('setQuestions', payload);
     },
-    setCategories: (context, payload) => {
-      const categories = payload.map( data => {
+    sortQuestions: (context, payload) => {
+      const data = [...payload];
+      const round1 = data.filter(question => question.round === 'Jeopardy!');
+      const round2 = data.filter(question => question.round === 'Double Jeopardy!');
+      const round3 = data.filter(question => question.round === 'Final Jeopardy!');
+      const questions = {
+        round1: round1,
+        round2: round2,
+        round3: round3
+      }
+
+      context.commit('setQuestions', questions);
+    },
+    setCategories: function(context) {
+      const currentRound = this.state.round;
+      const categories = this.state.questions['round' + currentRound].map( data => {
         return data.category;
       });
 
@@ -76,15 +178,7 @@ export default new Vuex.Store({
     },
     addPlayer: function(context, payload) {
       const players = [...this.state.players, payload];
-      const sortedPlayers = players.sort(function(a, b) {
-        if (a.score > b.score) {
-          return -1;
-        }
-        else {
-          return 1;
-        }
-      });
-      context.commit('setPlayers', sortedPlayers);
+      context.commit('setPlayers', players);
     },
     removePlayer: function(context, payload) {
       console.log('removing player');
@@ -96,52 +190,67 @@ export default new Vuex.Store({
       context.commit('setPlayers', removedPlayers);
     },
     setScore: function(context, payload) {
-      const players = this.state.players;
-      const currentPlayer = this.state.currentPlayer;
+      const players = [...this.state.players];
+      const findPlayer = players.filter(player => player.id === payload.id);
+      const player = findPlayer[0];
 
-      players.forEach(function(player) {
-        console.log(player.id);
+      console.log(player);
 
-        if (player.id === currentPlayer) {
-          player.score = player.score + payload.score;
-          player.correct = player.correct + payload.correct;
-          player.wrong = player.wrong + payload.wrong;
+      if (player) {
+        console.log(`updating score for player ${player.id}`);
 
-          const total = player.wrong + player.correct;
-          let accuracy = (player.correct / total) * 100;
-          accuracy = Math.floor(accuracy);
-          player.accuracy = accuracy;
-        }
-      });
+        player.score += parseInt(payload.score);
+        player.correct += payload.correct;
+        player.wrong += payload.wrong;
 
-      context.commit('setPlayers', players);
+        const total = player.wrong + player.correct;
+        let accuracy = (player.correct / total) * 100;
+        accuracy = Math.floor(accuracy);
+        player.accuracy = accuracy;
+
+        const answered = player.answered;
+        answered.push(this.state.currentQuestionId);
+      }
+
+      context.commit('setScore', payload);
     },
-    setCurrentQuestion: (context, payload) => {
-      context.commit('setCurrentQuestion', payload);
+    updateWager: (context, payload) => {
+      const player = context.getters.getCurrentPlayer;
+      player.wager = payload;
+
+      context.commit('updateWager', player);
     },
-    setCurrentPlayer: (context, payload) => {
-      context.commit('setCurrentPlayer', payload);
+    resetWager: (context, payload) => {
+      context.commit('resetWager', payload);
+    },
+    setCurrentQuestionId: (context, payload) => {
+      context.commit('setCurrentQuestionId', payload);
+    },
+    setCurrentPlayerId: (context, payload) => {
+      context.commit('setCurrentPlayerId', payload);
     },
     turnComplete: function(context) {
-      const questions = [...this.state.questions];
-      const currentId = this.state.currentQuestion;
+      const currentRound = this.state.round;
+      const questions = {...this.state.questions};
+      const currentId = this.state.currentQuestionId;
+      let i = 0;
 
-      questions.forEach(question => {
+      questions['round' + currentRound].forEach(question => {
         if (question.id === currentId) {
           question.answered = true;
         }
       });
 
-      let i = 0;
-      questions.forEach(question => {
+      questions['round' + currentRound].forEach(question => {
         if (question.answered) {
           i++;
         }
       });
 
       console.log(`questions answered = ${i}`);
+      console.log(questions['round' + currentRound].length);
 
-      if (i === questions.length) {
+      if (i === questions['round' + currentRound].length) {
         context.dispatch('setCurrentComponent', 'players');
         context.dispatch('setRound');
         console.log('start the next round');
@@ -150,11 +259,51 @@ export default new Vuex.Store({
       context.commit('setQuestions', questions);
     },
     setRound: function(context) {
-      console.log(`the round is... ${this.state.round}`);
+      const players = [...this.state.players];
       let round = this.state.round;
       round++;
 
+      if (round > 3) {
+        round = 1;
+      }
+
+      players.forEach(player => {
+        player.answered = [];
+      });
+      
+      console.log(`the round is... ${this.state.round}`);
       context.commit('setRound', round);
+    },
+    resetGame: function(context) {
+      const players = [...this.state.players];
+
+      players.forEach(player => {
+        player.score = 0;
+        player.correct = 0;
+        player.wrong = 0;
+        player.accuracy = 0;
+        player.answered = [];
+      });
+
+      const questions = {...this.state.questions};
+
+      questions.round1.forEach(question => question.answered = false);
+      questions.round2.forEach(question => question.answered = false);
+      questions.round3.forEach(question => question.answered = false);
+
+      context.commit('setPlayers', players);
+      context.dispatch('setRound');
+      context.dispatch('setCurrentComponent', 'intro');
+      context.dispatch('setCurrentQuestionId', 0);
+      context.dispatch('setQuestions', questions);
+    },
+    setSound: function (context) {
+      const toggle = !this.state.sound;
+      context.commit('setSound', toggle);
+    },
+    setPaused: function (context) {
+      const toggle = !this.state.paused;
+      context.commit('setPaused', toggle);
     }
   }
-})
+});

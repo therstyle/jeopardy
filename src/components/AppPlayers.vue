@@ -2,17 +2,21 @@
   <section class="players">
     <h1>Add Players</h1>
 
-    <article v-if="round > 1 && round < 3">
+    <article v-if="round !== 1">
       <h2>After The Round {{ leader }} Is In The Lead!</h2>
     </article>
 
-    <form v-on:submit.prevent="addPlayer">
+    <form v-if="round !== 3" v-on:submit.prevent="addPlayer">
       <input type="text" v-model="playerName" placeholder="Player Name" />
       <button>Add Player</button>
+
+      <div v-if="errorPlayerName" class="error">Not a valid name</div>
+      <div v-if="errorPlayerAmount" class="error">Not enough players</div>
     </form>
 
     <player></player>
-    <app-button text="Continue" goTo="game-board"></app-button>
+
+    <app-button v-on:clickEvent="checkPlayers">{{ buttonText }}</app-button>
   </section>
 </template>
 
@@ -30,13 +34,34 @@ export default {
       const players = this.$store.getters.getPlayers;
       const leader = players[0].name;
       return leader;
+    },
+    paused() {
+      return this.$store.getters.getPaused;
+    },
+    buttonText() {
+      let message;
+
+      if (this.round === 3 && !this.paused) {
+        message = 'Start Final Jeopardy';
+      }
+      
+      else if (this.paused) {
+        message = 'Continue Game';
+      }
+
+      else {
+        message = 'Start The Round';
+      }
+
+      return message;
     }
   },
   data() {
     return {
       playerName: '',
-      error: false,
-      playerId: 0
+      playerId: 0,
+      errorPlayerName: false,
+      errorPlayerAmount: false
     }
   },
   components: {
@@ -57,17 +82,40 @@ export default {
           wager: 0,
           correct: 0,
           wrong: 0,
-          accuracy: 0
+          accuracy: 0,
+          answered: []
         };
 
         console.log(playerInfo);
 
         this.$store.dispatch('addPlayer', playerInfo);
-        this.error = false;
+        this.errorPlayerName = false;
         this.playerName = '';
       }
       else {
-        this.error = true;
+        this.errorPlayerName = true;
+      }
+    },
+    checkPlayers() {
+      const players = this.$store.getters.getPlayers;
+      if (players.length > 0) {
+        this.errorPlayerAmount = false;
+
+        if (this.round === 3 && !this.paused) {
+          const questions = [...this.$store.getters.getQuestions];
+          const questionId = questions[0].id;
+
+          this.$store.dispatch('setCurrentComponent', 'final-jeopardy');
+          this.$store.dispatch('setCurrentQuestionId', questionId);
+          //debugger;
+        }
+
+        else {
+          this.$store.dispatch('setCurrentComponent', 'game-board');
+        }
+      }
+      else {
+        this.errorPlayerAmount = true;
       }
     }
   }

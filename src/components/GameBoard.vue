@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Options-Overlay></Options-Overlay>
     <h1>Game Board</h1>
     <ul>
       <li v-for="(category, index) in getCategories" :key="index">
@@ -16,8 +17,13 @@
 </template>
 
 <script>
+import OptionsOverlay from './OptionsOverlay.vue';
+
 export default {
   name: 'game-board',
+  components: {
+    OptionsOverlay
+  },
   computed: {
     getCategories() {
       return this.$store.getters.getCategories;
@@ -32,8 +38,8 @@ export default {
         return question.id === id;
       });
 
-      this.$store.dispatch('setCurrentQuestion', id);
-      this.$store.dispatch('setCurrentComponent', 'view-question');
+      this.$store.dispatch('setCurrentQuestionId', id);
+      this.$store.dispatch('setCurrentComponent', 'question-single');
       console.log(currentQuestion);
     }
   }

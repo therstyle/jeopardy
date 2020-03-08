@@ -1,30 +1,28 @@
 <template>
   <ul>
-    <li class="player" v-for="(player, index) in getPlayers" :key="index">
-      <h3>{{ player.name }}</h3>
-      <ul>
-        <li>Score: {{ player.score }}</li>
-        <li>Correct: {{ player.correct }}</li>
-        <li>Wrong: {{ player.wrong }}</li>
-        <li>Accuracy {{ player.accuracy }}%</li>
-      </ul>
-      
-      <button v-on:click="removePlayer(player.name)">Delete Player</button>
-    </li>
+    <player-card
+    v-for="(player, index) in getPlayers" :key="index"
+    :player="player"
+    ></player-card>
   </ul>
 </template>
 
 <script>
+import PlayerCard from './layout/PlayerCard.vue';
+
 export default {
   name: 'player',
-  computed: {
-    getPlayers() {
-      return this.$store.getters.getPlayers;
-    }
+  components: {
+    PlayerCard
   },
-  methods: {
-    removePlayer(name) {
-      this.$store.dispatch('removePlayer', name);
+  computed: {
+    getPlayers: {
+      get() {
+        return this.$store.getters.getPlayers;
+      },
+      set(value) {
+        this.$store.commit('editPlayer', value);
+      }
     }
   }
 }

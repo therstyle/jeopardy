@@ -1,6 +1,6 @@
 <template>
-  <button :class="className" v-on:click="setCurrentComponent(goTo)">
-    {{ text }}
+  <button :class="className" v-on:click="clickEvent(goTo)">
+    <slot></slot>
   </button>
 </template>
 
@@ -13,6 +13,10 @@ export default {
     goTo: String
   },
   methods: {
+    clickEvent(payload) {
+      this.setCurrentComponent(payload);
+      this.$emit('clickEvent');
+    },
     setCurrentComponent(component) {
       if (this.goTo) {
         this.$store.dispatch('setCurrentComponent', component);
