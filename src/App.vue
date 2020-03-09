@@ -52,13 +52,37 @@ html {
 }
 
 body {
+  opacity: 0.2; //Debug
+  background: var(--blue);
+  font-family: var(--questions-font);
   font-size: var(--font-size);
+  color: var(--white);
   margin: 0;
 }
 
 #app {
   display: grid;
   min-height: 100vh;
-  //opacity: 0.2; //Debug
+}
+
+@font-face { //categories & dollar amounts
+    font-family: 'Swiss911 XCm BT';
+    src: url('assets/fonts/Swiss911BT-ExtraCompressed.woff2') format('woff2'),
+        url('assets/fonts/Swiss911BT-ExtraCompressed.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face { //questions
+  font-family: 'ITC Korinna';
+  src: url('assets/fonts/Korinna-Regular.woff2') format('woff2'),
+      url('assets/fonts/Korinna-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+button {
+  color: var(--white);
+  background: none;
 }
 </style>
