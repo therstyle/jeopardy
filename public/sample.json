@@ -1,14 +1,14 @@
 [
- {
-   "id": 1,
-   "round": "Jeopardy!",
-   "question": "The Question",
-   "answer": "The Answer",
-   "category": "Category 1",
-   "value": 200,
-   "daily_double": null
- },
- {
+  {
+    "id": 1,
+    "round": "Jeopardy!",
+    "question": "The Question",
+    "answer": "The Answer",
+    "category": "Category 1",
+    "value": 200,
+    "daily_double": null
+  },
+  {
   "id": 2,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -16,8 +16,8 @@
   "category": "Category 2",
   "value": 200,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 3,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -25,8 +25,8 @@
   "category": "Category 3",
   "value": 200,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 4,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -34,8 +34,8 @@
   "category": "Category 4",
   "value": 200,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 5,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -43,8 +43,8 @@
   "category": "Category 5",
   "value": 200,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 6,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -52,8 +52,8 @@
   "category": "Category 6",
   "value": 200,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 7,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -61,8 +61,8 @@
   "category": "Category 1",
   "value": 400,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 8,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -70,8 +70,8 @@
   "category": "Category 2",
   "value": 400,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 9,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -79,8 +79,8 @@
   "category": "Category 3",
   "value": 400,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 10,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -88,8 +88,8 @@
   "category": "Category 4",
   "value": 400,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 11,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -97,8 +97,8 @@
   "category": "Category 5",
   "value": 400,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 12,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -106,8 +106,8 @@
   "category": "Category 6",
   "value": 400,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 13,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -115,8 +115,8 @@
   "category": "Category 1",
   "value": 600,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 14,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -124,8 +124,8 @@
   "category": "Category 2",
   "value": 600,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 15,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -133,8 +133,8 @@
   "category": "Category 3",
   "value": 600,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 16,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -142,8 +142,8 @@
   "category": "Category 4",
   "value": 600,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 17,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -151,8 +151,8 @@
   "category": "Category 5",
   "value": 600,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 18,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -160,8 +160,8 @@
   "category": "Category 6",
   "value": 600,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 19,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -169,8 +169,8 @@
   "category": "Category 1",
   "value": 800,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 20,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -178,8 +178,8 @@
   "category": "Category 2",
   "value": 800,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 21,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -187,8 +187,8 @@
   "category": "Category 3",
   "value": 800,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 22,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -196,8 +196,8 @@
   "category": "Category 4",
   "value": 800,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 23,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -205,8 +205,8 @@
   "category": "Category 5",
   "value": 800,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 24,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -214,8 +214,8 @@
   "category": "Category 6",
   "value": 800,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 25,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -223,8 +223,8 @@
   "category": "Category 1",
   "value": 1000,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 26,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -232,8 +232,8 @@
   "category": "Category 2",
   "value": 1000,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 27,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -241,8 +241,8 @@
   "category": "Category 3",
   "value": 1000,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 28,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -250,8 +250,8 @@
   "category": "Category 4",
   "value": 1000,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 29,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -259,8 +259,8 @@
   "category": "Category 5",
   "value": 1000,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 30,
   "round": "Jeopardy!",
   "question": "The Question",
@@ -268,8 +268,8 @@
   "category": "Category 6",
   "value": 1000,
   "daily_double": null
-},
-{
+  },
+  {
   "id": 31,
   "round": "Double Jeopardy!",
   "question": "The Question",
@@ -277,269 +277,269 @@
   "category": "Category 1",
   "value": 400,
   "daily_double": null
-},
-{
- "id": 32,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 2",
- "value": 400,
- "daily_double": null
-},
-{
- "id": 33,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 3",
- "value": 400,
- "daily_double": null
-},
-{
- "id": 34,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 4",
- "value": 400,
- "daily_double": null
-},
-{
- "id": 35,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 5",
- "value": 400,
- "daily_double": null
-},
-{
- "id": 36,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 6",
- "value": 400,
- "daily_double": null
-},
-{
- "id": 37,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 1",
- "value": 800,
- "daily_double": null
-},
-{
- "id": 38,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 2",
- "value": 800,
- "daily_double": null
-},
-{
- "id": 39,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 3",
- "value": 800,
- "daily_double": null
-},
-{
- "id": 40,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 4",
- "value": 800,
- "daily_double": null
-},
-{
- "id": 41,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 5",
- "value": 800,
- "daily_double": null
-},
-{
- "id": 42,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 6",
- "value": 800,
- "daily_double": null
-},
-{
- "id": 43,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 1",
- "value": 1200,
- "daily_double": null
-},
-{
- "id": 44,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 2",
- "value": 1200,
- "daily_double": null
-},
-{
- "id": 45,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 3",
- "value": 1200,
- "daily_double": null
-},
-{
- "id": 46,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 4",
- "value": 1200,
- "daily_double": null
-},
-{
- "id": 47,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 5",
- "value": 1200,
- "daily_double": null
-},
-{
- "id": 48,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 6",
- "value": 1200,
- "daily_double": null
-},
-{
- "id": 49,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 1",
- "value": 1600,
- "daily_double": null
-},
-{
- "id": 50,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 2",
- "value": 1600,
- "daily_double": null
-},
-{
- "id": 51,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 3",
- "value": 1600,
- "daily_double": null
-},
-{
- "id": 52,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 4",
- "value": 1600,
- "daily_double": null
-},
-{
- "id": 53,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 5",
- "value": 1600,
- "daily_double": null
-},
-{
- "id": 54,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 6",
- "value": 1600,
- "daily_double": null
-},
-{
- "id": 55,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 1",
- "value": 2000,
- "daily_double": null
-},
-{
- "id": 56,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 2",
- "value": 2000,
- "daily_double": null
-},
-{
- "id": 57,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 3",
- "value": 2000,
- "daily_double": null
-},
-{
- "id": 58,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 4",
- "value": 2000,
- "daily_double": null
-},
-{
- "id": 59,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 5",
- "value": 2000,
- "daily_double": null
-},
-{
- "id": 60,
- "round": "Double Jeopardy!",
- "question": "The Question",
- "answer": "The Answer",
- "category": "Category 6",
- "value": 2000,
- "daily_double": null
-},
-{
+  },
+  {
+  "id": 32,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 2",
+  "value": 400,
+  "daily_double": null
+  },
+  {
+  "id": 33,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 3",
+  "value": 400,
+  "daily_double": null
+  },
+  {
+  "id": 34,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 4",
+  "value": 400,
+  "daily_double": null
+  },
+  {
+  "id": 35,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 5",
+  "value": 400,
+  "daily_double": null
+  },
+  {
+  "id": 36,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 6",
+  "value": 400,
+  "daily_double": null
+  },
+  {
+  "id": 37,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 1",
+  "value": 800,
+  "daily_double": null
+  },
+  {
+  "id": 38,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 2",
+  "value": 800,
+  "daily_double": null
+  },
+  {
+  "id": 39,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 3",
+  "value": 800,
+  "daily_double": null
+  },
+  {
+  "id": 40,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 4",
+  "value": 800,
+  "daily_double": null
+  },
+  {
+  "id": 41,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 5",
+  "value": 800,
+  "daily_double": null
+  },
+  {
+  "id": 42,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 6",
+  "value": 800,
+  "daily_double": null
+  },
+  {
+  "id": 43,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 1",
+  "value": 1200,
+  "daily_double": null
+  },
+  {
+  "id": 44,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 2",
+  "value": 1200,
+  "daily_double": null
+  },
+  {
+  "id": 45,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 3",
+  "value": 1200,
+  "daily_double": null
+  },
+  {
+  "id": 46,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 4",
+  "value": 1200,
+  "daily_double": null
+  },
+  {
+  "id": 47,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 5",
+  "value": 1200,
+  "daily_double": null
+  },
+  {
+  "id": 48,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 6",
+  "value": 1200,
+  "daily_double": null
+  },
+  {
+  "id": 49,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 1",
+  "value": 1600,
+  "daily_double": null
+  },
+  {
+  "id": 50,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 2",
+  "value": 1600,
+  "daily_double": null
+  },
+  {
+  "id": 51,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 3",
+  "value": 1600,
+  "daily_double": null
+  },
+  {
+  "id": 52,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 4",
+  "value": 1600,
+  "daily_double": null
+  },
+  {
+  "id": 53,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 5",
+  "value": 1600,
+  "daily_double": null
+  },
+  {
+  "id": 54,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 6",
+  "value": 1600,
+  "daily_double": null
+  },
+  {
+  "id": 55,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 1",
+  "value": 2000,
+  "daily_double": null
+  },
+  {
+  "id": 56,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 2",
+  "value": 2000,
+  "daily_double": null
+  },
+  {
+  "id": 57,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 3",
+  "value": 2000,
+  "daily_double": null
+  },
+  {
+  "id": 58,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 4",
+  "value": 2000,
+  "daily_double": null
+  },
+  {
+  "id": 59,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 5",
+  "value": 2000,
+  "daily_double": null
+  },
+  {
+  "id": 60,
+  "round": "Double Jeopardy!",
+  "question": "The Question",
+  "answer": "The Answer",
+  "category": "Category 6",
+  "value": 2000,
+  "daily_double": null
+  },
+  {
   "id": 61,
   "round": "Final Jeopardy!",
   "question": "The Question",
@@ -547,5 +547,5 @@
   "category": "Category Special",
   "value": 200,
   "daily_double": null
-}
+  }
 ]
