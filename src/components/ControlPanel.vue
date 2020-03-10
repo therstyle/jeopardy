@@ -138,7 +138,7 @@ export default {
     countDown() {
       this.buzzer = setTimeout(function() {
         console.log('times up');
-      }, 1000);
+      }, 10000);
     },
     isWagerValid() {
       if(this.wager > this.maxWager) {
