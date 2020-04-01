@@ -1,7 +1,6 @@
 <template>
   <div>
     <Options-Overlay></Options-Overlay>
-    <h1>Game Board</h1>
     <ul>
       <li v-for="(category, index) in getCategories" :key="index">
         {{ category }}

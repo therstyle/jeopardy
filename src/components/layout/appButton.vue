@@ -1,7 +1,9 @@
 <template>
-  <button :class="className" v-on:click="clickEvent(goTo)">
-    <slot></slot>
-  </button>
+  <div class="button-wrap">
+    <button :class="className" v-on:click="clickEvent(goTo)">
+      <slot></slot>
+    </button>
+  </div>
 </template>
 
 <script>
