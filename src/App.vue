@@ -45,6 +45,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Abel&display=swap');
 @import './assets/css/vars';
 
 html {
@@ -58,7 +59,7 @@ body {
   background: -moz-linear-gradient(top,  #3532b7 0%, #2c3568 100%);
   background: -webkit-linear-gradient(top,  #3532b7 0%,#2c3568 100%);
   background: linear-gradient(to bottom,  #3532b7 0%,#2c3568 100%);
-  font-family: var(--questions-font);
+  font-family: var(--main-font);
   font-size: var(--font-size);
   color: var(--white);
   margin: 0;
