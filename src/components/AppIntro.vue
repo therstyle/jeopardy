@@ -1,6 +1,7 @@
 <template>
   <section class="intro">
     <div class="intro-content">
+      <img src="images/logo.svg">
       <app-button className="primary" goTo="players">Start Game</app-button>
     </div>
     
@@ -33,6 +34,10 @@ export default {
 
 .intro-content {
   text-align: center;
+
+  img {
+    margin-bottom: 3.2rem;
+  }
 }
 
 .video-bg {
