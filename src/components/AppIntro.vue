@@ -33,7 +33,8 @@ export default {
   text-align: center;
 
   img {
-    margin-bottom: 3.2rem;
+    margin: 0 auto 3.2rem;
+    display: block;
   }
 }
 </style>
