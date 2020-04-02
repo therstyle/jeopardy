@@ -48,6 +48,22 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Abel&display=swap');
 @import './assets/css/vars';
 
+@font-face { //categories & dollar amounts
+    font-family: 'Swiss911 XCm BT';
+    src: url('assets/fonts/Swiss911BT-ExtraCompressed.woff2') format('woff2'),
+        url('assets/fonts/Swiss911BT-ExtraCompressed.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face { //questions
+  font-family: 'ITC Korinna';
+  src: url('assets/fonts/Korinna-Regular.woff2') format('woff2'),
+      url('assets/fonts/Korinna-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -70,20 +86,8 @@ body {
   min-height: 100vh;
 }
 
-@font-face { //categories & dollar amounts
-    font-family: 'Swiss911 XCm BT';
-    src: url('assets/fonts/Swiss911BT-ExtraCompressed.woff2') format('woff2'),
-        url('assets/fonts/Swiss911BT-ExtraCompressed.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face { //questions
-  font-family: 'ITC Korinna';
-  src: url('assets/fonts/Korinna-Regular.woff2') format('woff2'),
-      url('assets/fonts/Korinna-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+section {
+  position: relative;
 }
 
 button {
