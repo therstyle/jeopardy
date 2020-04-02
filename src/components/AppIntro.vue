@@ -62,7 +62,7 @@ export default {
     width: 100%;
     height: 100vh;
     object-fit: fill;
-    opacity: .7;
+    opacity: .5;
   }
 }
 </style>
