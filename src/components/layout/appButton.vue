@@ -91,7 +91,6 @@ button {
 
 button.primary {
   font-size: 1.8rem;
-  text-transform: uppercase;
   border-color: var(--white);
 
   &:before,

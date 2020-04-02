@@ -43,3 +43,17 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.player {
+  text-align: left;
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+  }
+}
+</style>

@@ -1,28 +1,34 @@
 <template>
   <section class="players">
-    <h1>Add Players</h1>
+    <div class="container">
+      <h1>Add Players</h1>
 
-    <article v-if="round !== 1">
-      <h2>After The Round {{ leader }} Is In The Lead!</h2>
-    </article>
+      <article v-if="round !== 1">
+        <h2>After The Round {{ leader }} Is In The Lead!</h2>
+      </article>
 
-    <form v-if="round !== 3" v-on:submit.prevent="addPlayer">
-      <input type="text" v-model="playerName" placeholder="Player Name" />
-      <button>Add Player</button>
+      <form class="add-player" v-if="round !== 3" v-on:submit.prevent="addPlayer">
+        <div class="horizontal-group">
+          <input type="text" v-model="playerName" placeholder="Enter Player Name" />
+        </div>
 
-      <div v-if="errorPlayerName" class="error">Not a valid name</div>
-      <div v-if="errorPlayerAmount" class="error">Not enough players</div>
-    </form>
+        <div v-if="errorPlayerName" class="error">Not a valid name</div>
+        <div v-if="errorPlayerAmount" class="error">Not enough players</div>
+      </form>
 
-    <player></player>
+      <player></player>
 
-    <app-button v-on:clickEvent="checkPlayers">{{ buttonText }}</app-button>
+      <app-button v-on:clickEvent="checkPlayers" className="primary">{{ buttonText }}</app-button>
+    </div>
+
+    <video-background></video-background>
   </section>
 </template>
 
 <script>
 import Player from './AppPlayersPlayer';
 import AppButton from './layout/AppButton.vue';
+import VideoBackground from './layout/VideoBackground.vue';
 
 export default {
   name: 'players',
@@ -66,7 +72,8 @@ export default {
   },
   components: {
     Player,
-    AppButton
+    AppButton,
+    VideoBackground
   },
   methods: {
     addPlayer() {
@@ -122,6 +129,24 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+section.players {
+  text-align: center;
+}
 
+.add-player {
+  margin-bottom: 6.4rem;
+
+  input[type="text"] {
+    font-size: 3.2rem;
+    padding: 2rem;
+    outline: none;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.33);
+    transition: 0.2s all ease-in-out;
+
+    &:hover {
+      box-shadow: 0 30px 30px rgba(0, 0, 0, 0.33);
+    }
+  }
+}
 </style>
