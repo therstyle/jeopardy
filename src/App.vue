@@ -86,12 +86,62 @@ body {
   min-height: 100vh;
 }
 
-section {
-  position: relative;
+main {
+  > section {
+    position: relative;
+    padding: 3.2rem;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 6.4rem;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: auto;
+}
+
+form {
+  .horizontal-group {
+    display: flex;
+
+    > input {
+      flex: 1;
+    }
+  }
 }
 
 button {
   color: var(--white);
   background: none;
+  text-transform: uppercase;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+input {
+  font-family: var(--main-font);
 }
 </style>
