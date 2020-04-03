@@ -114,6 +114,7 @@ h6 {
 
 h1 {
   font-size: 6.4rem;
+  line-height: 1;
 }
 
 .container {

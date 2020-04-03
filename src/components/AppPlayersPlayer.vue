@@ -31,7 +31,8 @@ export default {
 <style lang="scss">
 .player-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 3rem;
   padding: 0;
   margin: 0 auto 6.4rem;
 
