@@ -2,18 +2,19 @@
   <li class="player">
     <input class="player-name" v-model="player.name" :disabled="!editing">
     <ul class="stats">
-      <li>Score: <input type="number" v-model="player.score" :disabled="!editing"></li>
-      <li>Correct: {{ player.correct }}</li>
-      <li>Wrong: {{ player.wrong }}</li>
-      <li>Accuracy {{ player.accuracy }}%</li>
+      <li><span>Score:</span> <input type="number" v-model="player.score" :disabled="!editing"></li>
+      <li><span>Correct:</span> {{ player.correct }}</li>
+      <li><span>Wrong:</span> {{ player.wrong }}</li>
+      <li><span>Accuracy</span> {{ player.accuracy }}%</li>
     </ul>
     
     <div class="icon-wrap">
-      <button class="icon" v-if="round !== 3" v-on:click="toggleEditing" :title="editMessage">
-        <span>{{ editMessage }}</span>
+      <button class="icon button-edit" v-if="round !== 3" v-on:click="toggleEditing" :title="editMessage">
+        <img v-if="!editing" src="images/edit.svg">
+        <img v-else src="images/save.svg">
       </button>
 
-      <button class="icon" v-if="round !== 3" v-on:click="removePlayer(player.name)" title="Delete Player">Delete Player</button>
+      <button class="icon button-delete" v-if="round !== 3" v-on:click="removePlayer(player.name)" title="Delete Player"><img src="images/delete.svg"></button>
     </div>
   </li>
 </template>
@@ -81,6 +82,7 @@ export default {
 
   .player-name {
     font-size: 3.2rem;
+    margin-bottom: 1.6rem;
   }
 
   .icon-wrap {
@@ -91,10 +93,19 @@ export default {
       width: 24px;
       height: 24px;
       overflow: hidden;
+      padding: 4px;
 
       &:not(:last-child) {
         margin-right: .8rem;
       }
+    }
+  }
+
+  .icon {
+    img {
+      max-width: 20px;
+      max-height: 20px;
+      width: 100%;
     }
   }
 
@@ -104,6 +115,11 @@ export default {
     li {
       display: flex;
       font-size: 1.6rem;
+
+      > span {
+        margin-right: .4rem;
+        display: inline-block;
+      }
 
       input {
         flex: 1;

@@ -136,6 +136,7 @@ button {
   color: var(--white);
   background: none;
   text-transform: uppercase;
+  outline: none;
 
   &:hover {
     cursor: pointer;
