@@ -64,6 +64,16 @@ export default {
   font-style: normal;
 }
 
+*, *:before, *::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  outline: none;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -117,6 +127,10 @@ h1 {
   line-height: 1;
 }
 
+a {
+  text-decoration: none;
+}
+
 .container {
   max-width: var(--container-width);
   margin: auto;
@@ -159,7 +173,7 @@ button {
     }
   }
 
-  .icon {
+  button.icon {
     display: flex;
     justify-content: center;
     align-items: center;

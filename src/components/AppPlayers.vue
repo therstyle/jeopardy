@@ -1,7 +1,7 @@
 <template>
   <section class="players">
     <div class="container">
-      <h1>Add Players</h1>
+      <h1>Players</h1>
 
       <article v-if="round !== 1">
         <h2>After The Round {{ leader }} Is In The Lead!</h2>
