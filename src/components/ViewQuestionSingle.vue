@@ -3,13 +3,15 @@
     <!-- daily double -->
     <article v-if="question.daily_double">
       <div v-if="!reveal && wager > 0">
-        {{ question.question }}
+        <h1>{{ question.question }}</h1>
 
-        <button v-on:click="revealAnswer">Reveal Answer</button>
+        <div class="button-wrap">
+          <button v-on:click="revealAnswer" class="primary">Reveal Answer</button>
+        </div>
       </div>
     
       <div v-if="reveal">
-        {{question.answer }}
+        <h1>{{question.answer }}</h1>
 
         <button v-on:click="turnComplete">Continue</button>
       </div>
@@ -18,15 +20,19 @@
     <!-- regular questions -->
     <article v-else>
       <div v-if="!reveal">
-        {{ question.question }}
+        <h1>{{ question.question }}</h1>
 
-        <button v-on:click="revealAnswer">Reveal Answer</button>
+        <div class="button-wrap">
+          <button v-on:click="revealAnswer" class="primary">Reveal Answer</button>
+        </div>
       </div>
       
       <div v-if="reveal">
-        {{question.answer }}
+        <h1>{{question.answer }}</h1>
 
-        <button v-on:click="turnComplete">Continue</button>
+        <div class="button-wrap">
+          <button v-on:click="turnComplete" class="primary">Continue</button>
+        </div>
       </div>
     </article>
 
@@ -72,3 +78,37 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.view-question {
+  background: var(--dark-blue);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 0;
+
+  > article {
+    flex: 1;
+    font-family: var(--questions-font);
+    text-transform: uppercase;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3.2rem;
+
+    h1 {
+      font-size: 4vw;
+      text-shadow: 0.3vw 0.3vw 0 #000;
+    }
+  }
+}
+
+.control-panel {
+  background: #000;
+  padding: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+</style>
