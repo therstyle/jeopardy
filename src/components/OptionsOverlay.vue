@@ -1,7 +1,14 @@
 <template>
   <div class="options">
-    <button v-on:click="toggleMute">Sound</button>
-    <button v-on:click="togglePause">Pause</button>
+    <div class="icon-wrap">
+      <div class="button-wrap">
+        <button v-on:click="togglePause">Pause</button>
+      </div>
+      
+      <div class="button-wrap">
+        <button v-on:click="toggleMute">Sound</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -20,3 +27,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.options {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+</style>
