@@ -9,12 +9,16 @@
     </ul>
     
     <div class="icon-wrap">
-      <button class="icon button-edit" v-if="round !== 3" v-on:click="toggleEditing" :title="editMessage">
-        <img v-if="!editing" src="images/edit.svg">
-        <img v-else src="images/save.svg">
-      </button>
+      <div class="button-wrap button-edit">
+        <button class="icon primary" v-if="round !== 3" v-on:click="toggleEditing" :title="editMessage">
+          <img v-if="!editing" src="images/edit.svg">
+          <img v-else src="images/save.svg">
+        </button>
+      </div>
 
-      <button class="icon button-delete" v-if="round !== 3" v-on:click="removePlayer(player.name)" title="Delete Player"><img src="images/delete.svg"></button>
+      <div class="button-wrap button-delete">
+        <button class="icon primary" v-if="round !== 3" v-on:click="removePlayer(player.name)" title="Delete Player"><img src="images/delete.svg"></button>
+      </div>
     </div>
   </li>
 </template>
@@ -88,24 +92,47 @@ export default {
   .icon-wrap {
     display: flex;
 
-    > button {
+    > *:not(:last-child) {
+      margin-right: .8rem;
+    }
+
+    button {
       min-width: 0;
       width: 24px;
       height: 24px;
       overflow: hidden;
       padding: 4px;
-
-      &:not(:last-child) {
-        margin-right: .8rem;
-      }
     }
   }
 
   .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-color: transparent;
+    
     img {
       max-width: 20px;
       max-height: 20px;
       width: 100%;
+    }
+  }
+
+  .button-delete {
+    &:before,
+    &:after,
+    button:before,
+    button:after {
+      background: var(--red);
+    }
+  }
+
+  .button-edit {
+    &:before,
+    &:after,
+    button:before,
+    button:after {
+      background: var(--green);
     }
   }
 
