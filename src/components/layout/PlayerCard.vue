@@ -89,53 +89,6 @@ export default {
     margin-bottom: 1.6rem;
   }
 
-  .icon-wrap {
-    display: flex;
-
-    > *:not(:last-child) {
-      margin-right: .8rem;
-    }
-
-    button {
-      min-width: 0;
-      width: 24px;
-      height: 24px;
-      overflow: hidden;
-      padding: 4px;
-    }
-  }
-
-  .icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-color: transparent;
-    
-    img {
-      max-width: 20px;
-      max-height: 20px;
-      width: 100%;
-    }
-  }
-
-  .button-delete {
-    &:before,
-    &:after,
-    button:before,
-    button:after {
-      background: var(--red);
-    }
-  }
-
-  .button-edit {
-    &:before,
-    &:after,
-    button:before,
-    button:after {
-      background: var(--green);
-    }
-  }
-
   .stats {
     margin-bottom: 1.6rem;
 
