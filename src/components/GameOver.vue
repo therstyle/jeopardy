@@ -13,7 +13,7 @@
       <!-- the rest of the field -->
       <template v-if="players.length > 2">
         <h3>Player Standings</h3>
-        <ul class="players">
+        <ul class="players player-list">
           <player-card v-for="(player, index) in players" :key="index"
           :player="player"
           ></player-card>
@@ -61,5 +61,23 @@ export default {
 <style lang="scss">
 .game-over {
   text-align: center;
+}
+
+.player-list.winners-circle {
+  grid-template-columns: repeat(3, 1fr);
+
+  > li {
+    &:nth-child(1) {
+      border-color: hsla(49, 94%, 53%, 0.7);
+    }
+
+    &:nth-child(2) {
+      border-color: hsla(255, 100%, 100%, 0.7);
+    }
+
+    &:nth-child(3) {
+      border-color: rgba(136, 91, 7, 0.7);
+    }
+  }
 }
 </style>
