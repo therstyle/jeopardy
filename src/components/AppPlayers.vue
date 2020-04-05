@@ -108,6 +108,7 @@ export default {
       const players = this.$store.getters.getPlayers;
       if (players.length > 0) {
         this.errorPlayerAmount = false;
+        this.errorPlayerName = false;
 
         if (this.round === 3 && !this.paused) {
           const questions = [...this.$store.getters.getQuestions];
