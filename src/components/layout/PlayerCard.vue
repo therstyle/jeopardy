@@ -9,15 +9,15 @@
     </ul>
     
     <div class="icon-wrap">
+      <div class="button-wrap button-delete">
+        <button class="icon primary" v-if="round !== 3" v-on:click="removePlayer(player.name)" title="Delete Player"><img src="images/delete.svg"></button>
+      </div>
+
       <div class="button-wrap button-edit">
         <button class="icon primary" v-if="round !== 3" v-on:click="toggleEditing" :title="editMessage">
           <img v-if="!editing" src="images/edit.svg">
           <img v-else src="images/save.svg">
         </button>
-      </div>
-
-      <div class="button-wrap button-delete">
-        <button class="icon primary" v-if="round !== 3" v-on:click="removePlayer(player.name)" title="Delete Player"><img src="images/delete.svg"></button>
       </div>
     </div>
   </li>
