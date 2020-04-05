@@ -97,6 +97,7 @@ export default {
 
         this.$store.dispatch('addPlayer', playerInfo);
         this.errorPlayerName = false;
+        this.errorPlayerAmount = false;
         this.playerName = '';
       }
       else {
@@ -148,5 +149,12 @@ section.players {
       box-shadow: 0 30px 30px rgba(0, 0, 0, 0.33);
     }
   }
+}
+
+.error {
+  margin-top: 1.6rem;
+  text-align: right;
+  color: var(--red);
+  font-weight: bold;
 }
 </style>
