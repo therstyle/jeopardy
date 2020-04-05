@@ -1,5 +1,7 @@
 <template>
   <section class="view-question" :class="{ 'daily-double' : question.daily_double, 'no-wager' : !wager }">
+    <Options-Overlay></Options-Overlay>
+
     <!-- daily double -->
     <article v-if="question.daily_double">
       <div v-if="!reveal && wager > 0">
@@ -42,11 +44,13 @@
 
 <script>
 import ControlPanel from './ControlPanel.vue';
+import OptionsOverlay from './OptionsOverlay.vue';
 
 export default {
   name: 'question-single',
   components: {
-    'control-panel': ControlPanel
+    'control-panel': ControlPanel,
+    OptionsOverlay
   },
   data() {
     return {
