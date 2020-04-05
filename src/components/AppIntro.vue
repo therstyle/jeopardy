@@ -1,23 +1,28 @@
 <template>
   <section class="intro">
     <div class="intro-content">
+      <img src="images/logo.svg">
       <app-button className="primary" goTo="players">Start Game</app-button>
     </div>
+    
+    <video-background></video-background>
   </section>
 </template>
 
 <script>
 import AppButton from './layout/AppButton.vue';
+import VideoBackground from './layout/VideoBackground.vue';
 
 export default {
   name: 'intro',
   components: {
-    AppButton
+    AppButton,
+    VideoBackground
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .intro {
   display: flex;
   align-items: center;
@@ -26,5 +31,10 @@ export default {
 
 .intro-content {
   text-align: center;
+
+  img {
+    margin: 0 auto 3.2rem;
+    display: block;
+  }
 }
 </style>

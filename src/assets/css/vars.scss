@@ -1,3 +1,21 @@
 :root {
+  //sizes
   --font-size: 1.6rem;
+  --container-width: 1140px;
+
+  //fonts
+  --main-font: 'Abel', sans-serif;
+  --price-font: 'Swiss911 XCm BT';
+  --questions-font: 'ITC Korinna';
+
+  //colors
+  --green: hsl(118, 79%, 53%);
+  --red: hsl(0, 77%, 53%);
+  --timer-bg:	hsl(360, 71%, 50%);
+  --blue: hsl(249, 100%, 11%);
+  --dark-blue: 	hsl(240, 95%, 31%);
+  --dark-blue-alt: 	hsl(240, 95%, 46%);
+  --dark-yellow: 	hsl(30, 84%, 63%);
+  --purple: hsl(253, 100%, 63%);
+  --white: hsl(0, 0%, 100%);
 }

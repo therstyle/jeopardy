@@ -2,15 +2,23 @@
   <section class="view-question final-jeopardy">
     <article>
       <div v-if="!wagersSubmitted && !reveal">
-        {{ question.category }} <button v-on:click="viewQuestion">Continue</button>
+        <h1>{{ question.category }}</h1>
+        
+        <div class="button-wrap">
+          <button class="primary" v-on:click="viewQuestion">Continue</button>
+        </div>
       </div>
 
       <div v-if="wagersSubmitted && !reveal">
-        {{ question.question }} <button v-on:click="viewAnswer">Continue</button>
+        <h1>{{ question.question }} </h1>
+        
+        <button class="primary" v-on:click="viewAnswer">Continue</button>
       </div>
 
       <div v-if="wagersSubmitted && reveal">
-        {{ question.answer }} <app-button goTo="game-over">Show Results</app-button>
+        <h1>{{ question.answer }}</h1>
+        
+        <app-button className="primary" goTo="game-over" v-on:clickEvent="resetValues">Show Results</app-button>
       </div>
     </article>
 
@@ -46,6 +54,11 @@ export default {
     },
     viewAnswer() {
       this.reveal = true;
+    },
+    resetValues() {
+      console.log('reset values');
+      this.wagersSubmitted = false;
+      this.reveal = false;
     }
   }
 }

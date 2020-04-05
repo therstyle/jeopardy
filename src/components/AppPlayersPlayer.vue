@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="player-list">
     <player-card
     v-for="(player, index) in getPlayers" :key="index"
     :player="player"
@@ -27,7 +27,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

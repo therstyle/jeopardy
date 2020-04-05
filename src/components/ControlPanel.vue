@@ -1,26 +1,37 @@
 <template>
   <div class="control-panel">
-    <select v-on:change="setCurrentPlayerId">
-      <option :selected="currentPlayerId === 0" value="0">Select Player</option>
-      <option :id="`player-${player.id}`" v-for="(player, index) in players" :key="index" :value="player.id">{{ player.name }} - ${{ player.score }}</option>
-    </select>
+    <div class="form-group">
+      <label>Players</label>
+      <select v-on:change="setCurrentPlayerId">
+        <option :selected="currentPlayerId === 0" value="0">Select Player</option>
+        <option :id="`player-${player.id}`" v-for="(player, index) in players" :key="index" :value="player.id">{{ player.name }} - ${{ player.score }}</option>
+      </select>
+    </div>
 
     <template v-if="question.daily_double || round === 3 && currentPlayerId !== 0">
       <div class="wager">
         <input type="number" v-model.number="wager" step="100" :max="maxWager" v-on:keyup="isWagerValid">
-        Maximum Wager: {{ maxWager }}
+        Max Wager: {{ maxWager }}
       </div>
 
       <div class="set-score">
-        <button :disabled="disableButtons" v-on:click="setScore(-wager)">Remove ${{ wager }}</button>
-        <button :disabled="disableButtons" v-on:click="setScore(wager)">Award ${{ wager }}</button>
+        <div class="button-wrap button-negative">
+          <button class="primary" :disabled="disableButtons" v-on:click="setScore(-wager)">Remove ${{ wager }}</button>
+        </div>
+        <div class="button-wrap button-positive">
+          <button class="primary" :disabled="disableButtons" v-on:click="setScore(wager)">Award ${{ wager }}</button>
+        </div>
       </div>
     </template>
 
     <template v-else>
       <div class="set-score">
-        <button :disabled="disableButtons" v-on:click="setScore(-question.value)">Remove ${{ question.value }}</button>
-        <button :disabled="disableButtons" v-on:click="setScore(question.value)">Award ${{ question.value }}</button>
+        <div class="button-wrap button-negative" :disabled="disableButtons">
+          <button class="primary" :disabled="disableButtons" v-on:click="setScore(-question.value)">Remove ${{ question.value }}</button>
+        </div>
+        <div class="button-wrap button-positive" :disabled="disableButtons">
+          <button class="primary" :disabled="disableButtons" v-on:click="setScore(question.value)">Award ${{ question.value }}</button>
+        </div>
       </div>
     </template>
   </div>
@@ -138,7 +149,7 @@ export default {
     countDown() {
       this.buzzer = setTimeout(function() {
         console.log('times up');
-      }, 1000);
+      }, 10000);
     },
     isWagerValid() {
       if(this.wager > this.maxWager) {
@@ -151,3 +162,27 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.control-panel {
+  background: #000;
+  padding: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  label {
+    display: block;
+  }
+}
+
+.set-score {
+  > *:not(:last-child) {
+    margin-right: 1.6rem;
+  }
+}
+
+button {
+  border-color: var(--white);
+}
+</style>

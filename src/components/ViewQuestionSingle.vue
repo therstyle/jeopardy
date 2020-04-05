@@ -1,34 +1,56 @@
 <template>
-  <section class="view-question" :class="{ 'daily-double' : question.daily_double }">
+  <section class="view-question question-single" :class="{ 'daily-double' : question.daily_double, 'no-wager' : !wager && question.daily_double }">
+    <Options-Overlay></Options-Overlay>
+
     <!-- daily double -->
     <article v-if="question.daily_double">
       <div v-if="!reveal && wager > 0">
-        {{ question.question }}
+        <h1>{{ question.question }}</h1>
 
-        <button v-on:click="revealAnswer">Reveal Answer</button>
+        <div class="button-wrap">
+          <button v-on:click="revealAnswer" class="primary">Reveal Answer</button>
+        </div>
       </div>
     
       <div v-if="reveal">
-        {{question.answer }}
+        <h1>{{question.answer }}</h1>
 
-        <button v-on:click="turnComplete">Continue</button>
+        <div class="button-wrap">
+          <button class="primary" v-on:click="turnComplete">Continue</button>
+        </div>
       </div>
     </article>
 
     <!-- regular questions -->
     <article v-else>
       <div v-if="!reveal">
-        {{ question.question }}
+        <h1>{{ question.question }}</h1>
 
-        <button v-on:click="revealAnswer">Reveal Answer</button>
+        <div class="button-wrap">
+          <button v-on:click="revealAnswer" class="primary">Reveal Answer</button>
+        </div>
       </div>
       
       <div v-if="reveal">
-        {{question.answer }}
+        <h1>{{question.answer }}</h1>
 
-        <button v-on:click="turnComplete">Continue</button>
+        <div class="button-wrap">
+          <button v-on:click="turnComplete" class="primary">Continue</button>
+        </div>
       </div>
     </article>
+
+    <!-- <ul class="timer">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul> -->
 
     <control-panel></control-panel>
   </section>
@@ -36,11 +58,13 @@
 
 <script>
 import ControlPanel from './ControlPanel.vue';
+import OptionsOverlay from './OptionsOverlay.vue';
 
 export default {
   name: 'question-single',
   components: {
-    'control-panel': ControlPanel
+    'control-panel': ControlPanel,
+    OptionsOverlay
   },
   data() {
     return {
@@ -72,3 +96,76 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.view-question {
+  background: var(--dark-blue);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 0;
+
+  &.no-wager {
+    > article {
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.final-jeopardy {
+    > article {
+      &:before {
+        display: none;
+      }
+    }
+  }
+
+  > article {
+    position: relative;
+    background: transparent;
+    flex: 1;
+    font-family: var(--questions-font);
+    text-transform: uppercase;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3.2rem;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: block;
+      opacity: 0;
+      background: url('/images/daily-double.png') top center no-repeat;
+      background-size: cover !important;
+      transition: 0.2s all ease-in-out;
+    }
+
+    h1 {
+      font-size: 4vw;
+      text-shadow: 0.3vw 0.3vw 0 #000;
+    }
+  }
+}
+
+.timer {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  padding: 1.6rem;
+  gap: 1.6rem;
+  margin: 0;
+
+  > li {
+    background: var(--timer-bg);
+    list-style: none;
+    height: 2vw;
+    transition: 0.2s all ease-in-out;
+  }
+}
+</style>
