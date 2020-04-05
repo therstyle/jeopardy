@@ -27,17 +27,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.player-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 3rem;
-  padding: 0;
-  margin: 0 auto 6.4rem;
-
-  > li {
-    list-style: none;
-  }
-}
-</style>

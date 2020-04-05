@@ -1,14 +1,17 @@
 <template>
   <div class="control-panel">
-    <select v-on:change="setCurrentPlayerId">
-      <option :selected="currentPlayerId === 0" value="0">Select Player</option>
-      <option :id="`player-${player.id}`" v-for="(player, index) in players" :key="index" :value="player.id">{{ player.name }} - ${{ player.score }}</option>
-    </select>
+    <div class="form-group">
+      <label>Players</label>
+      <select v-on:change="setCurrentPlayerId">
+        <option :selected="currentPlayerId === 0" value="0">Select Player</option>
+        <option :id="`player-${player.id}`" v-for="(player, index) in players" :key="index" :value="player.id">{{ player.name }} - ${{ player.score }}</option>
+      </select>
+    </div>
 
     <template v-if="question.daily_double || round === 3 && currentPlayerId !== 0">
       <div class="wager">
         <input type="number" v-model.number="wager" step="100" :max="maxWager" v-on:keyup="isWagerValid">
-        Maximum Wager: {{ maxWager }}
+        Max Wager: {{ maxWager }}
       </div>
 
       <div class="set-score">
@@ -167,6 +170,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  label {
+    display: block;
+  }
 }
 
 .set-score {

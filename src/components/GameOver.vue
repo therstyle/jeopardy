@@ -3,7 +3,7 @@
     <h1>Game Over</h1>
     
     <h2>Leaders</h2>
-    <ul class="winners-circle">
+    <ul class="winners-circle players-list">
       <player-card v-for="(leader, index) in leaders" :key="index"
       :player="leader">
       </player-card>
@@ -19,19 +19,23 @@
       </ul>
     </template>
 
-    <app-button v-on:clickEvent="resetGame">Play Again?</app-button>
+    <app-button className="primary" v-on:clickEvent="resetGame">Play Again?</app-button>
+
+    <video-background></video-background>
   </section>
 </template>
 
 <script>
 import AppButton from './layout/AppButton.vue';
 import PlayerCard from './layout/PlayerCard.vue';
+import VideoBackground from './layout/VideoBackground.vue';
 
 export default {
   name: 'game-over',
   components: {
     AppButton,
-    PlayerCard
+    PlayerCard,
+    VideoBackground
   },
   computed: {
     players() { 
@@ -51,3 +55,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.game-over {
+  text-align: center;
+}
+</style>

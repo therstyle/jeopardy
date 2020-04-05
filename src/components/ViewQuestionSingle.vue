@@ -1,5 +1,5 @@
 <template>
-  <section class="view-question" :class="{ 'daily-double' : question.daily_double, 'no-wager' : !wager }">
+  <section class="view-question" :class="{ 'daily-double' : question.daily_double, 'no-wager' : !wager && question.daily_double }">
     <Options-Overlay></Options-Overlay>
 
     <!-- daily double -->
@@ -15,7 +15,9 @@
       <div v-if="reveal">
         <h1>{{question.answer }}</h1>
 
-        <button v-on:click="turnComplete">Continue</button>
+        <div class="button-wrap">
+          <button class="primary" v-on:click="turnComplete">Continue</button>
+        </div>
       </div>
     </article>
 
@@ -37,6 +39,18 @@
         </div>
       </div>
     </article>
+
+    <!-- <ul class="timer">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul> -->
 
     <control-panel></control-panel>
   </section>
@@ -91,7 +105,15 @@ export default {
   height: 100vh;
   padding: 0;
 
+  &.no-wager {
+    > article {
+      background: url('/images/daily-double.png') top center no-repeat;
+      background-size: cover !important;
+    }
+  }
+
   > article {
+    background: transparent;
     flex: 1;
     font-family: var(--questions-font);
     text-transform: uppercase;
@@ -109,12 +131,18 @@ export default {
   }
 }
 
-.no-wager {
-  > article {
-    background-image: url('/images/daily-double.png');
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.timer {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  padding: 1.6rem;
+  gap: 1.6rem;
+  margin: 0;
+
+  > li {
+    background: var(--timer-bg);
+    list-style: none;
+    height: 2vw;
+    transition: 0.2s all ease-in-out;
   }
 }
 </style>
