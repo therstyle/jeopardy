@@ -60,7 +60,7 @@
   "answer": "The Answer",
   "category": "Category 1",
   "value": 400,
-  "daily_double": null
+  "daily_double": true
   },
   {
   "id": 8,
@@ -330,7 +330,7 @@
   "answer": "The Answer",
   "category": "Category 1",
   "value": 800,
-  "daily_double": null
+  "daily_double": true
   },
   {
   "id": 38,
@@ -339,7 +339,7 @@
   "answer": "The Answer",
   "category": "Category 2",
   "value": 800,
-  "daily_double": null
+  "daily_double": true
   },
   {
   "id": 39,

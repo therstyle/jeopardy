@@ -1,5 +1,5 @@
 <template>
-  <section class="view-question" :class="{ 'daily-double' : question.daily_double }">
+  <section class="view-question" :class="{ 'daily-double' : question.daily_double, 'no-wager' : !wager }">
     <!-- daily double -->
     <article v-if="question.daily_double">
       <div v-if="!reveal && wager > 0">
@@ -96,6 +96,7 @@ export default {
     justify-content: center;
     align-items: center;
     padding: 3.2rem;
+    transition: 0.2s all ease-in-out;
 
     h1 {
       font-size: 4vw;
@@ -104,11 +105,12 @@ export default {
   }
 }
 
-.control-panel {
-  background: #000;
-  padding: 3.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.no-wager {
+  > article {
+    background-image: url('/images/daily-double.png');
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
 </style>

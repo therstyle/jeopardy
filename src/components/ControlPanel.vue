@@ -161,6 +161,14 @@ export default {
 </script>
 
 <style lang="scss">
+.control-panel {
+  background: #000;
+  padding: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .set-score {
   > *:not(:last-child) {
     margin-right: 1.6rem;
