@@ -34,6 +34,29 @@ export default {
   position: relative;
   display: inline-block;
 
+  &[disabled="disabled"] {
+    opacity: .5;
+
+    &:hover {
+      cursor: not-allowed;
+    }
+
+    &:before,
+    &:after {
+      display: none;
+    }
+
+    button {
+      pointer-events: none;
+      border-color: gray;
+
+      &:before,
+      &:after {
+        display: none;
+      }
+    }
+  }
+
   &:before,
   &:after {
     content: '';

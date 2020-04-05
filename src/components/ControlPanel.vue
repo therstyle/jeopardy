@@ -12,15 +12,23 @@
       </div>
 
       <div class="set-score">
-        <button :disabled="disableButtons" v-on:click="setScore(-wager)">Remove ${{ wager }}</button>
-        <button :disabled="disableButtons" v-on:click="setScore(wager)">Award ${{ wager }}</button>
+        <div class="button-wrap button-negative">
+          <button class="primary" :disabled="disableButtons" v-on:click="setScore(-wager)">Remove ${{ wager }}</button>
+        </div>
+        <div class="button-wrap button-positive">
+          <button class="primary" :disabled="disableButtons" v-on:click="setScore(wager)">Award ${{ wager }}</button>
+        </div>
       </div>
     </template>
 
     <template v-else>
       <div class="set-score">
-        <button :disabled="disableButtons" v-on:click="setScore(-question.value)">Remove ${{ question.value }}</button>
-        <button :disabled="disableButtons" v-on:click="setScore(question.value)">Award ${{ question.value }}</button>
+        <div class="button-wrap button-negative" :disabled="disableButtons">
+          <button class="primary" :disabled="disableButtons" v-on:click="setScore(-question.value)">Remove ${{ question.value }}</button>
+        </div>
+        <div class="button-wrap button-positive" :disabled="disableButtons">
+          <button class="primary" :disabled="disableButtons" v-on:click="setScore(question.value)">Award ${{ question.value }}</button>
+        </div>
       </div>
     </template>
   </div>
@@ -151,3 +159,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.set-score {
+  > *:not(:last-child) {
+    margin-right: 1.6rem;
+  }
+}
+
+button {
+  border-color: var(--white);
+}
+</style>

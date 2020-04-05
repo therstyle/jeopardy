@@ -186,7 +186,8 @@ button {
     }
   }
 
-  .button-delete {
+  .button-delete,
+  .button-negative {
     &:before,
     &:after,
     button:before,
@@ -195,7 +196,8 @@ button {
     }
   }
 
-  .button-edit {
+  .button-edit,
+  .button-positive {
     &:before,
     &:after,
     button:before,
