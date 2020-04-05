@@ -18,7 +18,7 @@
       <div v-if="wagersSubmitted && reveal">
         <h1>{{ question.answer }}</h1>
         
-        <app-button className="primary" goTo="game-over">Show Results</app-button>
+        <app-button className="primary" goTo="game-over" v-on:clickEvent="resetValues">Show Results</app-button>
       </div>
     </article>
 
@@ -54,6 +54,11 @@ export default {
     },
     viewAnswer() {
       this.reveal = true;
+    },
+    resetValues() {
+      console.log('reset values');
+      this.wagersSubmitted = false;
+      this.reveal = false;
     }
   }
 }
