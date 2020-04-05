@@ -1,5 +1,5 @@
 <template>
-  <section class="view-question" :class="{ 'daily-double' : question.daily_double, 'no-wager' : !wager && question.daily_double }">
+  <section class="view-question question-single" :class="{ 'daily-double' : question.daily_double, 'no-wager' : !wager && question.daily_double }">
     <Options-Overlay></Options-Overlay>
 
     <!-- daily double -->
@@ -107,12 +107,32 @@ export default {
 
   &.no-wager {
     > article {
-      background: url('/images/daily-double.png') top center no-repeat;
-      background-size: cover !important;
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &:not(.final-jeopardy) {
+    > article {
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: block;
+        opacity: 0;
+        background: url('/images/daily-double.png') top center no-repeat;
+        background-size: cover !important;
+        transition: 0.2s all ease-in-out;
+      }
     }
   }
 
   > article {
+    position: relative;
     background: transparent;
     flex: 1;
     font-family: var(--questions-font);
@@ -122,7 +142,6 @@ export default {
     justify-content: center;
     align-items: center;
     padding: 3.2rem;
-    transition: 0.2s all ease-in-out;
 
     h1 {
       font-size: 4vw;

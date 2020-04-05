@@ -1,25 +1,27 @@
 <template>
   <section class="game-over">
-    <h1>Game Over</h1>
+    <div class="container">
+      <h1>Game Over</h1>
     
-    <h2>Leaders</h2>
-    <ul class="winners-circle players-list">
-      <player-card v-for="(leader, index) in leaders" :key="index"
-      :player="leader">
-      </player-card>
-    </ul>
-
-    <!-- the rest of the field -->
-    <template v-if="players.length > 2">
-      <h3>Player Standings</h3>
-      <ul class="players">
-        <player-card v-for="(player, index) in players" :key="index"
-        :player="player"
-        ></player-card>
+      <h2>Leaders</h2>
+      <ul class="winners-circle player-list">
+        <player-card v-for="(leader, index) in leaders" :key="index"
+        :player="leader">
+        </player-card>
       </ul>
-    </template>
 
-    <app-button className="primary" v-on:clickEvent="resetGame">Play Again?</app-button>
+      <!-- the rest of the field -->
+      <template v-if="players.length > 2">
+        <h3>Player Standings</h3>
+        <ul class="players">
+          <player-card v-for="(player, index) in players" :key="index"
+          :player="player"
+          ></player-card>
+        </ul>
+      </template>
+
+      <app-button className="primary" v-on:clickEvent="resetGame">Play Again?</app-button>
+    </div>
 
     <video-background></video-background>
   </section>
