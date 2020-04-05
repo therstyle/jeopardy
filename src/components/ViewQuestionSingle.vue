@@ -113,20 +113,10 @@ export default {
     }
   }
 
-  &:not(.final-jeopardy) {
+  &.final-jeopardy {
     > article {
       &:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        display: block;
-        opacity: 0;
-        background: url('/images/daily-double.png') top center no-repeat;
-        background-size: cover !important;
-        transition: 0.2s all ease-in-out;
+        display: none;
       }
     }
   }
@@ -142,6 +132,20 @@ export default {
     justify-content: center;
     align-items: center;
     padding: 3.2rem;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: block;
+      opacity: 0;
+      background: url('/images/daily-double.png') top center no-repeat;
+      background-size: cover !important;
+      transition: 0.2s all ease-in-out;
+    }
 
     h1 {
       font-size: 4vw;
