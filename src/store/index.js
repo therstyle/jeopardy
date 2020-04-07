@@ -18,7 +18,11 @@ export default new Vuex.Store({
     paused: false,
     sound: true,
     sounds: {
-      intro: new Audio('sound/intro.mp3')
+      intro: new Audio('sound/intro.mp3'),
+      begin: new Audio('sound/begin.mp3'),
+      dailyDouble: new Audio('sound/daily-double.mp3'),
+      finalJeopardy: new Audio('sound/final-jeopardy.mp3'),
+      endQuestion: new Audio('sound/end-question.mp3')
     }
   },
   getters: getters,
