@@ -36,6 +36,7 @@ export default {
   position: absolute;
   top: 0.8rem;
   right: 0.8rem;
+  z-index: 99;
 
   button {
     border-radius: 100%;
