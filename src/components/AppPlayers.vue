@@ -60,6 +60,9 @@ export default {
       }
 
       return message;
+    },
+    sounds() {
+      return this.$store.getters.getSounds;
     }
   },
   data() {
@@ -76,6 +79,12 @@ export default {
     VideoBackground
   },
   methods: {
+    playerSound() {
+      this.sounds.begin.play();
+    },
+    stopSound() {
+      this.$store.dispatch('killAllSounds');
+    },
     addPlayer() {
       console.log('add player');
 
@@ -96,6 +105,7 @@ export default {
         console.log(playerInfo);
 
         this.$store.dispatch('addPlayer', playerInfo);
+        this.playerSound();
         this.errorPlayerName = false;
         this.errorPlayerAmount = false;
         this.playerName = '';
@@ -120,6 +130,7 @@ export default {
         }
 
         else {
+          this.stopSound();
           this.$store.dispatch('setCurrentComponent', 'game-board');
         }
       }
