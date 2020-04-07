@@ -16,7 +16,10 @@ export default new Vuex.Store({
     players: [],
     currentPlayerId: 0,
     paused: false,
-    sound: true
+    sound: true,
+    sounds: {
+      intro: new Audio('sound/intro.mp3')
+    }
   },
   getters: getters,
   mutations: mutations,

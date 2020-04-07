@@ -85,6 +85,10 @@ const getSound = (state) => {
   return state.sound;
 };
 
+const getSounds = (state) => {
+  return state.sounds;
+}
+
 export {
   getCurrentComponent,
   getPlayers,
@@ -98,5 +102,6 @@ export {
   getCurrentPlayerWager,
   getRound,
   getPaused,
-  getSound
+  getSound,
+  getSounds
 }
