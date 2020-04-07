@@ -15,10 +15,10 @@
       </div>
 
       <div class="set-score">
-        <div class="button-wrap button-negative">
+        <div class="button-wrap button-negative" :disabled="disableButtons">
           <button class="primary" :disabled="disableButtons" v-on:click="setScore(-wager)">Remove ${{ wager }}</button>
         </div>
-        <div class="button-wrap button-positive">
+        <div class="button-wrap button-positive" :disabled="disableButtons">
           <button class="primary" :disabled="disableButtons" v-on:click="setScore(wager)">Award ${{ wager }}</button>
         </div>
       </div>
