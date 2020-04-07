@@ -171,6 +171,17 @@ const setPaused = function (context) {
   context.commit('setPaused', toggle);
 };
 
+const playSound = function (context, payload) {
+  if (this.state.sound) {
+    console.log(`playing ${payload} sound`);
+    this.state['sounds'][payload].play();
+  }
+
+  else {
+    console.log('sound is disabled');
+  }
+}
+
 const killAllSounds = function() {
   console.log('stop all sounds');
 
@@ -197,5 +208,6 @@ export {
   resetGame,
   setSound,
   setPaused,
+  playSound,
   killAllSounds
 }

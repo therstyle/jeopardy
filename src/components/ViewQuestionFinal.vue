@@ -46,9 +46,6 @@ export default {
     question() {
       const questions = this.$store.getters.getQuestions;
       return questions[0];
-    },
-    sounds() {
-      return this.$store.getters.getSounds;
     }
   },
   methods: {
@@ -66,7 +63,7 @@ export default {
       this.reveal = false;
     },
     finalSound() {
-      this.sounds.finalJeopardy.play();
+      this.$store.dispatch('playSound', 'finalJeopardy');
     }
   }
 }

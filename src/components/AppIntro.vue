@@ -20,14 +20,10 @@ export default {
     VideoBackground
   },
   computed: {
-    sounds() {
-      return this.$store.getters.getSounds;
-    }
   },
   methods: {
     introSound() {
-      console.log('play intro song');
-      this.sounds.intro.play();
+      this.$store.dispatch('playSound', 'intro');
     }
   }
 }

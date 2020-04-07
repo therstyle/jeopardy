@@ -30,9 +30,6 @@ export default {
     },
     getQuestions() {
       return this.$store.getters.getQuestions;
-    },
-    sounds() {
-      return this.$store.getters.getSounds;
     }
   },
   methods: {
@@ -42,7 +39,7 @@ export default {
       });
 
       if (question.daily_double) {
-        this.sounds.dailyDouble.play();
+        this.$store.dispatch('playSound', 'dailyDouble');
       }
 
       this.$store.dispatch('setCurrentQuestionId', question.id);

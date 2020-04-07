@@ -60,9 +60,6 @@ export default {
       }
 
       return message;
-    },
-    sounds() {
-      return this.$store.getters.getSounds;
     }
   },
   data() {
@@ -80,10 +77,10 @@ export default {
   },
   methods: {
     playerSound() {
-      this.sounds.begin.play();
+      this.$store.dispatch('playSound', 'begin');
     },
     roundIntroSound() {
-      this.sounds.roundIntro.play();
+      this.$store.dispatch('playSound', 'roundIntro');
     },
     stopSound() {
       this.$store.dispatch('killAllSounds');
