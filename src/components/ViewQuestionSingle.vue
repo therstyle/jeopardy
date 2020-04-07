@@ -77,7 +77,7 @@ export default {
     },
     question() {
       return this.$store.getters.getCurrentQuestion;
-    },
+    }
   },
   methods: {
     turnComplete() {
