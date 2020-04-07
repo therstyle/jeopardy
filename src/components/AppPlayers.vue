@@ -82,6 +82,9 @@ export default {
     playerSound() {
       this.sounds.begin.play();
     },
+    roundIntroSound() {
+      this.sounds.roundIntro.play();
+    },
     stopSound() {
       this.$store.dispatch('killAllSounds');
     },
@@ -131,6 +134,7 @@ export default {
 
         else {
           this.stopSound();
+          this.roundIntroSound();
           this.$store.dispatch('setCurrentComponent', 'game-board');
         }
       }

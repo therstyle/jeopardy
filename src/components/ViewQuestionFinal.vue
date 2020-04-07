@@ -46,19 +46,27 @@ export default {
     question() {
       const questions = this.$store.getters.getQuestions;
       return questions[0];
+    },
+    sounds() {
+      return this.$store.getters.getSounds;
     }
   },
   methods: {
     viewQuestion() {
       this.wagersSubmitted = true;
+      this.finalSound();
     },
     viewAnswer() {
       this.reveal = true;
+      this.$store.dispatch('killAllSounds');
     },
     resetValues() {
       console.log('reset values');
       this.wagersSubmitted = false;
       this.reveal = false;
+    },
+    finalSound() {
+      this.sounds.finalJeopardy.play();
     }
   }
 }
