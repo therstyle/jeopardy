@@ -2,7 +2,7 @@
   <section class="intro">
     <div class="intro-content">
       <img src="images/logo.svg">
-      <app-button className="primary" goTo="players">Start Game</app-button>
+      <app-button className="primary" goTo="players" v-on:clickEvent="introSound">Start Game</app-button>
     </div>
     
     <video-background></video-background>
@@ -18,6 +18,13 @@ export default {
   components: {
     AppButton,
     VideoBackground
+  },
+  computed: {
+  },
+  methods: {
+    introSound() {
+      this.$store.dispatch('playSound', 'intro');
+    }
   }
 }
 </script>

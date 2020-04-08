@@ -1,7 +1,7 @@
 <template>
   <div class="options">
     <div class="icon-wrap">
-      <button v-on:click="togglePause"><img src="images/pause.svg"></button>
+      <button v-if="currentComponent !== 'players'" v-on:click="togglePause"><img src="images/pause.svg"></button>
       <button v-on:click="toggleMute">
         <img v-if="sound" src="images/volume.svg">
         <img v-else src="images/mute.svg">
@@ -16,6 +16,9 @@ export default {
   computed: {
     sound() {
       return this.$store.getters.getSound;
+    },
+    currentComponent() {
+      return this.$store.getters.getCurrentComponent;
     }
   },
   methods: {
@@ -25,6 +28,7 @@ export default {
     },
     toggleMute: function() {
       this.$store.dispatch('setSound');
+      this.$store.dispatch('killAllSounds');
       console.log('toggling sound');
     }
   }
@@ -36,6 +40,7 @@ export default {
   position: absolute;
   top: 0.8rem;
   right: 0.8rem;
+  z-index: 99;
 
   button {
     border-radius: 100%;

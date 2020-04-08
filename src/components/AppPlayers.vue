@@ -1,5 +1,6 @@
 <template>
   <section class="players">
+    <options-overlay></options-overlay>
     <div class="container">
       <h1>Players</h1>
 
@@ -28,6 +29,7 @@
 <script>
 import Player from './AppPlayersPlayer';
 import AppButton from './layout/AppButton.vue';
+import OptionsOverlay from './OptionsOverlay.vue';
 import VideoBackground from './layout/VideoBackground.vue';
 
 export default {
@@ -60,6 +62,9 @@ export default {
       }
 
       return message;
+    },
+    lastComponent() {
+      return this.$store.getters.getLastComponent;
     }
   },
   data() {
@@ -73,9 +78,19 @@ export default {
   components: {
     Player,
     AppButton,
+    OptionsOverlay,
     VideoBackground
   },
   methods: {
+    playerSound() {
+      this.$store.dispatch('playSound', 'begin');
+    },
+    roundIntroSound() {
+      this.$store.dispatch('playSound', 'roundIntro');
+    },
+    stopSound() {
+      this.$store.dispatch('killAllSounds');
+    },
     addPlayer() {
       console.log('add player');
 
@@ -96,6 +111,7 @@ export default {
         console.log(playerInfo);
 
         this.$store.dispatch('addPlayer', playerInfo);
+        this.playerSound();
         this.errorPlayerName = false;
         this.errorPlayerAmount = false;
         this.playerName = '';
@@ -119,7 +135,14 @@ export default {
           //debugger;
         }
 
+        else if (this.paused) {
+          this.$store.dispatch('setCurrentComponent', this.lastComponent);
+          this.$store.dispatch('setPaused');
+        }
+
         else {
+          this.stopSound();
+          this.roundIntroSound();
           this.$store.dispatch('setCurrentComponent', 'game-board');
         }
       }

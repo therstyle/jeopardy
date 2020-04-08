@@ -6,7 +6,7 @@
         {{ category }}
       </li>
       <li class="screen question" v-for="(question, index) in getQuestions" :key="`question-${index}`" :class="{ 'answered' : question.answered }">
-        <a href="#" v-on:click.prevent="viewQuestion(question.id)">${{ question.value }}</a>
+        <a href="#" v-on:click.prevent="viewQuestion(question)">${{ question.value }}</a>
       </li>
     </ul>
 
@@ -33,12 +33,16 @@ export default {
     }
   },
   methods: {
-    viewQuestion(id) {
-      const currentQuestion = this.getQuestions.filter( question => {
-        return question.id === id;
+    viewQuestion(question) {
+      const currentQuestion = this.getQuestions.filter( q => {
+        return q.id === question.id;
       });
 
-      this.$store.dispatch('setCurrentQuestionId', id);
+      if (question.daily_double) {
+        this.$store.dispatch('playSound', 'dailyDouble');
+      }
+
+      this.$store.dispatch('setCurrentQuestionId', question.id);
       this.$store.dispatch('setCurrentComponent', 'question-single');
       console.log(currentQuestion);
     }
