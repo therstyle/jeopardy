@@ -2,6 +2,10 @@ const getCurrentComponent = (state) => {
   return state.currentComponent;
 };
 
+const getLastComponent = (state) => {
+  return state.lastComponent;
+}
+
 const getPlayers =  (state) => {
   const players = [...state.players];
   const sortedPlayers = players.sort((a,b) => a.score > b.score ? -1 : 1);
@@ -91,6 +95,7 @@ const getSounds = (state) => {
 
 export {
   getCurrentComponent,
+  getLastComponent,
   getPlayers,
   getPlayersByName,
   getQuestions,
