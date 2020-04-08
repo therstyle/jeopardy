@@ -147,7 +147,9 @@ export default {
       this.isQuestionAnswered();
     },
     countDown() {
+      //this.$emit('initTimer');
       this.buzzer = setTimeout(function() {
+        this.$store.dispatch('playSound', 'endQuestion');
         console.log('times up');
       }, 10000);
     },
