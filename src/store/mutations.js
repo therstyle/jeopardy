@@ -7,6 +7,7 @@ const setCategories = (state, payload) => {
 };
 
 const setCurrentComponent = (state, payload) => {
+  state.lastComponent = state.currentComponent;
   state.currentComponent = payload;
 };
 

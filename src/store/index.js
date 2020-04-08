@@ -9,6 +9,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     round: 1,
+    lastComponent: '',
     currentComponent: 'intro',
     currentQuestionId: 0,
     categories: [],
