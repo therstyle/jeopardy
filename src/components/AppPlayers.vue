@@ -1,5 +1,6 @@
 <template>
   <section class="players">
+    <options-overlay></options-overlay>
     <div class="container">
       <h1>Players</h1>
 
@@ -28,6 +29,7 @@
 <script>
 import Player from './AppPlayersPlayer';
 import AppButton from './layout/AppButton.vue';
+import OptionsOverlay from './OptionsOverlay.vue';
 import VideoBackground from './layout/VideoBackground.vue';
 
 export default {
@@ -60,6 +62,9 @@ export default {
       }
 
       return message;
+    },
+    lastComponent() {
+      return this.$store.getters.getLastComponent;
     }
   },
   data() {
@@ -73,6 +78,7 @@ export default {
   components: {
     Player,
     AppButton,
+    OptionsOverlay,
     VideoBackground
   },
   methods: {
@@ -127,6 +133,12 @@ export default {
           this.$store.dispatch('setCurrentComponent', 'final-jeopardy');
           this.$store.dispatch('setCurrentQuestionId', questionId);
           //debugger;
+        }
+
+        else if (this.paused) {
+          console.log(this.lastComponent);
+          this.$store.dispatch('setCurrentComponent', this.lastComponent);
+          this.$store.dispatch('setPaused');
         }
 
         else {
