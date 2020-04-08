@@ -136,7 +136,6 @@ export default {
         }
 
         else if (this.paused) {
-          console.log(this.lastComponent);
           this.$store.dispatch('setCurrentComponent', this.lastComponent);
           this.$store.dispatch('setPaused');
         }
