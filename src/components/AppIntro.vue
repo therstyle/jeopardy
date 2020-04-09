@@ -1,7 +1,7 @@
 <template>
   <section class="intro">
     <div class="intro-content">
-      <img src="images/logo.svg">
+      <img src="images/logo.svg" class="logo">
       <app-button className="primary" goTo="players" v-on:clickEvent="introSound">Start Game</app-button>
     </div>
     
@@ -30,6 +30,21 @@ export default {
 </script>
 
 <style lang="scss">
+@keyframes scale {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 .intro {
   display: flex;
   align-items: center;
@@ -39,9 +54,11 @@ export default {
 .intro-content {
   text-align: center;
 
-  img {
+  .logo {
     margin: 0 auto 3.2rem;
     display: block;
+    animation: scale 1s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    z-index: 2;
   }
 }
 </style>
