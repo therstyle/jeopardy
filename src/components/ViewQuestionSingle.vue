@@ -40,7 +40,7 @@
       </div>
     </article>
 
-    <!-- <ul class="timer">
+    <ul class="timer" :class="{ 'active' : showTimer }">
       <li></li>
       <li></li>
       <li></li>
@@ -50,9 +50,9 @@
       <li></li>
       <li></li>
       <li></li>
-    </ul> -->
+    </ul>
 
-    <control-panel></control-panel>
+    <control-panel v-on:initTimer="initTimer" v-on:cancelTimer="cancelTimer"></control-panel>
   </section>
 </template>
 
@@ -68,7 +68,8 @@ export default {
   },
   data() {
     return {
-      reveal: false
+      reveal: false,
+      showTimer: false
     }
   },
   computed: {
@@ -80,6 +81,14 @@ export default {
     }
   },
   methods: {
+    initTimer() {
+      console.log('init timer animation');
+      this.showTimer = true;
+    },
+    cancelTimer() {
+      console.log('cancel timer animation');
+      this.showTimer = false;
+    },
     turnComplete() {
       console.log('end turn');
       this.reveal = false;
@@ -104,20 +113,30 @@ export default {
   flex-direction: column;
   height: 100vh;
   padding: 0;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    opacity: 0;
+    background: url('/images/daily-double.png') top center no-repeat;
+    background-size: cover !important;
+    transition: 0.2s all ease-in-out;
+  }
 
   &.no-wager {
-    > article {
-      &:before {
-        opacity: 1;
-      }
+   &:before {
+      opacity: 1;
     }
   }
 
   &.final-jeopardy {
-    > article {
-      &:before {
-        display: none;
-      }
+    &:before {
+      display: none;
     }
   }
 
@@ -133,20 +152,6 @@ export default {
     align-items: center;
     padding: 3.2rem;
 
-    &:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      display: block;
-      opacity: 0;
-      background: url('/images/daily-double.png') top center no-repeat;
-      background-size: cover !important;
-      transition: 0.2s all ease-in-out;
-    }
-
     h1 {
       font-size: 4vw;
       text-shadow: 0.3vw 0.3vw 0 #000;
@@ -154,18 +159,59 @@ export default {
   }
 }
 
+@keyframes countdown {
+  0% {
+    background: var(--timer-bg);
+  }
+
+  100% {
+    background: rgba(255, 255, 255, 0.25);
+  }
+}
+
 .timer {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
-  padding: 1.6rem;
+  padding: 3.2rem;
   gap: 1.6rem;
   margin: 0;
+  opacity: 0;
 
   > li {
     background: var(--timer-bg);
     list-style: none;
-    height: 2vw;
+    height: 3vw;
     transition: 0.2s all ease-in-out;
+  }
+
+  &.active {
+    opacity: 1;
+
+    > li {
+      animation: countdown 1s step-end;
+      animation-fill-mode: both;
+    }
+
+    > li {
+      &:nth-child(2),
+      &:nth-child(8) {
+        animation-delay: 1s;
+      }
+
+      &:nth-child(3),
+      &:nth-child(7) {
+        animation-delay: 2s;
+      }
+
+      &:nth-child(4),
+      &:nth-child(6) {
+        animation-delay: 3s;
+      }
+
+      &:nth-child(5) {
+        animation-delay: 4s;
+      }
+    }
   }
 }
 </style>
