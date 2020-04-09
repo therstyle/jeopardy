@@ -9,8 +9,8 @@
     </div>
 
     <template v-if="question.daily_double || round === 3 && currentPlayerId !== 0">
-      <div class="wager">
-        <input type="number" v-model.number="wager" step="100" :max="maxWager" v-on:keyup="isWagerValid">
+      <div class="wager" :disabled="currentPlayerId === 0">
+        <input :disabled="currentPlayerId === 0" type="number" v-model.number="wager" step="100" :max="maxWager" v-on:keyup="isWagerValid">
         Max Wager: {{ maxWager }}
       </div>
 
@@ -110,19 +110,28 @@ export default {
 
       console.log(`checking button status for ${currentPlayer.id}`);
     },
-    setCurrentPlayerId(e) {
+    setCurrentPlayerId(e) {      
+      this.$emit('cancelTimer');
+
       const id = parseInt(e.target.value);
       this.$store.dispatch('setCurrentPlayerId', id);
 
-      const currentPlayerId = this.$store.getters.getCurrentPlayerId;
 
-      this.isQuestionAnswered();
+      const currentPlayerId = this.$store.getters.getCurrentPlayerId;
       
       if (currentPlayerId !== 0) {
-        this.countDown();
+        this.isQuestionAnswered();
+
+        if (!this.question.daily_double) {
+          this.countDown();
+        }
+      }
+      else {
+       this.disableButtons = true; 
       }
     },
     setScore(amount) {
+      this.$emit('cancelTimer');
       clearTimeout(this.buzzer);
 
       const id = this.currentPlayerId;
@@ -147,11 +156,15 @@ export default {
       this.isQuestionAnswered();
     },
     countDown() {
-      //this.$emit('initTimer');
-      this.buzzer = setTimeout(function() {
+      clearTimeout(this.buzzer); //cancel any previous running timer
+
+      this.$emit('initTimer'); // add class to begin timer animation
+
+      this.buzzer = setTimeout(() => {
+        this.$emit('cancelTimer');
         this.$store.dispatch('playSound', 'endQuestion');
         console.log('times up');
-      }, 10000);
+      }, 5000);
     },
     isWagerValid() {
       if(this.wager > this.maxWager) {
@@ -159,6 +172,10 @@ export default {
       }
       else {
         this.disableButtons = false;
+
+        if (this.currentPlayerId !== 0) {
+          this.countDown();
+        }
       }
     }
   }
@@ -172,6 +189,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 99;
 
   label {
     display: block;
@@ -186,5 +204,21 @@ export default {
 
 button {
   border-color: var(--white);
+}
+
+.wager {
+  &[disabled="disabled"] {
+    opacity: 0.25;
+
+    &:hover {
+      cursor: not-allowed;
+    }
+
+    input {
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+  }
 }
 </style>
