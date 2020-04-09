@@ -135,6 +135,7 @@ const setRound = function(context) {
   
   console.log(`the round is... ${this.state.round}`);
   context.commit('setRound', round);
+  context.dispatch('setCategories');
 };
 
 const resetGame = function(context) {

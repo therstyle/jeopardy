@@ -10,19 +10,16 @@
       </li>
     </ul>
 
-    <!--<video-background></video-background>-->
   </section>
 </template>
 
 <script>
 import OptionsOverlay from './OptionsOverlay.vue';
-//import VideoBackground from './layout/VideoBackground.vue';
 
 export default {
   name: 'game-board',
   components: {
-    OptionsOverlay,
-    //VideoBackground
+    OptionsOverlay
   },
   computed: {
     getCategories() {
@@ -73,6 +70,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   border-radius: 4rem;
   background: var(--dark-blue);
   text-transform: uppercase;
@@ -82,7 +80,8 @@ export default {
   transition: 0.2s all ease-in-out;
 
   &.category {
-    font-size: 2vw;
+    font-size: 2.3vw;
+    line-height: 1;
   }
 
   &.question {

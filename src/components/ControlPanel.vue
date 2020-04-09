@@ -122,7 +122,7 @@ export default {
       if (currentPlayerId !== 0) {
         this.isQuestionAnswered();
 
-        if (!this.question.daily_double) {
+        if (!this.question.daily_double && this.round !== 3) {
           this.countDown();
         }
       }
