@@ -47,7 +47,6 @@ export default {
   },
   created() {
     this.getGameData('https://jeopardyquestions.dev.cc/wp-json/jq/v1/game_id');
-    console.log('huh');
   }
 }
 </script>
