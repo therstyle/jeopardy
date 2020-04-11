@@ -6,6 +6,14 @@ const getLastComponent = (state) => {
   return state.lastComponent;
 }
 
+const getId = (state) => {
+  return state.id;
+}
+
+const getError = (state) => {
+  return state.idError;
+}
+
 const getPlayers =  (state) => {
   const players = [...state.players];
   const sortedPlayers = players.sort((a,b) => a.score > b.score ? -1 : 1);
@@ -96,6 +104,8 @@ const getSounds = (state) => {
 export {
   getCurrentComponent,
   getLastComponent,
+  getId,
+  getError,
   getPlayers,
   getPlayersByName,
   getQuestions,

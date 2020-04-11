@@ -133,6 +133,26 @@ form {
       flex: 1;
     }
   }
+
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+
+    > :first-child {
+      margin-right: 1.6rem;
+    }
+  }
+}
+
+.text-input {
+  outline: none;
+  border: none;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.33);
+  transition: 0.2s all ease-in-out;
+
+  &:hover {
+    box-shadow: 0 30px 30px rgba(0, 0, 0, 0.33);
+  }
 }
 
 .player-list {
@@ -209,5 +229,18 @@ button {
 
   input {
     font-family: var(--main-font);
+  }
+
+  .form-group {
+    input[type="radio"] {
+      margin-right: 1rem;
+    }
+  }
+
+  .error {
+    margin-top: 1.6rem;
+    text-align: right;
+    color: var(--red);
+    font-weight: bold;
   }
 </style>

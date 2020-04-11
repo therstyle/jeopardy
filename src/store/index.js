@@ -8,6 +8,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    id: null,
+    idError: false,
     round: 1,
     lastComponent: '',
     currentComponent: 'intro',

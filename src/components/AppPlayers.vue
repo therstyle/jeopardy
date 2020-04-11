@@ -10,7 +10,7 @@
 
       <form class="add-player" v-if="round !== 3" v-on:submit.prevent="addPlayer">
         <div class="horizontal-group">
-          <input type="text" v-model="playerName" placeholder="Enter Player Name" />
+          <input class="text-input" type="text" v-model="playerName" placeholder="Enter Player Name" />
         </div>
 
         <div v-if="errorPlayerName" class="error">Not a valid name</div>
@@ -162,23 +162,9 @@ section.players {
 .add-player {
   margin-bottom: 6.4rem;
 
-  input[type="text"] {
+  input[type="text"].text-input {
     font-size: 3.2rem;
     padding: 2rem;
-    outline: none;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.33);
-    transition: 0.2s all ease-in-out;
-
-    &:hover {
-      box-shadow: 0 30px 30px rgba(0, 0, 0, 0.33);
-    }
   }
-}
-
-.error {
-  margin-top: 1.6rem;
-  text-align: right;
-  color: var(--red);
-  font-weight: bold;
 }
 </style>
