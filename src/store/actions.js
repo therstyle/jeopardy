@@ -1,3 +1,20 @@
+const getGameData = async function(context) {
+  const response = await fetch('https://jeopardyquestions.dev.cc/wp-json/jq/v1/game_id');
+  const data = await response.json();
+  console.log(data.id);
+
+  context.dispatch('loadData', 'https://jeopardyquestions.dev.cc/wp-json/jq/v1/game/' + data.id)
+};
+
+const loadData = async function(context, payload) {
+  const response = await fetch(payload);
+  const data = await response.json();
+  console.log(data);
+
+  context.dispatch('sortQuestions', data);
+  context.dispatch('setCategories');
+};
+
 const setQuestions = (context, payload) => {
   context.commit('setQuestions', payload);
 };
@@ -193,6 +210,8 @@ const killAllSounds = function() {
 };
 
 export {
+  getGameData,
+  loadData,
   setQuestions,
   sortQuestions,
   setCategories,
