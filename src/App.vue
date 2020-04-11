@@ -15,16 +15,6 @@ import QuestionSingle from './components/ViewQuestionSingle';
 import FinalJeopardy from './components/ViewQuestionFinal.vue';
 
 export default {
-  methods: {
-    async loadData(url) {
-      const response = await fetch(url);
-      const data = await response.json();
-      console.log(data);
-
-      this.$store.dispatch('sortQuestions', data);
-      this.$store.dispatch('setCategories');
-    }
-  },
   computed: {
     currentComponent() {
       return this.$store.getters.getCurrentComponent;
@@ -39,7 +29,6 @@ export default {
     'final-jeopardy': FinalJeopardy
   },
   created() {
-    this.loadData('sample.json');
   }
 }
 </script>

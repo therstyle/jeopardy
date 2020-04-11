@@ -2,7 +2,7 @@
   <section class="intro">
     <div class="intro-content">
       <img src="images/logo.svg" class="logo">
-      <app-button className="primary" goTo="players" v-on:clickEvent="introSound">Start Game</app-button>
+      <app-button className="primary" goTo="players" v-on:clickEvent="start">Start Game</app-button>
     </div>
     
     <video-background></video-background>
@@ -22,6 +22,10 @@ export default {
   computed: {
   },
   methods: {
+    start() {
+      this.introSound();
+      this.$store.dispatch('getGameData');
+    },
     introSound() {
       this.$store.dispatch('playSound', 'intro');
     }
