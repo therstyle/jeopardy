@@ -1,19 +1,49 @@
 const getGameData = async function(context) {
   const response = await fetch('https://jeopardyquestions.dev.cc/wp-json/jq/v1/game_id');
   const data = await response.json();
+  let id;
   console.log(data.id);
 
-  context.dispatch('loadData', 'https://jeopardyquestions.dev.cc/wp-json/jq/v1/game/' + data.id)
+  if(this.state.id !== null) {
+    id = this.state.id;
+  }
+  else {
+    id = data.id;
+  }
+
+  context.dispatch('loadData', 'https://jeopardyquestions.dev.cc/wp-json/jq/v1/game/' + id);
 };
 
 const loadData = async function(context, payload) {
-  const response = await fetch(payload);
-  const data = await response.json();
-  console.log(data);
+  try {
+    const response = await fetch(payload);
+    const data = await response.json();
+    console.log(data);
 
-  context.dispatch('sortQuestions', data);
-  context.dispatch('setCategories');
+    if (data.length === 0) {
+      console.log('Invalid game ID');
+      context.dispatch('setError', true);
+    }
+    else {
+      context.dispatch('sortQuestions', data);
+      context.dispatch('setCategories');
+      context.dispatch('setError', false);
+      context.dispatch('setCurrentComponent', 'players');
+    }
+  }
+  catch(error) {
+    console.log(error);
+    context.dispatch('setError', true);
+  }
 };
+
+const setId = (context, payload) => {
+  context.commit('setId', payload);
+}
+
+const setError = (context, payload) => {
+  context.commit('setError', payload);
+}
 
 const setQuestions = (context, payload) => {
   context.commit('setQuestions', payload);
@@ -177,6 +207,7 @@ const resetGame = function(context) {
   context.dispatch('setCurrentComponent', 'intro');
   context.dispatch('setCurrentQuestionId', 0);
   context.dispatch('setQuestions', questions);
+  context.dispatch('setId', null);
 };
 
 const setSound = function (context) {
@@ -212,6 +243,8 @@ const killAllSounds = function() {
 export {
   getGameData,
   loadData,
+  setId,
+  setError,
   setQuestions,
   sortQuestions,
   setCategories,

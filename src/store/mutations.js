@@ -6,6 +6,14 @@ const setCategories = (state, payload) => {
   state.categories = payload;
 };
 
+const setId = (state, payload) => {
+  state.id = payload;
+}
+
+const setError = (state, payload) => {
+  state.idError = payload;
+}
+
 const setCurrentComponent = (state, payload) => {
   state.lastComponent = state.currentComponent;
   state.currentComponent = payload;
@@ -68,6 +76,8 @@ const setPaused = (state, payload) => {
 export {
   setQuestions,
   setCategories,
+  setId,
+  setError,
   setCurrentComponent,
   setPlayers,
   setCurrentQuestionId,
