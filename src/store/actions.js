@@ -1,6 +1,4 @@
 const loadData = async function(context, payload) {
-  //const param = this.state.id !== null ? this.state.id : 'random';
-
   try {
     const response = await fetch(`https://jeopardyquestions.dev.cc/wp-json/jq/v1/game/${payload}`);
     const data = await response.json();
