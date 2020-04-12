@@ -1,6 +1,6 @@
 const loadData = async function(context, payload) {
   try {
-    const response = await fetch(`https://jeopardyquestions.dev.cc/wp-json/jq/v1/game/${payload}`);
+    const response = await fetch(`https://jeopardyquestions.chrisrobertsweb.dev/wp-json/jq/v1/game/${payload}`);
     const data = await response.json();
     console.log(data);
 
