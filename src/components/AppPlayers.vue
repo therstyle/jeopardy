@@ -8,9 +8,10 @@
         <h2>After The Round {{ leader }} Is In The Lead!</h2>
       </article>
 
-      <form class="add-player" v-if="round !== 3" v-on:submit.prevent="addPlayer">
+      <form class="add-player text-input" v-if="round !== 3" v-on:submit.prevent="addPlayer">
         <div class="horizontal-group">
-          <input class="text-input" type="text" v-model="playerName" placeholder="Enter Player Name" />
+          <input type="text" v-model="playerName" placeholder="Enter Player Name" />
+          <button id="libby-button">Add Player</button>
         </div>
 
         <div v-if="errorPlayerName" class="error">Not a valid name</div>
@@ -162,9 +163,14 @@ section.players {
 .add-player {
   margin-bottom: 6.4rem;
 
-  input[type="text"].text-input {
+  input[type="text"] {
     font-size: 3.2rem;
     padding: 2rem;
+    border: none;
+  }
+
+  button {
+    font-size: 1.8rem;
   }
 }
 </style>

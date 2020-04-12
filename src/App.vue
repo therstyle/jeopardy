@@ -68,8 +68,6 @@ html {
 }
 
 body {
-  //opacity: 0.2; //Debug
-  //background: var(--blue);
   background: #3532b7;
   background: -moz-linear-gradient(top,  #3532b7 0%, #2c3568 100%);
   background: -webkit-linear-gradient(top,  #3532b7 0%,#2c3568 100%);
