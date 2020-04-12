@@ -5,7 +5,7 @@
     <!-- daily double -->
     <article v-if="question.daily_double">
       <div v-if="!reveal && wager > 0">
-        <h1>{{ question.question }}</h1>
+        <h1 v-html="question.question"></h1>
 
         <div class="button-wrap">
           <button v-on:click="revealAnswer" class="primary">Reveal Answer</button>
@@ -13,7 +13,7 @@
       </div>
     
       <div v-if="reveal">
-        <h1>{{question.answer }}</h1>
+        <h1 v-html="question.answer"></h1>
 
         <div class="button-wrap">
           <button class="primary" v-on:click="turnComplete">Continue</button>
@@ -24,7 +24,7 @@
     <!-- regular questions -->
     <article v-else>
       <div v-if="!reveal">
-        <h1>{{ question.question }}</h1>
+        <h1 v-html="question.question"></h1>
 
         <div class="button-wrap">
           <button v-on:click="revealAnswer" class="primary">Reveal Answer</button>
@@ -32,7 +32,7 @@
       </div>
       
       <div v-if="reveal">
-        <h1>{{question.answer }}</h1>
+        <h1 v-html="question.answer"></h1>
 
         <div class="button-wrap">
           <button v-on:click="turnComplete" class="primary">Continue</button>
