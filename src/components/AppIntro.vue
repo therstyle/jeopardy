@@ -46,6 +46,7 @@ export default {
   data() {
     return {
       mode: 'random',
+      param: null,
       begin: false
     }
   },
@@ -64,11 +65,12 @@ export default {
   },
   methods: {
     start() {
-      this.introSound();
-      this.$store.dispatch('getGameData');
+      this.param = this.mode === 'code' ?  this.id : 'random';
+      this.$store.dispatch('loadData', this.param);
     },
     displayOptions() {
       this.begin = true;
+      this.introSound();
     },
     introSound() {
       this.$store.dispatch('playSound', 'intro');
