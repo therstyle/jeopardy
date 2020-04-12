@@ -107,12 +107,41 @@ export default {
 </script>
 
 <style lang="scss">
+@keyframes flip {
+  0% {
+    transform: scale(0.1);
+  }
+
+  50% {
+    transform: rotateX(150deg);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes countdown {
+  0% {
+    background: var(--timer-bg);
+  }
+
+  100% {
+    background: rgba(255, 255, 255, 0.25);
+  }
+}
+
 .view-question {
   background: var(--dark-blue);
   display: flex;
   flex-direction: column;
   height: 100vh;
   padding: 0;
+  animation-fill-mode: forwards;
+
+  &.daily-double {
+    animation: flip ease-in-out 1s;
+  }
   
   &:before {
     content: '';
@@ -156,16 +185,6 @@ export default {
       font-size: 4vw;
       text-shadow: 0.3vw 0.3vw 0 #000;
     }
-  }
-}
-
-@keyframes countdown {
-  0% {
-    background: var(--timer-bg);
-  }
-
-  100% {
-    background: rgba(255, 255, 255, 0.25);
   }
 }
 
