@@ -1,22 +1,6 @@
-const getGameData = async function(context) {
-  const response = await fetch('https://jeopardyquestions.dev.cc/wp-json/jq/v1/game_id');
-  const data = await response.json();
-  let id;
-  console.log(data.id);
-
-  if(this.state.id !== null) {
-    id = this.state.id;
-  }
-  else {
-    id = data.id;
-  }
-
-  context.dispatch('loadData', 'https://jeopardyquestions.dev.cc/wp-json/jq/v1/game/' + id);
-};
-
 const loadData = async function(context, payload) {
   try {
-    const response = await fetch(payload);
+    const response = await fetch(`https://jeopardyquestions.chrisrobertsweb.dev/wp-json/jq/v1/game/${payload}`);
     const data = await response.json();
     console.log(data);
 
@@ -241,7 +225,6 @@ const killAllSounds = function() {
 };
 
 export {
-  getGameData,
   loadData,
   setId,
   setError,
