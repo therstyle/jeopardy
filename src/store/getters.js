@@ -105,6 +105,10 @@ const getSkipIntro = (state) => {
   return state.skipIntro;
 }
 
+const getLoading = (state) => {
+  return state.loading;
+}
+
 export {
   getCurrentComponent,
   getLastComponent,
@@ -123,5 +127,6 @@ export {
   getPaused,
   getSound,
   getSounds,
-  getSkipIntro
+  getSkipIntro,
+  getLoading
 }

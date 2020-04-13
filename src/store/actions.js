@@ -14,6 +14,8 @@ const loadData = async function(context, payload) {
       context.dispatch('setError', false);
       context.dispatch('setCurrentComponent', 'players');
     }
+    
+    context.dispatch('setLoading', false);
   }
   catch(error) {
     console.log(error);
@@ -229,6 +231,10 @@ const setSkipIntro = (context, payload) => {
   context.commit('setSkipIntro', payload);
 }
 
+const setLoading = (context, payload) => {
+  context.commit('setLoading', payload);
+}
+
 export {
   loadData,
   setId,
@@ -251,5 +257,6 @@ export {
   setPaused,
   playSound,
   killAllSounds,
-  setSkipIntro
+  setSkipIntro,
+  setLoading
 }

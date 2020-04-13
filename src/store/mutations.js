@@ -77,6 +77,10 @@ const setSkipIntro = (state, payload) => {
   state.skipIntro = payload;
 }
 
+const setLoading = (state, payload) => {
+  state.loading = payload;
+}
+
 export {
   setQuestions,
   setCategories,
@@ -92,5 +96,6 @@ export {
   setScore,
   setSound,
   setPaused,
-  setSkipIntro
+  setSkipIntro,
+  setLoading
 }

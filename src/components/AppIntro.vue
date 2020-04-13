@@ -25,7 +25,10 @@
           </div>
         </form>
 
-        <app-button className="primary" v-on:clickEvent="start">Continue</app-button>
+        <div class="loading-wrap">
+          <img v-if="loading" class="loading" src="images/loading.gif">
+          <app-button className="primary" v-on:clickEvent="start">Continue</app-button>
+        </div>
       </div>
     </div>
     
@@ -61,12 +64,16 @@ export default {
     },
     error() {
       return this.$store.getters.getError;
+    },
+    loading() {
+      return this.$store.getters.getLoading;
     }
   },
   methods: {
     start() {
       this.param = this.mode === 'code' ?  this.id : 'random';
       this.$store.dispatch('loadData', this.param);
+      this.$store.dispatch('setLoading', true);
     },
     displayOptions() {
       this.begin = true;
@@ -125,5 +132,17 @@ export default {
 
 #game-id {
   margin-top: 3.2rem;
+}
+
+.loading-wrap {
+  display: inline-block;
+  position: relative;
+
+  > img {
+    max-width: 24px;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+  }
 }
 </style>
