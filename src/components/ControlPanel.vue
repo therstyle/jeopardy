@@ -4,7 +4,7 @@
       <label>Players</label>
       <select v-on:change="setCurrentPlayerId">
         <option :selected="currentPlayerId === 0" value="0">Select Player</option>
-        <option :id="`player-${player.id}`" v-for="(player, index) in players" :key="index" :value="player.id">{{ player.name }} - ${{ player.score }}</option>
+        <option :id="`player-${player.id}`" v-for="(player, index) in players" :key="index" :value="player.id" :disabled="player.score <= 0 && round === 3">{{ player.name }} - ${{ player.score }}</option>
       </select>
     </div>
 
@@ -67,7 +67,15 @@ export default {
       const player = players.filter(player => player.id === this.currentPlayerId);
 
       if (player[0]) {
-        const max = player[0].score < 2000 ? 2000 : player[0].score;
+        let max;
+        
+        if (this.round === 3) {
+          max = player[0].score;
+        }
+        else {
+          max = player[0].score < 2000 ? 2000 : player[0].score;
+        }
+
         console.log(max);
         return max;
       }
