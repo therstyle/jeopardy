@@ -8,15 +8,17 @@
         <h2>After The Round {{ leader }} Is In The Lead!</h2>
       </article>
 
-      <form class="add-player text-input" v-if="round !== 3" v-on:submit.prevent="addPlayer">
-        <div class="horizontal-group">
-          <input type="text" v-model="playerName" placeholder="Enter Player Name" />
-          <button id="libby-button">Add Player</button>
-        </div>
+      <div class="add-player">
+        <form class="text-input" v-if="round !== 3" v-on:submit.prevent="addPlayer">
+          <div class="horizontal-group">
+            <input type="text" v-model="playerName" placeholder="Enter Player Name" />
+            <button id="libby-button">Add Player</button>
+          </div>
+        </form>
 
         <div v-if="errorPlayerName" class="error">Not a valid name</div>
         <div v-if="errorPlayerAmount" class="error">Not enough players</div>
-      </form>
+      </div>
 
       <player></player>
 
