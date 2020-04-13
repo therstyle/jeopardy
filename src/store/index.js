@@ -11,6 +11,8 @@ export default new Vuex.Store({
     id: null,
     idError: false,
     round: 1,
+    skipIntro: false,
+    loading: false,
     lastComponent: '',
     currentComponent: 'intro',
     currentQuestionId: 0,

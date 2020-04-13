@@ -14,6 +14,8 @@ const loadData = async function(context, payload) {
       context.dispatch('setError', false);
       context.dispatch('setCurrentComponent', 'players');
     }
+    
+    context.dispatch('setLoading', false);
   }
   catch(error) {
     console.log(error);
@@ -167,6 +169,7 @@ const setRound = function(context) {
   console.log(`the round is... ${this.state.round}`);
   context.commit('setRound', round);
   context.dispatch('setCategories');
+  context.dispatch('setSkipIntro', false);
 };
 
 const resetGame = function(context) {
@@ -224,6 +227,14 @@ const killAllSounds = function() {
   }
 };
 
+const setSkipIntro = (context, payload) => {
+  context.commit('setSkipIntro', payload);
+}
+
+const setLoading = (context, payload) => {
+  context.commit('setLoading', payload);
+}
+
 export {
   loadData,
   setId,
@@ -245,5 +256,7 @@ export {
   setSound,
   setPaused,
   playSound,
-  killAllSounds
+  killAllSounds,
+  setSkipIntro,
+  setLoading
 }

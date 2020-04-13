@@ -1,8 +1,8 @@
 <template>
-  <section class="game-board">
+  <section class="game-board" :class="{'category-intro' : round !== 3 && intro && !skipIntro}">
     <Options-Overlay></Options-Overlay>
     <ul class="screens">
-      <li class="screen category" v-for="(category, index) in getCategories" :key="`category-${index}`">
+      <li class="screen category" v-for="(category, index) in getCategories" :data-category-title="category" :key="`category-${index}`">
         {{ category }}
       </li>
       <li class="screen question" v-for="(question, index) in getQuestions" :key="`question-${index}`" :class="{ 'answered' : question.answered }">
@@ -27,6 +27,24 @@ export default {
     },
     getQuestions() {
       return this.$store.getters.getQuestions;
+    },
+    round() {
+      return this.$store.getters.getRound;
+    },
+    intro() {
+      let introStatus = true;
+      const questions = this.getQuestions;
+
+      questions.forEach(question => {
+        if (question.answered) {
+          introStatus = false;
+        }
+      });
+
+      return introStatus;
+    },
+    skipIntro() {
+      return this.$store.getters.getSkipIntro;
     }
   },
   methods: {
@@ -48,8 +66,112 @@ export default {
 </script>
 
 <style lang="scss">
+@keyframes intro {
+  0% {    
+    transform: translateX(100%);
+  }
+
+  10% {
+    transform: translateX(0);
+  }
+
+  90% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes box-fade {
+  0% {
+    z-index: 1;
+    opacity: 1;
+  }
+
+  99% {
+    z-index: 1;
+    opacity: 1;
+  }
+
+  100% {
+    z-index: -1;
+    opacity: 0;
+  }
+}
+
 .game-board {
   background: #000;
+
+  &.category-intro {
+    &:before {
+      content: '';
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: var(--dark-blue);
+      display: block;
+      position: absolute;
+      z-index: -1;
+      animation: box-fade 12s linear;
+      animation-fill-mode: both;
+    }
+
+    .screen.category {
+      &:before {
+        content: attr(data-category-title);
+        animation: intro 2s ease-in-out;
+        animation-fill-mode: both;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: var(--dark-blue);
+        width: 100%;
+        height: 100vh;
+        padding: 3.2rem;
+        position: fixed;
+        font-size: 12vw;
+        line-height: 1;
+        z-index: 98;
+      }
+
+      &:nth-child(2) {
+        &:before {
+          animation-delay: 2.0s;
+        }
+      }
+
+      &:nth-child(3) {
+        &:before {
+          animation-delay: 4.0s;
+        }
+      }
+
+      &:nth-child(4) {
+        &:before {
+          animation-delay: 6.0s;
+        }
+      }
+
+      &:nth-child(5) {
+        &:before {
+          animation-delay: 8.0s;
+        }
+      }
+
+      &:nth-child(6) {
+        &:before {
+          animation-delay: 10.0s;
+        }
+      }
+    }
+  }
 }
 
 .screens {

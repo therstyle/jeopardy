@@ -183,6 +183,7 @@ export default {
 
     h1 {
       font-size: 4vw;
+      line-height: 1.15;
       text-shadow: 0.3vw 0.3vw 0 #000;
     }
   }
