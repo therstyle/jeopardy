@@ -134,8 +134,10 @@ export default {
         background: var(--dark-blue);
         width: 100%;
         height: 100vh;
+        padding: 3.2rem;
         position: fixed;
         font-size: 12vw;
+        line-height: 1;
         z-index: 98;
       }
 
