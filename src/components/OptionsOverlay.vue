@@ -25,6 +25,7 @@ export default {
     togglePause: function() {
       this.$store.dispatch('setPaused');
       this.$store.dispatch('setCurrentComponent', 'players');
+      this.$store.dispatch('setSkipIntro', true);
     },
     toggleMute: function() {
       this.$store.dispatch('setSound');

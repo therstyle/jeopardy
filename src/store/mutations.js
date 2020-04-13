@@ -73,6 +73,10 @@ const setPaused = (state, payload) => {
   state.paused = payload;
 };
 
+const setSkipIntro = (state, payload) => {
+  state.skipIntro = payload;
+}
+
 export {
   setQuestions,
   setCategories,
@@ -87,5 +91,6 @@ export {
   resetWager,
   setScore,
   setSound,
-  setPaused
+  setPaused,
+  setSkipIntro
 }
