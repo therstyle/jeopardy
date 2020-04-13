@@ -114,6 +114,14 @@ h1 {
   line-height: 1;
 }
 
+.view-question {
+  h1 {
+    font-size: 4vw;
+    line-height: 1.05;
+    text-shadow: 0.3vw 0.3vw 0 #000;
+  }
+}
+
 a {
   text-decoration: none;
 }
