@@ -126,6 +126,10 @@ a {
   text-decoration: none;
 }
 
+img {
+  max-width: 100%;
+}
+
 .container {
   max-width: var(--container-width);
   margin: auto;
