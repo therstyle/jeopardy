@@ -1,16 +1,18 @@
 <template>
-  <section class="game-board" :class="{'category-intro' : round !== 3 && intro && !skipIntro}">
-    <Options-Overlay></Options-Overlay>
-    <ul class="screens">
-      <li class="screen category" v-for="(category, index) in getCategories" :data-category-title="category" :key="`category-${index}`">
-        {{ category }}
-      </li>
-      <li class="screen question" v-for="(question, index) in getQuestions" :key="`question-${index}`" :class="{ 'answered' : question.answered }">
-        <a href="#" v-on:click.prevent="viewQuestion(question)">${{ question.value }}</a>
-      </li>
-    </ul>
+  <transition name="fade">
+    <section class="game-board" :class="{'category-intro' : round !== 3 && intro && !skipIntro}">
+      <Options-Overlay></Options-Overlay>
+      <ul class="screens">
+        <li class="screen category" v-for="(category, index) in getCategories" :data-category-title="category" :key="`category-${index}`">
+          {{ category }}
+        </li>
+        <li class="screen question" v-for="(question, index) in getQuestions" :key="`question-${index}`" :class="{ 'answered' : question.answered }">
+          <a href="#" v-on:click.prevent="viewQuestion(question)">${{ question.value }}</a>
+        </li>
+      </ul>
 
-  </section>
+    </section>
+  </transition>
 </template>
 
 <script>
@@ -99,6 +101,14 @@ export default {
     z-index: -1;
     opacity: 0;
   }
+}
+
+.fade-leave-active {
+  transition: all .5s ease-in;
+}
+
+.fade-leave-to {
+  opacity: 0;
 }
 
 .game-board {

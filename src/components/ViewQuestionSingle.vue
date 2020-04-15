@@ -1,59 +1,61 @@
 <template>
-  <section class="view-question question-single" :class="{ 'daily-double' : question.daily_double, 'no-wager' : !wager && question.daily_double }">
-    <Options-Overlay></Options-Overlay>
+  <transition name="zoom-scale">
+    <section class="view-question question-single" :class="{ 'daily-double' : question.daily_double, 'no-wager' : !wager && question.daily_double }">
+      <Options-Overlay></Options-Overlay>
 
-    <!-- daily double -->
-    <article v-if="question.daily_double">
-      <div v-if="!reveal && wager > 0">
-        <h1 v-html="question.question"></h1>
+      <!-- daily double -->
+      <article v-if="question.daily_double">
+        <div v-if="!reveal && wager > 0">
+          <h1 v-html="question.question"></h1>
 
-        <div class="button-wrap">
-          <button v-on:click="revealAnswer" class="primary">Reveal Answer</button>
+          <div class="button-wrap">
+            <button v-on:click="revealAnswer" class="primary">Reveal Answer</button>
+          </div>
         </div>
-      </div>
-    
-      <div v-if="reveal">
-        <h1 v-html="question.answer"></h1>
-
-        <div class="button-wrap">
-          <button class="primary" v-on:click="turnComplete">Continue</button>
-        </div>
-      </div>
-    </article>
-
-    <!-- regular questions -->
-    <article v-else>
-      <div v-if="!reveal">
-        <h1 v-html="question.question"></h1>
-
-        <div class="button-wrap">
-          <button v-on:click="revealAnswer" class="primary">Reveal Answer</button>
-        </div>
-      </div>
       
-      <div v-if="reveal">
-        <h1 v-html="question.answer"></h1>
+        <div v-if="reveal">
+          <h1 v-html="question.answer"></h1>
 
-        <div class="button-wrap">
-          <button v-on:click="turnComplete" class="primary">Continue</button>
+          <div class="button-wrap">
+            <button class="primary" v-on:click="turnComplete">Continue</button>
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
 
-    <ul class="timer" :class="{ 'active' : showTimer }">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
+      <!-- regular questions -->
+      <article v-else>
+        <div v-if="!reveal">
+          <h1 v-html="question.question"></h1>
 
-    <control-panel v-on:initTimer="initTimer" v-on:cancelTimer="cancelTimer"></control-panel>
-  </section>
+          <div class="button-wrap">
+            <button v-on:click="revealAnswer" class="primary">Reveal Answer</button>
+          </div>
+        </div>
+        
+        <div v-if="reveal">
+          <h1 v-html="question.answer"></h1>
+
+          <div class="button-wrap">
+            <button v-on:click="turnComplete" class="primary">Continue</button>
+          </div>
+        </div>
+      </article>
+
+      <ul class="timer" :class="{ 'active' : showTimer }">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+
+      <control-panel v-on:initTimer="initTimer" v-on:cancelTimer="cancelTimer"></control-panel>
+    </section>
+  </transition>
 </template>
 
 <script>
@@ -129,6 +131,15 @@ export default {
   100% {
     background: rgba(255, 255, 255, 0.25);
   }
+}
+
+.zoom-scale-enter-active,
+.zoom-scale-leave-active {
+  transition: all .5s ease-in;
+}
+
+.zoom-scale-enter {
+  transform: scale(0);
 }
 
 .view-question {
