@@ -107,6 +107,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/css/vars';
+
 @keyframes flip {
   0% {
     transform: scale(0.1);
@@ -225,6 +227,24 @@ export default {
       &:nth-child(5) {
         animation-delay: 4s;
       }
+    }
+  }
+}
+
+@media only screen and (max-width: $lg-phone) {
+  .view-question {
+    &.daily-double {
+      &:before {
+        background-size: 690px 597px !important;
+      }
+    }
+  }
+
+  .timer {
+    gap: 1.4rem;
+
+    > li {
+      height: 4vw;
     }
   }
 }

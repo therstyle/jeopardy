@@ -59,6 +59,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/css/vars';
+
 .game-over {
   text-align: center;
 }
@@ -78,6 +80,12 @@ export default {
     &:nth-child(3) {
       border-color: rgba(136, 91, 7, 0.7);
     }
+  }
+}
+
+@media only screen and (max-width: $lg-phone) {
+  .player-list.winners-circle {
+    grid-template-columns: 1fr;
   }
 }
 </style>

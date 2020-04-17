@@ -66,6 +66,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/css/vars';
+
 @keyframes intro {
   0% {    
     transform: translateX(100%);
@@ -193,7 +195,7 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
-  border-radius: 4rem;
+  border-radius: 2rem;
   background: var(--dark-blue);
   text-transform: uppercase;
   font-family: var(--price-font);
@@ -232,6 +234,41 @@ export default {
     height: 100%;
     justify-content: center;
     align-items: center;
+  }
+}
+
+@media only screen and (max-width: $lg-phone) {
+  .game-board {
+    overflow: hidden;
+
+    &.category-intro {
+      &:before {
+      width: 100vw;
+      }
+
+      .screen.category {
+        &:before {
+          width: 100vw;
+        }
+      }
+    }
+  }
+
+  .screens {
+    overflow: auto;
+    grid-template-columns: repeat(6, calc(50vw - 6.4rem));
+
+    .screen {
+      border-radius: 1rem;
+    }
+
+    .screen.category {
+      font-size: 4.5vw;
+    }
+
+    .screen.question {
+      font-size: 7vw;
+    }
   }
 }
 </style>

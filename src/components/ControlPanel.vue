@@ -191,6 +191,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/css/vars';
+
 .control-panel {
   background: #000;
   padding: 3.2rem;
@@ -227,6 +229,37 @@ button {
         cursor: not-allowed;
       }
     }
+  }
+}
+
+@media only screen and (max-width: $lg-phone) {
+  .control-panel {
+    justify-content: space-between;
+    width: 100%;
+
+    .button-wrap {
+      margin-right: 0;
+    }
+
+    button {
+      min-width: 120px;
+      font-size: 1.4rem;
+      padding: 1rem;
+    }
+
+    .set-score {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+
+      > :first-child {
+        margin-bottom: 0.8rem;
+      }
+    }
+  }
+
+  .wager {
+    margin-right: .8rem;
   }
 }
 </style>
