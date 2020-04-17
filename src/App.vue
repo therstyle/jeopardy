@@ -122,6 +122,10 @@ h1 {
   }
 }
 
+h2 {
+  font-size: 2.4rem;
+}
+
 a {
   text-decoration: none;
 }
@@ -252,5 +256,22 @@ button {
     text-align: right;
     color: var(--red);
     font-weight: bold;
+  }
+
+  @media only screen and (max-width: $lg-phone) {
+    h1 {
+      font-size: 4.8rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    .view-question {
+      h1 {
+        font-size: 5vw;
+        margin-bottom: 3.2rem;
+      }
+    }
   }
 </style>

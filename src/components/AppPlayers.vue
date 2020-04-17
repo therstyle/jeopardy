@@ -158,6 +158,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/css/vars';
+
 section.players {
   text-align: center;
 }
@@ -173,6 +175,21 @@ section.players {
 
   button {
     font-size: 1.8rem;
+  }
+}
+
+@media only screen and (max-width: $lg-phone) {
+  .add-player {
+    input[type="text"] {
+      font-size: 1.8rem;
+      padding: 1rem;
+      border: none;
+    }
+
+    button {
+      min-width: 0;
+      font-size: 1.6rem;
+    }
   }
 }
 </style>
