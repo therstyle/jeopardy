@@ -104,11 +104,10 @@ export default {
 }
 
 .fade-leave-active {
-  transition: all .5s ease-in;
+  transition: all .3s ease-in-out;
 }
 
 .fade-leave-to {
-  opacity: 0;
 }
 
 .game-board {

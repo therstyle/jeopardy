@@ -135,7 +135,7 @@ export default {
 
 .zoom-scale-enter-active,
 .zoom-scale-leave-active {
-  transition: all .5s ease-in;
+  transition: all 0.3s ease-in-out;
 }
 
 .zoom-scale-enter {
