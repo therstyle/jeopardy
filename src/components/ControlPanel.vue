@@ -234,8 +234,6 @@ button {
 
 @media only screen and (max-width: $lg-phone) {
   .control-panel {
-    //justify-content: space-between;
-    //width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
