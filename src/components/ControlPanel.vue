@@ -234,8 +234,38 @@ button {
 
 @media only screen and (max-width: $lg-phone) {
   .control-panel {
-    justify-content: space-between;
-    width: 100%;
+    //justify-content: space-between;
+    //width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1.6rem;
+
+    .form-group {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+    }
+
+    .wager {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+
+      > input {
+        display: block;
+      }
+    }
+
+    .set-score {
+      grid-column: 2 / 3;
+      grid-row: 1 / 3;
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+
+      > :first-child {
+        margin-bottom: 0.8rem;
+      }
+    }
 
     .button-wrap {
       margin-right: 0;
@@ -245,16 +275,6 @@ button {
       min-width: 120px;
       font-size: 1.4rem;
       padding: 1rem;
-    }
-
-    .set-score {
-      text-align: right;
-      display: flex;
-      flex-direction: column;
-
-      > :first-child {
-        margin-bottom: 0.8rem;
-      }
     }
   }
 
