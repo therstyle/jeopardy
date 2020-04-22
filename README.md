@@ -2,6 +2,10 @@
 
 Jeopardy is a Vue.js application that faithfully recreates the experience of the game show and allows you to host local multiplayer matches.
 
+<p align="center">
+  <img src="https://chrisrobertsweb.dev/images/portfolio/jeopardy_2x.jpg">
+</p>
+
 ## Installation & Set Up
 ```
 yarn install
