@@ -3,7 +3,7 @@
 Jeopardy is a [Vue.js](https://vuejs.org/) application that faithfully recreates the experience of the game show and allows you to host local multiplayer matches.
 
 <p align="center">
-  <img src="https://chrisrobertsweb.dev/github/jeopardy.jpg">
+  <img src="https://assets.chrisrobertsweb.dev/github/jeopardy.webp">
 </p>
 
 ## Installation & Set Up
