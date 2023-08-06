@@ -2,10 +2,8 @@ const loadData = async function(context, payload) {
   try {
     const response = await fetch(`https://jeopardy-api.chrisrobertsweb.dev/wp-json/jq/v1/game/${payload}`);
     const data = await response.json();
-    console.log(data);
 
     if (data.length === 0) {
-      console.log('Invalid game ID');
       context.dispatch('setError', true);
     }
     else {
@@ -18,7 +16,6 @@ const loadData = async function(context, payload) {
     context.dispatch('setLoading', false);
   }
   catch(error) {
-    console.log(error);
     context.dispatch('setError', true);
   }
 };
@@ -69,7 +66,6 @@ const addPlayer = function(context, payload) {
 };
 
 const removePlayer = function(context, payload) {
-  console.log('removing player');
   const players = this.state.players;
   const removedPlayers = players.filter(player => {
     return player.name !== payload;
@@ -83,11 +79,7 @@ const setScore = function(context, payload) {
   const findPlayer = players.filter(player => player.id === payload.id);
   const player = findPlayer[0];
 
-  console.log(player);
-
   if (player) {
-    console.log(`updating score for player ${player.id}`);
-
     player.score += parseInt(payload.score);
     player.correct += payload.correct;
     player.wrong += payload.wrong;
@@ -141,13 +133,9 @@ const turnComplete = function(context) {
     }
   });
 
-  console.log(`questions answered = ${i}`);
-  console.log(questions['round' + currentRound].length);
-
   if (i === questions['round' + currentRound].length) {
     context.dispatch('setCurrentComponent', 'players');
     context.dispatch('setRound');
-    console.log('start the next round');
   }
 
   context.commit('setQuestions', questions);
@@ -166,7 +154,6 @@ const setRound = function(context) {
     player.answered = [];
   });
   
-  console.log(`the round is... ${this.state.round}`);
   context.commit('setRound', round);
   context.dispatch('setCategories');
   context.dispatch('setSkipIntro', false);
@@ -209,18 +196,11 @@ const setPaused = function (context) {
 
 const playSound = function (context, payload) {
   if (this.state.sound) {
-    console.log(`playing ${payload} sound`);
     this.state['sounds'][payload].play();
-  }
-
-  else {
-    console.log('sound is disabled');
   }
 }
 
 const killAllSounds = function() {
-  console.log('stop all sounds');
-
   const sounds = this.state.sounds;
   for (const sound of Object.keys(sounds)) {
     sounds[sound].pause();

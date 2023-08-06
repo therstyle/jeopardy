@@ -30,7 +30,6 @@ export default {
     toggleMute: function() {
       this.$store.dispatch('setSound');
       this.$store.dispatch('killAllSounds');
-      console.log('toggling sound');
     }
   }
 }

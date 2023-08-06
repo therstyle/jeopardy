@@ -95,8 +95,6 @@ export default {
       this.$store.dispatch('killAllSounds');
     },
     addPlayer() {
-      console.log('add player');
-
       if (this.playerName !== '') {
         this.playerId++;
 
@@ -110,8 +108,6 @@ export default {
           accuracy: 0,
           answered: []
         };
-
-        console.log(playerInfo);
 
         this.$store.dispatch('addPlayer', playerInfo);
         this.playerSound();

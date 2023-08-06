@@ -17,14 +17,12 @@ const getError = (state) => {
 const getPlayers =  (state) => {
   const players = [...state.players];
   const sortedPlayers = players.sort((a,b) => a.score > b.score ? -1 : 1);
-  console.log(sortedPlayers);
   return sortedPlayers;
 };
 
 const getPlayersByName =  (state) => {
   const players = [...state.players];
   const sortedPlayers = players.sort((a,b) => a.name < b.name ? -1 : 1);
-  console.log(sortedPlayers);
   return sortedPlayers;
 };
 
@@ -49,7 +47,6 @@ const getCurrentQuestion = (state, getters) => {
   const currentQuestion = questions.filter(data => data.id === currentId);
   
   if (currentId !== 0) {
-    console.log(currentQuestion);
     return currentQuestion[0];
   }
   else {

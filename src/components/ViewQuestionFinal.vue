@@ -58,7 +58,6 @@ export default {
       this.$store.dispatch('killAllSounds');
     },
     resetValues() {
-      console.log('reset values');
       this.wagersSubmitted = false;
       this.reveal = false;
     },

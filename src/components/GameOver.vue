@@ -51,7 +51,6 @@ export default {
   },
   methods: {
     resetGame() {
-      console.log('resetting the game');
       this.$store.dispatch('resetGame');
     }
   }

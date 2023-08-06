@@ -82,15 +82,12 @@ export default {
   },
   methods: {
     initTimer() {
-      console.log('init timer animation');
       this.showTimer = true;
     },
     cancelTimer() {
-      console.log('cancel timer animation');
       this.showTimer = false;
     },
     turnComplete() {
-      console.log('end turn');
       this.reveal = false;
       this.$store.dispatch('setCurrentComponent', 'game-board');
       this.$store.dispatch('turnComplete');
@@ -99,7 +96,6 @@ export default {
       this.$store.dispatch('setCurrentPlayerId', 0);
     },
     revealAnswer() {
-      console.log('reveal answer');
       this.reveal = true;
     }
   }

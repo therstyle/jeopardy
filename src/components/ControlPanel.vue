@@ -76,7 +76,6 @@ export default {
           max = player[0].score < 2000 ? 2000 : player[0].score;
         }
 
-        console.log(max);
         return max;
       }
       else {
@@ -88,7 +87,6 @@ export default {
        return this.$store.getters.getCurrentPlayerWager;
      },
      set(value) {
-       console.log(value);
        this.$store.dispatch('updateWager', value);
      }
     },
@@ -115,8 +113,6 @@ export default {
       else {
         this.disableButtons = false;
       }
-
-      console.log(`checking button status for ${currentPlayer.id}`);
     },
     setCurrentPlayerId(e) {      
       this.$emit('cancelTimer');
@@ -171,7 +167,6 @@ export default {
       this.buzzer = setTimeout(() => {
         this.$emit('cancelTimer');
         this.$store.dispatch('playSound', 'endQuestion');
-        console.log('times up');
       }, 5000);
     },
     isWagerValid() {

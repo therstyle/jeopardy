@@ -59,7 +59,6 @@ export default {
 
       this.$store.dispatch('setCurrentQuestionId', question.id);
       this.$store.dispatch('setCurrentComponent', 'question-single');
-      console.log(currentQuestion);
     }
   }
 }
